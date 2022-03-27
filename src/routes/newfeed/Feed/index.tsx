@@ -14,7 +14,8 @@ interface IFeedProps {
     content: string,
     author: object,
     authorTopComment: object,
-    contentTopComment: string
+    contentTopComment: string,
+    images: string[]
 }
 
 export default function Feed({ 
@@ -27,10 +28,11 @@ export default function Feed({
     content,
     author,
     authorTopComment,
-    contentTopComment
+    contentTopComment,
+    images
 } : IFeedProps) {
     return (
-        <div className="w-[596px] bg-white rounded-md border-gray-150 border-solid border-2">
+        <div className="w-[596px] bg-white rounded-md border-gray-150 border-solid border-2 mb-16">
             <HeaderNews user={author}/>
             <Info
                 position={position}
@@ -38,7 +40,7 @@ export default function Feed({
                 deposit={deposit}
                 content={content}
             />
-            <ImageFeed />
+            <ImageFeed images={images} />
             <FooterFeed timeago={feedTimeago} />
             <TopComment
                 comments={comments}

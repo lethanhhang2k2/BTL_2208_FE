@@ -7,7 +7,7 @@ interface ISuggestProps {
 
 export default function Suggest({ user, suggestedOwners }: ISuggestProps) {    
     return (
-        <div className="w-[324px] flxed lerf-[920px] right-0">
+        <div className="w-[324px] sticky top-[80px] h-fit lerf-[920px] right-0">
             <div className="h-[80px] mb-[20px]">
                 <User user={user} sizeAvt="80px" showName={true} twoLine={true} />
             </div>

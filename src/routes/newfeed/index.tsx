@@ -15,6 +15,7 @@ const feeds = [
             address: "Thanh Xuan",
         },
         content: "Gần đh. Không chung chủ.",
+        images: ["https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/bpcpcwvo/2021_09_14/1-9303.jpg"],
         tags: {
             price: "2tr",
             deposit: "200k",
@@ -42,6 +43,11 @@ const feeds = [
             address: "Hà Đông",
         },
         content: "Tiện bus. Free wifi.",
+        images: [
+            "https://vnn-imgs-a1.vgcloud.vn/images.vov.vn/w800/uploaded/krb8sl5hrwuly8uzveukg/2019_08_29/Hinh_5_YRLH.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVGcoBEQ2CKpkcXPIiahwFo0UOFpNxvAsfeQ&usqp=CAU",
+            "https://img5.thuthuatphanmem.vn/uploads/2021/11/09/hinh-anh-dam-my-cuc-dep_084954718.jpg"
+        ],
         tags: {
             price: "1.5tr",
             deposit: "100k",
@@ -64,7 +70,7 @@ function NewFeed() {
     return (
         <>
             <AppHeader />
-            <div className="py-[80px] flex justify-center">
+            <div className="pt-16 flex justify-center">
                 <div className="w-[932px] flex flex-row relative">
                     <div className="mr-[32px]">
                         {feeds.map(feed => {
@@ -81,6 +87,7 @@ function NewFeed() {
                                     author={feed.author}
                                     authorTopComment={feed.topComment.author}
                                     contentTopComment={feed.topComment.content}
+                                    images={feed.images}
                                 />
                             )
                         })}

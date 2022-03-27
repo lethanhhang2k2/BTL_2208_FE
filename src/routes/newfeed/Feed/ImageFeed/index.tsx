@@ -1,12 +1,34 @@
-export default function ImageFeed() {
+import { Carousel, Image } from "react-bootstrap"
+import * as SWMIconPack from "react-swm-icon-pack";
+
+interface IImageFeedProps {
+    images: string[],
+}
+
+export default function ImageFeed({images} : IImageFeedProps) {
     return (
         <div className="w-full my-2">
-            <img
-                className="flex justify-center rounded-md mx-auto"
-                width="560px"
-                height="auto"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqHcH9EsE2q21oOZP8sNNzADcV1ixRndSN2A&usqp=CAU"
-            ></img>
+            <Carousel
+                nextIcon={(
+                    <div className="h-[24px] w-[24px] rounded-md bg-white">
+                        <SWMIconPack.ChevronSmallRight />
+                    </div>
+                )}
+                prevIcon={(
+                    <div className="h-[24px] w-[24px] rounded-md bg-white">
+                        <SWMIconPack.ChevronSmallLeft />
+                    </div>
+                )}
+                controls={images.length > 1 ? true : false}
+            >
+                {images.map(image => {
+                    return (
+                        <Carousel.Item>
+                            <Image thumbnail={true} src={image} width="560px" height="600px" className=" mx-auto" />
+                        </Carousel.Item>
+                    )
+                })}
+            </Carousel>
         </div>
     )
 }
