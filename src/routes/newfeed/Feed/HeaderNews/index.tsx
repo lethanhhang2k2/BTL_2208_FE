@@ -1,10 +1,10 @@
-import ActionAppHeader from "../../../../layouts/AppHeader/ActionAppHeader";
+import ActionHeaderNews from "./ActionHeaderNews";
 
 
 export default function HeaderNews() {
     return (
-        <div>
-            <ActionAppHeader />
+        <div className="py-[8px]">
+            <ActionHeaderNews />
         </div>
     )
 }

@@ -1,7 +1,5 @@
-import Action from "../../../../components/Action";
-import IconButton from "../../../../components/IconButton";
-import Action from "../../../../components/Action";
 import * as SWMIconPack from "react-swm-icon-pack";
+import Action from "../../../../components/Action";
 import IconButton from "../../../../components/IconButton";
 
 export default function ActionHeaderNews() {
