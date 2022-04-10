@@ -6,7 +6,8 @@ module.exports = {
           gray: {
             150: "#EFEFEF",
             160: "#CCCCCC",
-          }
+          },
+          violet: "#A194FE"
         },
         fontFamily: {
           'logo': ['Shojumaru', 'cursive'],

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Image } from "react-bootstrap";
 import * as SWMIconPack from "react-swm-icon-pack";
 
-export default function UploadAvatar({ onChangeAvt }) {
+export default function UploadAvatar() {
     const [avt, setAvt] = useState(null)
     
     const handleChangeAvt = (e) => {
@@ -10,8 +10,6 @@ export default function UploadAvatar({ onChangeAvt }) {
 
         console.log(URL.createObjectURL(img));
         setAvt(URL.createObjectURL(img))
-
-        onChangeAvt(img)
     }
 
     useEffect(() => {
@@ -22,10 +20,10 @@ export default function UploadAvatar({ onChangeAvt }) {
 
     return (
         <label
-            className="w-[200px] h-[200px] rounded-full border-solid border-4 border-violet cursor-pointer">
+            className="w-[160px] h-[160px] rounded-full border-solid border-4 border-violet cursor-pointer">
             {avt ? (
                 <div className="h-full">
-                    <img src={avt} className="h-[192px] w-auto object-cover rounded-full" />
+                    <img src={avt} className="h-[152px] w-auto object-cover rounded-full" />
                 </div>
             ) : (
                 <div className="w-full h-full flex items-center justify-center">
