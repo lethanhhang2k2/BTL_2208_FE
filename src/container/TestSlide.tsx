@@ -1,4 +1,5 @@
 import { Carousel, Image } from "react-bootstrap";
+import GuyCard from "../components/GuyCard";
 
 const images = [
     "https://i.pinimg.com/originals/a8/8f/71/a88f712fd81f7521317d1f3744533774.jpg",
@@ -8,7 +9,7 @@ const images = [
 
 export default function TestSlide() {
     return (
-        <div className="h-[50%] w-[50%]">
+        <div className="h-[50%] w-[50%] bg-black">
             <h1>
                 Trang này là để test slide của boostrap.
             </h1>
@@ -21,6 +22,9 @@ export default function TestSlide() {
                     )
                 })}
             </Carousel>
+            <div className="h-screen w-screen" style={{ backgroundColor: "gray" }}>
+                <GuyCard />
+            </div>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import AppHeader from "../../layouts/AppHeader"
+import AuthLayout from "../../layouts/AuthLayout"
 import Feed from "./Feed"
 import Suggest from "./Suggest"
 
@@ -68,8 +69,7 @@ const feeds = [
 
 function NewFeed() { 
     return (
-        <>
-            <AppHeader />
+        <AuthLayout>
             <div className="pt-16 flex justify-center">
                 <div className="w-[932px] flex flex-row relative">
                     <div className="mr-[32px]">
@@ -122,7 +122,7 @@ function NewFeed() {
                     />
                 </div>
             </div>
-        </>
+        </AuthLayout>
     )
 }
 
