@@ -2,7 +2,7 @@ import * as SWMIconPack from "react-swm-icon-pack";
 import Avatar from "../Avatar";
 
 interface IUserProps {
-    user: object,
+    user: { username: string, name: string, distance: BigInteger, role: string, address: string},
     sizeAvt: string,
     border: boolean,
     showName: boolean,

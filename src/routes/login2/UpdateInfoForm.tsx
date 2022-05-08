@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import Label from "../../components/Label";
 import Switch from "../../components/Switch";
 import UploadAvatar from "../../components/UploadAvatar";
 
 export default function UpdateInfoForm() {
+    const navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -25,6 +28,7 @@ export default function UpdateInfoForm() {
 
         console.log(data);
         
+        navigate("/")
     }
 
     return (
