@@ -1,22 +1,23 @@
+import React from "react"
 import { Carousel, Image } from "react-bootstrap"
-import * as SWMIconPack from "react-swm-icon-pack";
+import Icons, { IconName } from "../../../../components/Icons";
 
 interface IImageFeedProps {
     images: string[],
 }
 
-export default function ImageFeed({images} : IImageFeedProps) {
+export default function ImageFeed({ images }: IImageFeedProps) {
     return (
         <div className="w-full my-2">
             <Carousel
                 nextIcon={(
                     <div className="h-[24px] w-[24px] rounded-md bg-white">
-                        <SWMIconPack.ChevronSmallRight />
+                        <Icons iconName={IconName.ChevronSmallRight} />
                     </div>
                 )}
                 prevIcon={(
                     <div className="h-[24px] w-[24px] rounded-md bg-white">
-                        <SWMIconPack.ChevronSmallLeft />
+                        <Icons iconName={IconName.ChevronSmallLeft} />
                     </div>
                 )}
                 controls={images.length > 1 ? true : false}

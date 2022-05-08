@@ -1,5 +1,8 @@
-import { useState } from "react"
+
+import React from "react"
 import AppHeader from "../../layouts/AppHeader"
+import AuthLayout from "../../layouts/AuthLayout"
+import { UserExample } from "../../type/user"
 import Feed from "./Feed"
 import Suggest from "./Suggest"
 
@@ -7,13 +10,7 @@ const feeds = [
     {
         comments: "3.000",
         id: 1,
-        author: {
-            id: 111,
-            username: "hang",
-            avtHref: "https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg",
-            distance: 3.9,
-            address: "Thanh Xuan",
-        },
+        author: UserExample,
         content: "Gần đh. Không chung chủ.",
         images: ["https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/bpcpcwvo/2021_09_14/1-9303.jpg"],
         tags: {
@@ -25,23 +22,13 @@ const feeds = [
         topComment: {
             updatedAt: "30m ago",
             content: "Gubjob",
-            author: {
-                id: 112,
-                username: "hihi",
-                avtHref: "https://hinhnen123.com/wp-content/uploads/2021/07/Bo-suu-tap-1001-hinh-anh-mang-dep-an-tuong-nhat-nam-2021.jpg"
-            }
+            author: UserExample
         }
     },
     {
         id: 2,
         comments: "4.000",
-        author: {
-            id: 200,
-            username: "to",
-            avtHref: null,
-            distance: 1.9,
-            address: "Hà Đông",
-        },
+        author: UserExample,
         content: "Tiện bus. Free wifi.",
         images: [
             "https://vnn-imgs-a1.vgcloud.vn/images.vov.vn/w800/uploaded/krb8sl5hrwuly8uzveukg/2019_08_29/Hinh_5_YRLH.jpg",
@@ -57,73 +44,43 @@ const feeds = [
         topComment: {
             updatedAt: "2h ago",
             content: "Great!",
-            author: {
-                id: 211,
-                username: "hoho",
-                avtHref: "https://pdp.edu.vn/wp-content/uploads/2021/01/hinh-anh-cute-de-thuong.jpg"
-            }
+            author: UserExample
         }
     },
 ]
-
-function NewFeed() { 
-    return (
-        <>
-            <AppHeader />
-            <div className="pt-16 flex justify-center">
-                <div className="w-[932px] flex flex-row relative">
-                    <div className="mr-[32px]">
-                        {feeds.map(feed => {
-                            return (
-                                <Feed
-                                    key={feed.id}
-                                    topCommentTimeago={feed.topComment.updatedAt}
-                                    feedTimeago={feed.updatedAt}
-                                    comments={feed.comments}
-                                    position={feed.tags.position}
-                                    price={feed.tags.price}
-                                    deposit={feed.tags.deposit}
-                                    content={feed.content}
-                                    author={feed.author}
-                                    authorTopComment={feed.topComment.author}
-                                    contentTopComment={feed.topComment.content}
-                                    images={feed.images}
-                                />
-                            )
-                        })}
+export default class NewFeed extends React.Component {
+    render() {
+        return (
+            <AuthLayout>
+                <div className="pt-16 flex justify-center">
+                    <div className="w-[932px] flex flex-row relative">
+                        <div className="mr-[32px]">
+                            {feeds.map(feed => {
+                                return (
+                                    <Feed
+                                        key={feed.id}
+                                        topCommentTimeago={feed.topComment.updatedAt}
+                                        feedTimeago={feed.updatedAt}
+                                        comments={feed.comments}
+                                        position={feed.tags.position}
+                                        price={feed.tags.price}
+                                        deposit={feed.tags.deposit}
+                                        content={feed.content}
+                                        author={feed.author}
+                                        authorTopComment={feed.topComment.author}
+                                        contentTopComment={feed.topComment.content}
+                                        images={feed.images}
+                                    />
+                                )
+                            })}
+                        </div>
+                        <Suggest
+                            user={UserExample}
+                            suggestedOwners={[UserExample, UserExample]}
+                        />
                     </div>
-                    <Suggest
-                        user={{
-                            id: 110,
-                            username: "haha",
-                            name: "Đào Ha",
-                            avtHref: null,
-                            distance: 4.0,
-                            address: "Nam Từ Liêm"
-                        }}
-                        suggestedOwners={[
-                            {
-                                id: 111,
-                                username: "hang",
-                                name: "Đào Hằng",
-                                avtHref: "https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg",
-                                distance: 3.9,
-                                address: "Thanh Xuan",
-                            },
-                            {
-                                id: 112,
-                                username: "hihi",
-                                name: "Đào Hi",
-                                avtHref: "https://pdp.edu.vn/wp-content/uploads/2021/01/hinh-anh-cute-de-thuong.jpg",
-                                distance: 2.0,
-                                address: "Hai Bà Trưng"
-                            }
-                        ]}
-                    />
                 </div>
-            </div>
-        </>
-    )
+            </AuthLayout>
+        );
+    }
 }
-
-export default NewFeed
