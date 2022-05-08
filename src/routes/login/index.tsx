@@ -1,9 +1,10 @@
 import Logo from "../../components/Logo";
 import QuickRedirect from "../../components/QuickRedirect";
+import "./index.scss";
 
 export default function Login() {
     return (
-        <div className="w-screen h-screen bg-[url('https://thumbs.dreamstime.com/b/silhouette-city-brown-color-68767629.jpg')] bg-cover">
+        <div className="w-screen h-screen bg-[url('https://thumbs.dreamstime.com/b/silhouette-city-brown-color-68767629.jpg')] bg-cover login-page">
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-white shadow-md w-4/5 h-4/5 rounded-lg grid grid-cols-6">
                     <div className="col-span-2 mx-16 my-8 relative">
