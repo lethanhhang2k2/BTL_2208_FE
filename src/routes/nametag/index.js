@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import theme from "../../assets/theme";
 import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
 import ButtonLink from "./ButtonLink";
+import { ThemeColor, UserExample } from "../../type/user"
 import ColorOption from "./ColorOption";
 
 const linkOptions = [
@@ -16,18 +16,19 @@ const linkOptions = [
     }
 ]
 
-export default function Nametag({ user = { theme: "violet" } }) {
+export default function Nametag({ user = { ...UserExample } }) {
     const [bgColor, setBgColor] = useState({})
     const [currentOption, setCurrentOption] = useState(0)
 
     useEffect(() => {
         setBgColor({
             id: user.theme,
-            color: theme[user.theme]
+            color: ThemeColor[user.theme]
         })
     }, [])
 
     const handleClickColor = (color) => {
+
         console.log(color);
         if (bgColor.id != color.id) {
             setBgColor(color)
@@ -40,14 +41,7 @@ export default function Nametag({ user = { theme: "violet" } }) {
 
     return (
         <BgEditLayout
-            user={{
-                id: 111,
-                username: "hang",
-                avtHref: "https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg",
-                distance: 3.9,
-                address: "Thanh Xuan",
-                role: "Admin"
-            }}
+            user={UserExample}
             backgroundColor={bgColor.color}
         >
             <div className="flex w-3/4 h-fit justify-between">
@@ -56,7 +50,7 @@ export default function Nametag({ user = { theme: "violet" } }) {
                         <div className="w-[236px] h-[236px]" style={{ background: bgColor.color }}></div>
                     </div>
                     <p className={`italic text-[2rem] font-qr text-center text-bg${bgColor.id}`}>
-                        hang
+                        {user.name}
                     </p>
                 </div>
                 <div className="w-4/6 flex flex-col justify-between py-2">
@@ -79,13 +73,13 @@ export default function Nametag({ user = { theme: "violet" } }) {
                         })}
                     </div>
                     <div className="flex w-1/4 justify-between">
-                        {Object.entries(theme).map(([id, color]) => {
+                        {Object.entries(ThemeColor).map(([id, color]) => {
                             return (
                                 <ColorOption
                                     key={id}
                                     color={color}
                                     borderWidth={id == bgColor.id ? "4" : "2"}
-                                    handleColor={() => handleClickColor({id, color})}
+                                    handleColor={() => handleClickColor({ id, color})}
                                 />
                             )
                         })}

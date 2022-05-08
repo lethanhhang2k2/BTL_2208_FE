@@ -1,8 +1,9 @@
 import User from "../../../../components/User";
 import ActionHeaderNews from "./ActionHeaderNews";
+import { AvatarSize, UserProperty } from "../../../../type/user";
 
 interface IHeaderNews {
-    user: object
+    user?: UserProperty
 }
 
 export default function HeaderNews({ user }: IHeaderNews) {
@@ -12,7 +13,7 @@ export default function HeaderNews({ user }: IHeaderNews) {
                 <div className="w-[400px]">
                     <User
                         user={user}
-                        sizeAvt="32px"
+                        sizeAvt={AvatarSize.SSmall}
                     />
                 </div>
                 <ActionHeaderNews />

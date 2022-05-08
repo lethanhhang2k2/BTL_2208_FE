@@ -3,7 +3,7 @@ export default function Switch({ name }) {
         <label class="flex items-center cursor-pointer mx-[5%]">
             <div class="relative">
 
-                <input type="checkbox" className="switch sr-only" name={name} required />
+                <input type="checkbox" className="switch sr-only" name={name} />
 
                 <div className="line block bg-violet w-[68px] h-[32px] rounded-full transition"></div>
                 

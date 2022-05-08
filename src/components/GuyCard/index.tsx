@@ -1,18 +1,18 @@
+import React from "react";
 import Avatar from "../Avatar";
 import User from "../User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import theme from "../../assets/theme";
+import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../type/user";
+import { MotelExample, MotelProperty } from "../../type/motel";
+import { userInfo } from "os";
 
-export default function GuyCard({ user = {
-    id: 111,
-    username: "haha",
-    theme: "red",
-    avtHref: "https://i.pinimg.com/736x/42/75/aa/4275aa3edb74bde2df465ac939560fca.jpg",
-    distance: 3.9,
-    address: "Thanh Xuan",
-    role: "Chủ trọ"
-} }) {
+interface IGuyCard {
+    user: UserProperty,
+}
+
+export default function GuyCard({ user = UserExample }: IGuyCard) {
+
     return (
         <div className="h-3/4 w-[320px] bg-white rounded-lg p-2">
             <div className="h-1/3">
@@ -23,15 +23,21 @@ export default function GuyCard({ user = {
             </div>
             <div className="h-1/4 flex flex-col justify-between">
                 <div className="-mt-[12px]">
-                    <User user={user} sizeAvt="60px" twoLine={true} showRole={true} border={true} />
+                    <User
+                        user={user}
+                        sizeAvt={AvatarSize.Medium}
+                        border={true}
+                        showRole={true}
+                        twoLine={true}
+                    />
                 </div>
                 <div className="flex justify-center mb-4">
                     <ContactBar />
                 </div>
             </div>
-            <div className="h-2/5 rounded-lg" style={{ background: theme[user.theme] }}>
-                <MotelInfo />
+            <div className="h-2/5 rounded-lg" style={{ background:  ThemeColor[user.theme] }}>
+                <MotelInfo motel={MotelExample} />
             </div>
         </div>
-    )
+    );
 }

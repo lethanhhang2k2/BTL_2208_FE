@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import Input from "../../components/Input";
 import Label from "../../components/Label";
 import Switch from "../../components/Switch";
@@ -7,15 +8,24 @@ import UploadAvatar from "../../components/UploadAvatar";
 export default function UpdateInfoForm() {
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
 
-        const avatar = e.target.avatar.files[0]
-        const role = e.target.role.checked
-        const name = e.target.name.value
-        const email = e.target.email.value
-        const telephone_number = e.target.telephone_number.value
-        const address = e.target.address.value
+        const target = e.target as typeof e.target & {
+            avatar: { files: FileList };
+            role: { checked: boolean };
+            name: { value: string };
+            email: { value: string };
+            telephone_number: { value: string };
+            address: { value: string }
+        };
+
+        const avatar = target.avatar.files[0]
+        const role = target.role.checked
+        const name = target.name.value
+        const email = target.email.value
+        const telephone_number = target.telephone_number.value
+        const address = target.address.value
 
         const data = {
             avatar,
@@ -32,7 +42,7 @@ export default function UpdateInfoForm() {
     }
 
     return (
-        <form className="w-4/5" onSubmit={handleSubmit}>
+        <form className="w-4/5" onSubmit={(e: React.SyntheticEvent) => handleSubmit(e)}>
             <div className="flex justify-center pb-8">
                 <UploadAvatar />
             </div>

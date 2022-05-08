@@ -1,4 +1,4 @@
-import * as SWMIconPack from "react-swm-icon-pack";
+import Icons, {IconName} from "../../components/Icons";
 import Action from "../../components/Action";
 import IconButton from "../../components/IconButton";
 
@@ -6,19 +6,19 @@ export default function ActionAppHeader() {
     return (
         <Action>
             <IconButton>
-                <SWMIconPack.Home2 />
+                <Icons iconName={IconName.Home2}/>
             </IconButton>
             <IconButton>
-                <SWMIconPack.MessageCircleLines />
+                <Icons iconName={IconName.MessageCircleLines}/>
             </IconButton>
             <IconButton>
-                <SWMIconPack.PlusCircle />
+                <Icons iconName={IconName.PlusCircle}/>
             </IconButton>
             <IconButton>
-                <SWMIconPack.Explore />
+                <Icons iconName={IconName.Bell}/>
             </IconButton>
             <IconButton>
-                <SWMIconPack.Bell />
+                <Icons iconName={IconName.Explore}/>
             </IconButton>
         </Action>
     )
