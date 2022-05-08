@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import theme from "../../assets/theme";
+import { ThemeColor, UserExample } from "../../type/user";
 import GuyCard from "../../components/GuyCard";
 import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
 
@@ -9,20 +9,13 @@ export default function QuickCard({ user = { theme: "red" } }) {
     useEffect(() => {
         setBgColor({
             id: user.theme,
-            color: theme[user.theme]
+            color: ThemeColor.Violet
         })
     }, [])
 
     return (
         <BgEditLayout
-            user={{
-                id: 111,
-                username: "hang",
-                avtHref: "https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg",
-                distance: 3.9,
-                address: "Thanh Xuan",
-                role: "Admin"
-            }}
+            user={UserExample}
             backgroundColor={bgColor.color}
         >
             <GuyCard />

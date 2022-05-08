@@ -1,4 +1,4 @@
-import * as SWMIconPack from "react-swm-icon-pack";
+import Icons, {IconName} from "../../../../components/Icons";
 import Action from "../../../../components/Action";
 import IconButton from "../../../../components/IconButton";
 
@@ -6,10 +6,10 @@ export default function ActionFooterFeed() {
     return (
         <Action>
             <IconButton>
-                <SWMIconPack.MessageCircleLines />
+                <Icons iconName={IconName.MessageCircleLines} />
             </IconButton>
             <IconButton>
-                <SWMIconPack.Share1 />
+                <Icons iconName={IconName.Share1} />
             </IconButton>
         </Action>
     )

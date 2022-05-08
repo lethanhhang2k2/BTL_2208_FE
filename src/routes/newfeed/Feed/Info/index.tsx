@@ -2,10 +2,10 @@ import Content from "./Content";
 import TagBox from "./TagBox";
 
 interface IInfoProps {
-    position: string,
-    price: string,
-    deposit: string,
-    content: string
+    position?: string,
+    price?: string,
+    deposit?: string,
+    content?: string
 }
 
 export default function Info({ position, price, deposit, content } : IInfoProps) {

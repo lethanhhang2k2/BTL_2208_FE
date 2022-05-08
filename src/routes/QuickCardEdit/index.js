@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import theme from "../../assets/theme";
+import { ThemeColor } from "../../type/user";
 import GuyCard from "../../components/GuyCard";
 import ThingCard from "../../components/ThingCard";
 import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
@@ -31,7 +31,7 @@ export default function QuickCardEdit({ user = { theme: "red" } }) {
     useEffect(() => {
         setBgColor({
             id: user.theme,
-            color: theme[user.theme]
+            color: ThemeColor.Violet
         })
     }, [])
 

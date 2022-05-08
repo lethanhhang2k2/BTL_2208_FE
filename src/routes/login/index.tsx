@@ -29,6 +29,10 @@ export default function Login() {
                                 ></img>
                                 <b className="ml-4">Sign in with Facebook</b>
                             </button>
+                            <div id="g_id_onload" data-client_id="823357101372-fcr2i1ngeimfjbtqf775sgp112tijhco.apps.googleusercontent.com"
+                                data-context="signin" data-ux_mode="redirect" data-login_uri="http://localhost:3000/user/auth/google-login"
+                                data-auto_prompt="false">
+                            </div>
                         </div>
                         <div className="absolute bottom-0 w-full">
                             <div className="flex justify-center">

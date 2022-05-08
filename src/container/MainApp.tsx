@@ -22,8 +22,8 @@ export default function MainApp() {
         <UserContext.Provider value={user}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<NewFeed />}></Route>
                     <Route path="/login" element={<Login />}></Route>
+                    <Route path="/" element={<NewFeed />}></Route>
                     <Route path="/login/2" element={<LoginTwo />}></Route>
                     <Route path="*" element={<NotFoundPage />}></Route>
                     <Route path="/test" element={<TestSlide />}></Route>

@@ -1,4 +1,4 @@
-import * as SWMIconPack from "react-swm-icon-pack";
+import Icons, {IconName} from "../../../../components/Icons";
 import Action from "../../../../components/Action";
 import IconButton from "../../../../components/IconButton";
 
@@ -6,13 +6,13 @@ export default function ActionHeaderNews() {
     return (
         <Action>
             <IconButton>
-                <SWMIconPack.MessageCircleLines />
+                <Icons iconName={IconName.MessageCircleLines} color="white" />
             </IconButton>
             <IconButton>
-                <SWMIconPack.Bookmark />
+                <Icons iconName={IconName.Bookmark} color="white" />
             </IconButton>
             <IconButton>
-                <SWMIconPack.MenuHorizontal />
+                <Icons iconName={IconName.MenuHorizontal} color="white" />
             </IconButton>
         </Action>
     )

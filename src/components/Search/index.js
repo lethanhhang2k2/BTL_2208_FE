@@ -1,4 +1,4 @@
-import * as SWMIconPack from 'react-swm-icon-pack';
+import Icons, { IconName } from '../Icons';
 import IconButton from '../IconButton';
 
 export default function Search() {
@@ -10,7 +10,7 @@ export default function Search() {
                     placeholder="Tìm trọ/ Khu vực/ Giá cả"
                 />
                 <IconButton>
-                    <SWMIconPack.Filters3 color="#9F9F9F"/>
+                    <Icons iconName={IconName.Filters3} color="#9F9F9F" />
                 </IconButton>
             </div>
         </div>
