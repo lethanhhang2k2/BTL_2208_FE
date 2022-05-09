@@ -5,34 +5,34 @@ import Switch from "../../components/Switch";
 import UploadAvatar from "../../components/UploadAvatar";
 
 export default function UpdateInfoForm() {
-    // const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
-    //     e.preventDefault()
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-    //     const avatar = e.target.avatar.files[0]
-    //     const role = e.target.role.checked
-    //     const name = e.target.name.value
-    //     const email = e.target.email.value
-    //     const telephone_number = e.target.telephone_number.value
-    //     const address = e.target.address.value
+        const avatar = e.target.avatar.files[0]
+        const role = e.target.role.checked
+        const name = e.target.name.value
+        const email = e.target.email.value
+        const telephone_number = e.target.telephone_number.value
+        const address = e.target.address.value
 
-    //     const data = {
-    //         avatar,
-    //         role,
-    //         name,
-    //         email,
-    //         telephone_number,
-    //         address
-    //     }
+        const data = {
+            avatar,
+            role,
+            name,
+            email,
+            telephone_number,
+            address
+        }
 
-    //     console.log(data);
-    // }
+        console.log(data);
+    }
 
     return (
-        <form className="w-4/5" >
+        <form className="w-4/5" onSubmit={handleSubmit}>
             <div className="flex justify-center pb-8">
                 <UploadAvatar />
             </div>
-            <div className="form-item">
+            <div className="form-item flex justify-center">
                 <label>Chủ trọ</label>
                 <Switch name="role" />
                 <label>Thuê trọ</label>

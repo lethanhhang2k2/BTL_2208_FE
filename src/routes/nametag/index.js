@@ -72,7 +72,7 @@ export default function Nametag({ user = { ThemeColor }}) {
                         })}
                     </div>
                     <div className="flex w-1/4 justify-between">
-                        {Object.entries(theme).map(([id, color]) => {
+                        {Object.entries(ThemeColor).map(([id, color]) => {
                             return (
                                 <ColorOption
                                     key={id}
