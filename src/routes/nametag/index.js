@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
 import ButtonLink from "./ButtonLink";
-import { ThemeColor, UserExample } from "../../type/user"
+import { ThemeColor, UserExample } from "../../types/user"
 import ColorOption from "./ColorOption";
 
 const linkOptions = [

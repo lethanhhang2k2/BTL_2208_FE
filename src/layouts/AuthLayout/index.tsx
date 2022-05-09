@@ -1,6 +1,6 @@
 import React from "react"
 import { Interface } from "readline"
-import { AvatarSize, UserProperty } from "../../type/user"
+import { AvatarSize, UserProperty } from "../../types/user"
 import AppHeader from "../AppHeader"
 
 interface AuthLayoutProps {

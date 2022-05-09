@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import MainApp from './container/MainApp';
-import { GoogleAuthProvider } from './hook/GoogleAuthProvider';
+import { GoogleAuthProvider } from '@hooks/GoogleAuthProvider';
+import './index.css';
 ReactDOM.render(
   <GoogleAuthProvider>
     <React.StrictMode>
@@ -13,4 +11,3 @@ ReactDOM.render(
   </GoogleAuthProvider>,
   document.getElementById('root')
 );
-reportWebVitals();

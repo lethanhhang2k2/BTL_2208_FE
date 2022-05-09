@@ -3,8 +3,8 @@ import Avatar from "../Avatar";
 import User from "../User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../type/user";
-import { MotelExample } from "../../type/motel";
+import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../types/user";
+import { MotelExample } from "../../types/motel";
 
 export default class GuyCard extends React.Component<{}, {}> {
     render() {

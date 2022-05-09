@@ -2,7 +2,7 @@
 import React from "react"
 import AppHeader from "../../layouts/AppHeader"
 import AuthLayout from "../../layouts/AuthLayout"
-import { UserExample } from "../../type/user"
+import { UserExample } from "../../types/user"
 import Feed from "./Feed"
 import Suggest from "./Suggest"
 

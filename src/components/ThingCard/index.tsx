@@ -1,5 +1,5 @@
 import React from "react"
-import { MotelProperty, MotelExample } from "../../type/motel"
+import { MotelProperty, MotelExample } from "../../types/motel"
 import Icons, { IconName } from "../Icons"
 
 export default class ThingCard extends React.Component<MotelProperty, {}> {

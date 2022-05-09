@@ -1,5 +1,5 @@
 import User from "../../components/User";
-import { UserProperty, AvatarSize } from "../../type/user";
+import { UserProperty, AvatarSize } from "../../types/user";
 
 interface ISuggestProps {
     user: UserProperty,
