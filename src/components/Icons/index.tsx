@@ -1,26 +1,26 @@
 import React from "react";
-import { ReactComponent as User1 } from "../../assets/icons/user1.svg";
-import { ReactComponent as Mail } from "../../assets/icons/mail.svg";
-import { ReactComponent as Phone } from "../../assets/icons/phone.svg";
-import { ReactComponent as MessageSquareDots } from "../../assets/icons/messagesquaredots.svg";
-import { ReactComponent as Location1 } from "../../assets/icons/location1.svg";
-import { ReactComponent as TrendingUp } from "../../assets/icons/trendingup.svg";
-import { ReactComponent as InfoCircle } from "../../assets/icons/infocircle.svg";
-import { ReactComponent as Coin } from "../../assets/icons/coin.svg";
-import { ReactComponent as Filters3 } from "../../assets/icons/filters3.svg";
-import { ReactComponent as Bell } from "../../assets/icons/bell.svg";
-import { ReactComponent as Explore } from "../../assets/icons/explore.svg";
-import { ReactComponent as Home2 } from "../../assets/icons/home2.svg";
-import { ReactComponent as MessageCircleLines } from "../../assets/icons/messagecirclelines.svg";
-import { ReactComponent as PlusCircle } from "../../assets/icons/pluscircle.svg";
-import { ReactComponent as Edit3 } from "../../assets/icons/edit3.svg";
-import { ReactComponent as Smartphone } from "../../assets/icons/smartphone.svg";
-import { ReactComponent as Wallet } from "../../assets/icons/wallet.svg";
-import { ReactComponent as ChevronSmallRight } from "../../assets/icons/chevronsmallright.svg";
-import { ReactComponent as ChevronSmallLeft } from "../../assets/icons/chevronsmallleft.svg";
-import { ReactComponent as MenuHorizontal } from "../../assets/icons/menuhorizontal.svg";
-import { ReactComponent as Bookmark } from "../../assets/icons/bookmark.svg";
-import { ReactComponent as Share1 } from "../../assets/icons/share1.svg";
+import { ReactComponent as User1 } from "@icons/user1.svg";
+import { ReactComponent as Mail } from "@icons/mail.svg";
+import { ReactComponent as Phone } from "@icons/phone.svg";
+import { ReactComponent as MessageSquareDots } from "@icons/messagesquaredots.svg";
+import { ReactComponent as Location1 } from "@icons/location1.svg";
+import { ReactComponent as TrendingUp } from "@icons/trendingup.svg";
+import { ReactComponent as InfoCircle } from "@icons/infocircle.svg";
+import { ReactComponent as Coin } from "@icons/coin.svg";
+import { ReactComponent as Filters3 } from "@icons/filters3.svg";
+import { ReactComponent as Bell } from "@icons/bell.svg";
+import { ReactComponent as Explore } from "@icons/explore.svg";
+import { ReactComponent as Home2 } from "@icons/home2.svg";
+import { ReactComponent as MessageCircleLines } from "@icons/messagecirclelines.svg";
+import { ReactComponent as PlusCircle } from "@icons/pluscircle.svg";
+import { ReactComponent as Edit3 } from "@icons/edit3.svg";
+import { ReactComponent as Smartphone } from "@icons/smartphone.svg";
+import { ReactComponent as Wallet } from "@icons/wallet.svg";
+import { ReactComponent as ChevronSmallRight } from "@icons/chevronsmallright.svg";
+import { ReactComponent as ChevronSmallLeft } from "@icons/chevronsmallleft.svg";
+import { ReactComponent as MenuHorizontal } from "@icons/menuhorizontal.svg";
+import { ReactComponent as Bookmark } from "@icons/bookmark.svg";
+import { ReactComponent as Share1 } from "@icons/share1.svg";
 
 
 interface IconsProps {

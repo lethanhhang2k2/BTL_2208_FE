@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import { Image } from "react-bootstrap";
-import * as SWMIconPack from "react-swm-icon-pack";
+import Icons, { IconName } from "../Icons";
 
 export default function UploadAvatar() {
     const [avt, setAvt] = useState(null)
-    
+
     const handleChangeAvt = (e) => {
         const img = e.target.files[0]
 
@@ -27,7 +26,7 @@ export default function UploadAvatar() {
                 </div>
             ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                      <SWMIconPack.PlusCircle className="h-16 w-16" color="#A194FE" />  
+                    <Icons IconName={IconName.PlusCircle} className="h-16 w-16" color="#A194FE" />
                 </div>
             )}
             <input

@@ -2,7 +2,7 @@ import Logo from "../../components/Logo";
 import Search from "../../components/Search";
 import User from "../../components/User";
 import ActionAppHeader from "./ActionAppHeader";
-import { UserProperty, AvatarSize } from "../../type/user";
+import { UserProperty, AvatarSize } from "../../types/user";
 
 interface IAppHeader {
     displayAvt?: boolean,

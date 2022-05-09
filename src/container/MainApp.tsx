@@ -1,36 +1,59 @@
-import { createContext, useEffect, useState } from "react";
+import React, { Suspense } from "react";
+import { createContext, useState } from "react";
 import {
     BrowserRouter,
     Routes,
     Route,
 } from "react-router-dom";
-import NotFoundPage from "../routes/404pages";
-import Login from "../routes/login";
-import LoginTwo from "../routes/login2";
-import Nametag from "../routes/nametag";
-import NewFeed from "../routes/newfeed/index"
-import QuickCard from "../routes/quickcard";
-import QuickCardEdit from "../routes/QuickCardEdit";
-import TestSlide from "./TestSlide";
+
+import PrivateRoute from "@routes/Redirect/PrivateRoute";
+import Loading from "@routes/Redirect/Components/Loading";
+
+// import NotFoundPage from "@routes/404_page";
+// import Login from "@routes/login";
+// import LoginTwo from "@routes/login2";
+// import Nametag from "@routes/nametag";
+// import NewFeed from "@routes/newfeed/index"
+// import QuickCard from "@routes/quickcard";
+// import QuickCardEdit from "@routes/QuickCardEdit";
+// import TestSlide from "./TestSlide";
+
+const NotFoundPage = React.lazy(() => import("@routes/404_page"));
+const Login = React.lazy(() => import("@routes/login"));
+const LoginTwo = React.lazy(() => import("@routes/login2"));
+const Nametag = React.lazy(() => import("@routes/nametag"));
+const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
+const QuickCard = React.lazy(() => import("@routes/quickcard"));
+const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
+
+
 
 const UserContext = createContext(null);
 
 export default function MainApp() {
-    const [user, setUser] = useState(null)
+    const [user] = useState(null)
 
     return (
         <UserContext.Provider value={user}>
             <BrowserRouter>
-                <Routes>
-                    <Route path="/login" element={<Login />}></Route>
-                    <Route path="/" element={<NewFeed />}></Route>
-                    <Route path="/login/2" element={<LoginTwo />}></Route>
-                    <Route path="*" element={<NotFoundPage />}></Route>
-                    <Route path="/test" element={<TestSlide />}></Route>
-                    <Route path="/nametag" element={<Nametag />}></Route>
-                    <Route path="/quickcard" element={<QuickCard />}></Route>
-                    <Route path="/quickcard/edit" element={<QuickCardEdit />}></Route>
-                </Routes>
+                <Suspense fallback={<Loading />}>
+                    <Routes>
+                        <Route path="*" element={<NotFoundPage />} />
+                        <Route path="/login"
+                            element={<Login />} />
+
+                        <Route path="/"
+                            element={<PrivateRoute element={<NewFeed />} />} />
+                        <Route path="/login/2"
+                            element={<PrivateRoute element={<LoginTwo />} />} />
+                        <Route path="/nametag"
+                            element={<PrivateRoute element={<Nametag />} />} />
+                        <Route path="/quickcard"
+                            element={<PrivateRoute element={<QuickCard />} />} />
+                        <Route path="/quickcard/edit"
+                            element={<PrivateRoute element={<QuickCardEdit />} />} />
+                    </Routes>
+                </Suspense>
             </BrowserRouter>
         </UserContext.Provider>
     )

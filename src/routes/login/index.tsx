@@ -1,20 +1,27 @@
-import React from "react";
-import Logo from "../../components/Logo";
-import QuickRedirect from "../../components/QuickRedirect";
-import { useGoogleAuth } from '../../hook/GoogleAuthProvider';
+import Logo from "@components/Logo";
+import QuickRedirect from "@components/QuickRedirect";
+import { useGoogleAuth } from '@hooks/GoogleAuthProvider';
+import { getVerifyToken } from '@api/auth';
 import "./index.scss";
-import { getVerifyToken } from '../../api/auth';
 
 export default function Login() {
-    const { signIn } = useGoogleAuth();
+    const { isSignedIn, signIn, signOut } = useGoogleAuth();
+    console.log(isSignedIn, useGoogleAuth());
 
     const handleSignIn = async () => {
         const googleUser = await signIn();
+        
+        // TODO: check user exist
         console.log(googleUser);
         if (googleUser?.tokenId) {
             await getVerifyToken(googleUser.tokenId);
         }
     }
+
+    const handleSignOut = () => {
+        signOut();
+    }
+
     return (
         <div className="w-screen h-screen bg-cover login-page">
             <div className="flex items-center justify-center h-screen">
@@ -30,15 +37,20 @@ export default function Login() {
                             </div>
 
                             <div className="pt-5 sm:pt-16">
-                                <button className="flex justify-content-center w-full items-center border-2 border-solid border-gray-150 rounded-full p-2 text-ellipsis" onClick={handleSignIn}>
-                                    <img
-                                        src="./images/gg.png"
-                                        alt="google"
-                                        width="32"
-                                        height="32"
-                                    ></img>
-                                    <b className="ml-4 truncate">Sign in with Google</b>
-                                </button>
+                                {!isSignedIn
+                                    ? <button className="flex justify-content-center w-full items-center border-2 border-solid border-gray-150 rounded-full p-2 text-ellipsis" onClick={handleSignIn}>
+                                        <img
+                                            src="./images/gg.png"
+                                            alt="google"
+                                            width="32"
+                                            height="32"
+                                        ></img>
+                                        <b className="ml-4 truncate">Sign in with Google</b>
+                                    </button>
+                                    : <div className="flex justify-center">
+                                        <p className="font-semibold">Bạn đã đang nhập rồi!</p>
+                                        <button className="mx-1 font-bold text-bgviolet underline" onClick={handleSignOut}>Logout</button>
+                                    </div>}
                             </div>
                         </div>
                         <div className="w-full flex justify-center">
