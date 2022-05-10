@@ -4,6 +4,8 @@ import { getVerifyToken } from '@api/auth';
 import { Navigate } from "react-router-dom"
 import Logo from "@components/Logo";
 import QuickRedirect from "@components/QuickRedirect";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss";
 
 export default function Login() {
@@ -11,29 +13,45 @@ export default function Login() {
     const [redirectUrl, setRedirectUrl] = useState('');
     const { isSignedIn, signIn, signOut } = useGoogleAuth();
 
+    const processSignIn = async (token: string | undefined): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            if (token) {
+                const data = await getVerifyToken(token + "a");
+                if (!data || !data.is_correct) {
+                    setIsRedirectUrl(false);
+                    reject();
+                }
+                else if (!data.enough_data) {
+                    setIsRedirectUrl(true);
+                    setRedirectUrl('/login/2');
+                    resolve();
+                }
+                else {
+                    setIsRedirectUrl(true);
+                    setRedirectUrl('/');
+                    resolve();
+                }
+            }
+        });
+    }
+
     const handleSignIn = async () => {
         const googleUser = await signIn();
-        // console.log(googleUser);
-        if (googleUser?.tokenId) {
-            const data = await getVerifyToken(googleUser.tokenId);
-            if (!data) {
-                setIsRedirectUrl(true);
-                setRedirectUrl('/login');
-            }
-            else if(!data.is_correct) {
-                setIsRedirectUrl(false);
-                // TODO: show error
-                // Show notification
-            }
-            else if (!data.enough_data) {
-                setIsRedirectUrl(true);
-                setRedirectUrl('/login/2');
-            }
-            else {
-                setIsRedirectUrl(true);
-                setRedirectUrl('/');
-            }
-        }
+
+        toast.promise(
+            processSignIn(googleUser?.tokenId), {
+            pending: 'Signing in...',
+            success: 'Đăng nhập thành công',
+            error: 'Đăng nhập thất bại',
+        }, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     const handleSignOut = () => {
@@ -43,6 +61,17 @@ export default function Login() {
     return (isRedirectUrl)
         ? <Navigate to={redirectUrl} />
         : <div className="w-screen h-screen bg-cover login-page">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-white shadow-md rounded-3xl grid grid-cols-6 p-3 w-5/6 ss:w-4/5 3xl:w-3/5 h-3/5">
                     <div className="col-span-6 md:col-span-3 xl:col-span-2 mx-10 my-2 flex flex-col justify-between">

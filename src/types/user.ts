@@ -4,7 +4,7 @@ export enum ThemeColor {
     Violet = "linear-gradient(135deg, #8147FF 0%, #8FB4FF 100%)",
     Orange = "linear-gradient(135deg, #FDCB5C 0%, #ED4956 100%)"
 }
-export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px" }
+export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px" }
 
 export interface UserProperty {
     id: string,
