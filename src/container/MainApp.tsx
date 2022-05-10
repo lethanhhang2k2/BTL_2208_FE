@@ -20,7 +20,8 @@ import Loading from "@routes/Redirect/Components/Loading";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
-const LoginTwo = React.lazy(() => import("@routes/login2"));
+const LoginTwo = React.lazy(() => import("@routes/login/pages/login2"));
+const LoginThree = React.lazy(() => import("@routes/login/pages/login3"));
 const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
@@ -46,6 +47,8 @@ export default function MainApp() {
                             element={<PrivateRoute element={<NewFeed />} />} />
                         <Route path="/login/2"
                             element={<PrivateRoute element={<LoginTwo />} />} />
+                        <Route path="/login/3"
+                            element={<PrivateRoute element={<LoginThree />} />} />
                         <Route path="/nametag"
                             element={<PrivateRoute element={<Nametag />} />} />
                         <Route path="/quickcard"

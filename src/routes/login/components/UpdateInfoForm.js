@@ -1,8 +1,7 @@
-import React from "react";
-import Input from "../../components/Input";
-import Label from "../../components/Label";
-import Switch from "../../components/Switch";
-import UploadAvatar from "../../components/UploadAvatar";
+import Input from "@components/Input";
+import Label from "@components/Label";
+import Switch from "@components/Switch";
+import UploadAvatar from "@components/UploadAvatar";
 
 export default function UpdateInfoForm() {
     const handleSubmit = (e) => {

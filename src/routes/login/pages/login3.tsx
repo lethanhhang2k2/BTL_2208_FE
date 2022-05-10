@@ -1,10 +1,10 @@
-import login2_img from "../../assets/images/login2.jpg";
-import Logo from "../../components/Logo";
-import QuickRedirect from "../../components/QuickRedirect";
-import UpdateInfoForm from "./UpdateInfoForm.js";
-import "./index.scss";
+import login2_img from "@images/login2.jpg";
+import Logo from "@components/Logo";
+import QuickRedirect from "@components/QuickRedirect";
+import UpdateInfoForm from "../components/UpdateInfoForm";
+import "../index.scss";
 
-export default function LoginTwo() {
+export default function LoginThree() {
     return (
         <div className="w-screen h-screen bg-cover login-page-2">
             <div className="flex items-center justify-center h-screen">
