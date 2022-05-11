@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@AppTypes/*": [
+                "./src/types/*"
+            ],
+            "@hooks/*": [
+                "./src/hooks/*"
+            ],
+            "@icons/*": [
+                "./src/assets/icons/*"
+            ],
+            "@components/*": [
+                "./src/components/*"
+            ],
+            "@routes/*": [
+                "./src/routes/*"
+            ],
+            "@api/*": [
+                "./src/api/*"
+            ],
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { UserProperty } from "../../../type/user";
+import { UserProperty } from "../../../types/user";
 import FooterFeed from "./FooterFeed";
 import HeaderNews from "./HeaderNews";
 import ImageFeed from "./ImageFeed";

@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baloo+2:wght@500&family=Judson&family=Kaisei+Decol&family=Luxurious+Roman&family=Playfair+Display&family=Praise&family=Ruda&family=Shojumaru&family=Vampiro+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baloo+2:wght@500&family=Judson&family=Kaisei+Decol&family=Luxurious+Roman&family=Playfair+Display&family=Praise&family=Ruda&family=Shojumaru&family=Vampiro+One&display=swap');
 
 @layer components {
     .form-item {

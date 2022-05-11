@@ -18,7 +18,7 @@ export default function UpdateInfoForm() {
             email: { value: string };
             telephone_number: { value: string };
             address: { value: string }
-        };
+        }
 
         const avatar = target.avatar.files[0]
         const role = target.role.checked
@@ -42,11 +42,11 @@ export default function UpdateInfoForm() {
     }
 
     return (
-        <form className="w-4/5" onSubmit={(e: React.SyntheticEvent) => handleSubmit(e)}>
+        <form className="w-4/5" onSubmit={handleSubmit}>
             <div className="flex justify-center pb-8">
                 <UploadAvatar />
             </div>
-            <div className="form-item">
+            <div className="form-item flex justify-center">
                 <label>Chủ trọ</label>
                 <Switch name="role" />
                 <label>Thuê trọ</label>

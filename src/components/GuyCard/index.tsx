@@ -3,9 +3,8 @@ import Avatar from "../Avatar";
 import User from "../User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../type/user";
-import { MotelExample, MotelProperty } from "../../type/motel";
-import { userInfo } from "os";
+import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../types/user";
+import { MotelExample } from "../../types/motel";
 
 interface IGuyCard {
     user: UserProperty,

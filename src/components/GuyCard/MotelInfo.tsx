@@ -1,6 +1,6 @@
 import React from "react";
 import Icons, { IconName } from "../Icons"
-import { MotelProperty, MotelExample } from "../../type/motel"
+import { MotelProperty, MotelExample } from "../../types/motel"
 
 interface MotelInfoProps {
     motel: MotelProperty

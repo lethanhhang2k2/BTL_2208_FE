@@ -1,7 +1,7 @@
 import React from "react"
+import Icons from "@components/Icons"
 import messenger_logo from "../../assets/images/messengerlogo.jpg"
 import zalo_logo from "../../assets/images/zalologo.png"
-import Icons from "../Icons"
 
 export default class ContactBar extends React.Component {
     render() {

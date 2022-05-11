@@ -1,7 +1,6 @@
 import { type } from "@testing-library/user-event/dist/type"
 import { createContext, useContext, useEffect, useState } from "react"
 import UploadImage from "../UploadImage"
-import * as SWMIconPack from "react-swm-icon-pack";
 
 const ImagesContext = createContext<{} | null>({})
 
@@ -66,24 +65,7 @@ function UploadImg() {
     }, [img])
 
     return (
-        <label
-            className="w-[160px] h-[160px] rounded-lg border-solid border-4 border-gray-160 cursor-pointer">
-            {img ? (
-                <div className="h-full">
-                    <img src={img} className="h-[152px] w-auto object-cover rounded-lg" />
-                </div>
-            ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                      <SWMIconPack.PlusCircle className="h-16 w-16" color="#CCCCCC" />  
-                </div>
-            )}
-            <input
-                type="file"
-                className="opacity-0" accept="image/png, image/jpeg, image/svg"
-                onChange={handleChangeImg}
-                name="img"
-            />
-        </label>
+        <UploadImage />
     )
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Icons, { IconName } from "../Icons";
-import { UserProperty, AvatarSize, UserExample } from "../../type/user";
+import { UserProperty, AvatarSize, UserExample } from "../../types/user";
 import Avatar from "../Avatar";
 
 interface IUserProps {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Avatar from "../../../../components/Avatar"
 import UpdateTime from "../../../../components/UpdateTime"
-import { AvatarSize, UserProperty } from "../../../../type/user"
+import { AvatarSize, UserProperty } from "../../../../types/user"
 
 interface ITopCommentProps {
     comments: string,

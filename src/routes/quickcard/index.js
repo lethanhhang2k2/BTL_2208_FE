@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ThemeColor, UserExample } from "../../type/user";
+import { ThemeColor, UserExample } from "../../types/user";
 import GuyCard from "../../components/GuyCard";
 import BgEditLayout from "../../layouts/AuthLayout/BsEditLayout/BgEditLayout";
 

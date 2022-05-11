@@ -20,6 +20,9 @@ module.exports = {
           'logo': ['Shojumaru', 'cursive'],
           'qr': ['Vampiro One', 'cursive']
         },
+        screens:{
+          "3xl": "1600px",
+        }
       },
       colors: {
         gray: {

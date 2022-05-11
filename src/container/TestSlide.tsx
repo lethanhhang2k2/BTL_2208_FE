@@ -1,8 +1,8 @@
 import { Carousel, Image } from "react-bootstrap";
 import GuyCard from "../components/GuyCard";
 import ThingCard from "../components/ThingCard";
-import { MotelExample } from "../type/motel";
-import { UserExample } from "../type/user";
+import { MotelExample } from "../types/motel";
+import { UserExample } from "../types/user";
 
 const images = [
     "https://i.pinimg.com/originals/a8/8f/71/a88f712fd81f7521317d1f3744533774.jpg",
@@ -26,7 +26,7 @@ export default function TestSlide() {
                 })}
             </Carousel>
             <div className="h-screen w-screen" style={{ backgroundColor: "gray" }}>
-                <GuyCard user={UserExample} />
+                <GuyCard user={UserExample} quickCard={false} />
                 <ThingCard motel={MotelExample} />
             </div>
         </div>
