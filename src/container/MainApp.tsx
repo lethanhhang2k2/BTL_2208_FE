@@ -11,6 +11,7 @@ import Nametag from "../routes/nametag";
 import NewFeed from "../routes/newfeed/index"
 import QuickCard from "../routes/quickcard";
 import QuickCardEdit from "../routes/QuickCardEdit";
+import RequestPostDetail from "../routes/requestpostdetail";
 import TestSlide from "./TestSlide";
 
 const UserContext = createContext(null);
@@ -30,6 +31,7 @@ export default function MainApp() {
                     <Route path="/nametag" element={<Nametag />}></Route>
                     <Route path="/quickcard" element={<QuickCard />}></Route>
                     <Route path="/quickcard/edit" element={<QuickCardEdit />}></Route>
+                    <Route path="/request/detail/:id" element={<RequestPostDetail />}></Route>
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

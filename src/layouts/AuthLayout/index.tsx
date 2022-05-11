@@ -16,7 +16,7 @@ interface AuthLayoutProps {
 
 export default class AuthLayout extends React.Component<AuthLayoutProps, {}> {
     render() {
-        const { children, displayAvt, showName, twoLine, contentWidth, user, sizeAvt } = this.props
+        const { children, displayAvt, showName, twoLine, contentWidth = "4/5", user, sizeAvt } = this.props
         return (
             <div>
                 <AppHeader

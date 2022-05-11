@@ -16,6 +16,8 @@ export interface UserProperty {
     distance: number,
     address: string,
     role: UserRole,
+    posts: number,
+    pending: number
     //bestMotel?: MotelProperty
 }
 
@@ -28,5 +30,7 @@ export const UserExample: UserProperty = {
     distance: 1.2,
     address: 'Thanh Xuan',
     role: UserRole.Renter,
+    posts: 16,
+    pending: 4
     //bestMotel: BestMotelEx
 }

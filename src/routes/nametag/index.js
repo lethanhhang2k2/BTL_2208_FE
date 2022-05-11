@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
+import BgEditLayout from "../../layouts/AuthLayout/BsEditLayout/BgEditLayout";
 import ButtonLink from "./ButtonLink";
 import { ThemeColor, UserExample } from "../../type/user"
 import ColorOption from "./ColorOption";

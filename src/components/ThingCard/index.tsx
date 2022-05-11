@@ -10,7 +10,7 @@ export default function ThingCard({ motel = MotelExample } : IThingCard) {
         return (
             <div className="bg-white w-[320px] p-2 rounded-lg relative">
                 <div>
-                    <img src={motel.illustrationHref} className="rounded-lg h-2/3 w-full object-cover" />
+                    <img src={motel.illustrationHref[0]} className="rounded-lg h-2/3 w-full object-cover" />
                 </div>
                 <div className="flex justify-end -mt-[16px]">
                     <div className="flex mr-2 text-green bg-bggreen px-2 rounded-full text-[12px] h-[32px] font-bold w-2/5 items-center justify-center">{motel.status}</div>

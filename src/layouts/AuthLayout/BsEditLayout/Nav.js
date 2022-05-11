@@ -1,5 +1,5 @@
-import Icons, { IconName } from "../../components/Icons";
-import qrcode from "../../assets/images/qrcode.png";
+import Icons, { IconName } from "../../../components/Icons";
+import qrcode from "../../../assets/images/qrcode.png";
 import { Link, useHref } from "react-router-dom";
 import { useEffect, useState } from "react";
 

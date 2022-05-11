@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ThemeColor, UserExample } from "../../type/user";
 import GuyCard from "../../components/GuyCard";
 import ThingCard from "../../components/ThingCard";
-import BgEditLayout from "../../layouts/AuthLayout/BgEditLayout";
+import BgEditLayout from "../../layouts/AuthLayout/BsEditLayout/BgEditLayout";
 import { MotelExample } from "../../type/motel";
 
 const motels = [

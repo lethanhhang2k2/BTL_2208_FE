@@ -1,4 +1,4 @@
-import AuthLayout from ".";
+import AuthLayout from "..";
 import Nav from "./Nav";
 
 export default function BgEditLayout({ user, backgroundColor, children }) {

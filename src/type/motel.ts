@@ -8,7 +8,7 @@ export interface MotelProperty {
     address: string,
     fee: string,
     description: string,
-    illustrationHref: string,
+    illustrationHref: string[],
     status: MotelStatus
 }
 
@@ -18,7 +18,7 @@ export const MotelExample = {
     address: "Mai Dịch",
     fee: "2tr",
     description: "Gần ĐHQG.",
-    illustrationHref: "https://o.rada.vn/data/image/2020/02/25/adorable-home-bedroom-3.jpg",
+    illustrationHref: ["https://o.rada.vn/data/image/2020/02/25/adorable-home-bedroom-3.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLeaomJP6AeMuJLI6Hkv13jaWvWLMD-GlGIpiCiibZpUvBKDORoKIIUZjsPVed9C5AtVc&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpX8NQ3lD10QplQ7LyD5lxqzpPXJdUu3vSZE-7gcUBzA_5nfPAGd7AtzoM1VXRs6cd8xc&usqp=CAU"],
     status: MotelStatus.Approved
 }
 
