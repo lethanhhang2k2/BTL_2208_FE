@@ -1,11 +1,10 @@
 
 import React from "react"
-import AppHeader from "../../layouts/AppHeader"
-import AuthLayout from "../../layouts/AuthLayout"
+import AuthLayout from "@layouts/AuthLayout"
 import { UserExample } from "../../types/user"
-import Feed from "./Feed"
-import Suggest from "./Suggest"
-
+import Feed from "./components/Feed"
+import Suggest from "./components/Suggest"
+import { DataTag, DataTagsExample } from "@AppTypes/tag"
 const feeds = [
     {
         comments: "3.000",
@@ -13,11 +12,7 @@ const feeds = [
         author: UserExample,
         content: "Gần đh. Không chung chủ.",
         images: ["https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/bpcpcwvo/2021_09_14/1-9303.jpg"],
-        tags: {
-            price: "2tr",
-            deposit: "200k",
-            position: "Mai Dich"
-        },
+        tags: DataTagsExample,
         updatedAt: "10h ago",
         topComment: {
             updatedAt: "30m ago",
@@ -35,11 +30,7 @@ const feeds = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVGcoBEQ2CKpkcXPIiahwFo0UOFpNxvAsfeQ&usqp=CAU",
             "https://img5.thuthuatphanmem.vn/uploads/2021/11/09/hinh-anh-dam-my-cuc-dep_084954718.jpg"
         ],
-        tags: {
-            price: "1.5tr",
-            deposit: "100k",
-            position: "Đường Láng"
-        },
+        tags: DataTagsExample,
         updatedAt: "1d ago",
         topComment: {
             updatedAt: "2h ago",
@@ -53,7 +44,7 @@ export default class NewFeed extends React.Component {
         return (
             <AuthLayout>
                 <div className="pt-16 flex justify-center">
-                    <div className="w-[932px] flex flex-row relative">
+                    <div className="w-1/2 flex flex-row relative">
                         <div className="mr-[32px]">
                             {feeds.map(feed => {
                                 return (
@@ -62,9 +53,7 @@ export default class NewFeed extends React.Component {
                                         topCommentTimeago={feed.topComment.updatedAt}
                                         feedTimeago={feed.updatedAt}
                                         comments={feed.comments}
-                                        position={feed.tags.position}
-                                        price={feed.tags.price}
-                                        deposit={feed.tags.deposit}
+                                        data_tags={feed.tags}
                                         content={feed.content}
                                         author={feed.author}
                                         authorTopComment={feed.topComment.author}
@@ -74,6 +63,7 @@ export default class NewFeed extends React.Component {
                                 )
                             })}
                         </div>
+
                         <Suggest
                             user={UserExample}
                             suggestedOwners={[UserExample, UserExample]}

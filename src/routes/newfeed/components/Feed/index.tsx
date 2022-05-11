@@ -1,18 +1,17 @@
 import React from "react";
-import { UserProperty } from "../../../types/user";
-import FooterFeed from "./FooterFeed";
-import HeaderNews from "./HeaderNews";
-import ImageFeed from "./ImageFeed";
-import Info from "./Info";
-import TopComment from "./TopComment";
+import { UserProperty } from "@AppTypes/user";
+import FooterFeed from "./components/FooterFeed";
+import HeaderNews from "./components/HeaderNews";
+import ImageFeed from "./components/ImageFeed";
+import Info from "./components/Info";
+import TopComment from "./components/TopComment";
+import { DataTag } from "@AppTypes/tag";
 
 interface IFeedProps {
     topCommentTimeago: string,
     feedTimeago: string,
     comments: string,
-    position?: string,
-    price?: string,
-    deposit?: string,
+    data_tags?: DataTag[]
     content?: string,
     author?: UserProperty,
     authorTopComment: UserProperty,
@@ -22,14 +21,12 @@ interface IFeedProps {
 
 export default class Feed extends React.Component<IFeedProps, {}> {
     render() {
-        const { topCommentTimeago, feedTimeago, comments, position, price, deposit, content, author, authorTopComment, contentTopComment, images } = this.props
+        const { topCommentTimeago, feedTimeago, comments, data_tags, content, author, authorTopComment, contentTopComment, images } = this.props
         return (
-            <div className="w-[596px] bg-white rounded-md border-gray-150 border-solid border-2 mb-16">
+            <div className="w-[596px] bg-white rounded-xl border-gray-150 border-solid border-2 mb-16">
                 <HeaderNews user={author} />
                 <Info
-                    position={position}
-                    price={price}
-                    deposit={deposit}
+                    data_tags={data_tags}
                     content={content}
                 />
                 <ImageFeed images={images} />

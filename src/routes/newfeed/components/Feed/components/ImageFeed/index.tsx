@@ -1,6 +1,6 @@
 import React from "react"
 import { Carousel, Image } from "react-bootstrap"
-import Icons, { IconName } from "../../../../components/Icons";
+import Icons, { IconName } from "@components/Icons";
 
 interface IImageFeedProps {
     images: string[],

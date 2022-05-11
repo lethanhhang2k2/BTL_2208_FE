@@ -1,6 +1,6 @@
-import User from "../../../../components/User";
+import User from "@components/User";
 import ActionHeaderNews from "./ActionHeaderNews";
-import { AvatarSize, UserProperty } from "../../../../types/user";
+import { AvatarSize, UserProperty } from "@AppTypes/user";
 
 interface IHeaderNews {
     user?: UserProperty

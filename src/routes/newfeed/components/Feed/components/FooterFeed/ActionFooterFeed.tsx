@@ -1,6 +1,6 @@
-import Icons, {IconName} from "../../../../components/Icons";
-import Action from "../../../../components/Action";
-import IconButton from "../../../../components/IconButton";
+import Icons, {IconName} from "@components/Icons";
+import Action from "@components/Action";
+import IconButton from "@components/IconButton";
 
 export default function ActionFooterFeed() {
     return (

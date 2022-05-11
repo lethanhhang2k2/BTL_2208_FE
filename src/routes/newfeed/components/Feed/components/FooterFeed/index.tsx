@@ -1,4 +1,4 @@
-import UpdateTime from "../../../../components/UpdateTime";
+import UpdateTime from "@components/UpdateTime";
 import ActionFooterFeed from "./ActionFooterFeed";
 
 interface IFooterFeedProps {
