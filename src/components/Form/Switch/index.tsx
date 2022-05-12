@@ -1,10 +1,19 @@
 import { useState } from "react";
 
-export default function Switch({ name }) {
-    const [checked, setChecked] = useState(false);
+interface InputProps {
+    name: string;
+    value: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-    const handleChange = () => {
+export default function Switch({ name, value, onChange }: InputProps) {
+    const [checked, setChecked] = useState(value);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(!checked);
+        if (onChange) {
+            onChange(e);
+        }
     }
 
     return (

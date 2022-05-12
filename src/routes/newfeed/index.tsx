@@ -4,7 +4,7 @@ import AuthLayout from "@layouts/AuthLayout"
 import { UserExample } from "../../types/user"
 import Feed from "./components/Feed"
 import Suggest from "./components/Suggest"
-import { DataTag, DataTagsExample } from "@AppTypes/tag"
+import { DataTagsExample } from "@AppTypes/tag"
 const feeds = [
     {
         comments: "3.000",
@@ -44,14 +44,14 @@ export default class NewFeed extends React.Component {
         return (
             <AuthLayout>
                 <div className="pt-16 flex justify-center">
-                    <div className="w-1/2 flex flex-row relative">
-                        <div className="mr-[32px]">
+                    <div className="max-w-[935px] w-full flex flex-row justify-center relative">
+                        <div className="mr-0 lg:mr-[32px] max-w-[596px] w-full">
                             {feeds.map(feed => {
                                 return (
                                     <Feed
                                         key={feed.id}
-                                        topCommentTimeago={feed.topComment.updatedAt}
-                                        feedTimeago={feed.updatedAt}
+                                        topCommentTimeAgo={feed.topComment.updatedAt}
+                                        feedTimeAgo={feed.updatedAt}
                                         comments={feed.comments}
                                         data_tags={feed.tags}
                                         content={feed.content}

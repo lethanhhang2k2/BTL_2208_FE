@@ -1,4 +1,4 @@
-export enum UserRole { Admin, Renter, LandLord }
+export enum UserRole { Admin="admin", Renter="renter", LandLord="landlord" }
 export enum ThemeColor {
     Red = "linear-gradient(135deg, #FD8D32 0%, #A307BA 100%)",
     Violet = "linear-gradient(135deg, #8147FF 0%, #8FB4FF 100%)",
@@ -24,6 +24,6 @@ export const UserExample: UserProperty = {
     avtHref: 'https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg',
     theme: ThemeColor.Red,
     distance: 1.2,
-    address: 'Thanh Xuan',
+    address: 'Thanh Xuan Bac',
     role: UserRole.Renter
 }

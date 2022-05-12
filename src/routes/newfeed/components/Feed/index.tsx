@@ -8,32 +8,32 @@ import TopComment from "./components/TopComment";
 import { DataTag } from "@AppTypes/tag";
 
 interface IFeedProps {
-    topCommentTimeago: string,
-    feedTimeago: string,
-    comments: string,
+    author?: UserProperty,
     data_tags?: DataTag[]
     content?: string,
-    author?: UserProperty,
+    images: string[]
+    feedTimeAgo: string,
+    topCommentTimeAgo: string,
+    comments: string,
     authorTopComment: UserProperty,
     contentTopComment: string,
-    images: string[]
 }
 
 export default class Feed extends React.Component<IFeedProps, {}> {
     render() {
-        const { topCommentTimeago, feedTimeago, comments, data_tags, content, author, authorTopComment, contentTopComment, images } = this.props
+        const { topCommentTimeAgo, feedTimeAgo, comments, data_tags, content, author, authorTopComment, contentTopComment, images } = this.props
         return (
-            <div className="w-[596px] bg-white rounded-xl border-gray-150 border-solid border-2 mb-16">
+            <div className="w-full bg-white sm:rounded-xl border-solid sm:border-gray-150  sm:border-2 mb-16">
                 <HeaderNews user={author} />
                 <Info
                     data_tags={data_tags}
                     content={content}
                 />
                 <ImageFeed images={images} />
-                <FooterFeed timeago={feedTimeago} />
+                <FooterFeed time_ago={feedTimeAgo} />
                 <TopComment
                     comments={comments}
-                    timeago={topCommentTimeago}
+                    time_ago={topCommentTimeAgo}
                     author={authorTopComment}
                     contentTopComment={contentTopComment}
                 />

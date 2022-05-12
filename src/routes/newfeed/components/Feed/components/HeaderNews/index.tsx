@@ -8,9 +8,9 @@ interface IHeaderNews {
 
 export default function HeaderNews({ user }: IHeaderNews) {
     return (
-        <div className="py-4 flex justify-center">
-            <div className="flex w-[560px] justify-between">
-                <div className="w-[400px]">
+        <div className="py-3 flex justify-center px-[20px]">
+            <div className="flex w-full justify-between">
+                <div className="max-w-[250px]">
                     <User
                         user={user}
                         sizeAvt={AvatarSize.SSmall}

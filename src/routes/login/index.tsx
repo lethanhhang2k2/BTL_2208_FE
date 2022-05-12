@@ -16,7 +16,7 @@ export default function Login() {
     const processSignIn = async (token: string | undefined): Promise<void> => {
         return new Promise(async (resolve, reject) => {
             if (token) {
-                const data = await getVerifyToken(token + "a");
+                const data = await getVerifyToken(token);
                 if (!data || !data.is_correct) {
                     setIsRedirectUrl(false);
                     reject();

@@ -13,7 +13,7 @@ export default class Avatar extends React.Component<IAvatarProps, {}>{
     render() {
         const { user, size, border = false } = this.props;
         return (
-            <Link to="/">
+            <Link to="/" className="flex-none">
                 {user.avtHref ? (
                     <img
                         src={user.avtHref}

@@ -1,13 +1,18 @@
+import { UserRole } from "@AppTypes/user";
 import Input from "@components/Form/Input";
 import Switch from "@components/Form/Switch";
 import UploadAvatar from "@components/Form/UploadAvatar";
+import { UserContext } from "@hooks/UserManager";
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import { updateUserData } from "@api/user";
 
 export default function Form1() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
         const avatar = e.target.avatar.files[0]
-        const role = e.target.role.checked
+        const role = (e.target.role.checked) ? "landlord" : "renter"
         const username = e.target.username.value
         const password = e.target.password.value
 
@@ -18,21 +23,38 @@ export default function Form1() {
             password
         }
 
+        toast.promise(
+            updateUserData({ avatar, role, username, password }), {
+            pending: 'Đang cập nhật',
+            success: 'Cập nhật thành thành công',
+            error: 'Cập nhật thất bại',
+        }, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+
         console.log(data);
     }
+
+    const { user } = useContext(UserContext);
 
     return (
         <form className="h-full flex flex-col justify-evenly items-center" onSubmit={handleSubmit}>
             <div className="flex flex-col items-center">
-                <UploadAvatar />
+                <UploadAvatar default_value={user.avtHref} />
                 <div className="form-item flex justify-center mt-3">
                     <label className="min-w-fit truncate font-bold text-gray-600">Chủ trọ</label>
-                    <Switch name="role" />
+                    <Switch name="role" value={user.role !== UserRole.LandLord} />
                     <label className="min-w-fit truncate font-bold text-gray-600">Thuê trọ</label>
                 </div>
             </div>
             <div className="w-full px-5">
-                <Input name="name" label="Username" placeholder="Aha move" />
+                <Input name="username" label="Username" placeholder="Aha move" value={user.username} onChange={() => { }} />
                 <Input name="password" label="Password" type="password" />
                 <Input name="re-password" label="Password" type="password" />
             </div>

@@ -1,4 +1,4 @@
-import React, { Suspense, createContext, useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import {
     BrowserRouter,
     Routes,
@@ -8,12 +8,12 @@ import {
 
 import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
+import { UserProvider } from "@hooks/UserManager";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
 const LoginTwo = React.lazy(() => import("@routes/login/pages/login2"));
 const LoginThree = React.lazy(() => import("@routes/login/pages/login3"));
-
 const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
@@ -62,14 +62,11 @@ function Wrapper() {
 }
 
 export default function MainApp() {
-    const UserContext = createContext(null);
-    const [user] = useState(null)
-
     return (
-        <UserContext.Provider value={user}>
+        <UserProvider>
             <BrowserRouter>
                 <Wrapper />
             </BrowserRouter>
-        </UserContext.Provider>
+        </UserProvider>
     )
 }

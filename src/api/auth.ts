@@ -1,4 +1,7 @@
 import axios from "axios";
+import Cookies from 'js-cookie'
+
+const POST_VERIFY_TOKEN = "http://localhost:3030/user/auth/google-login";
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",
@@ -10,12 +13,18 @@ interface IAccountResponse {
     "enough_data": boolean,
     "account_status": AccountStatus | undefined,
     "message": string,
-    "user_data": object
+    "user_data": object,
+    "token": string,
+}
+
+// This function is only used for testing purposes.
+function setToken(token:string){
+    Cookies.set('session-token', token);
 }
 
 export async function getVerifyToken(token: string): Promise<IAccountResponse | undefined> {
     try {
-        const response = await axios.post("http://localhost:3030/user/auth/google-login", { credential: token }, {
+        const response = await axios.post(POST_VERIFY_TOKEN, { credential: token }, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
@@ -23,6 +32,7 @@ export async function getVerifyToken(token: string): Promise<IAccountResponse | 
         });
         console.log(response);
         if (response.status === 200) {
+            setToken(response.data.token);
             return response.data;
         }
     } catch (error) {
