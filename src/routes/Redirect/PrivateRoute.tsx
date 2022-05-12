@@ -37,7 +37,7 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
                 ? <Loading />
                 : (state)
                     ? element
-                    : <p> Hello</p>
+                    : <Navigate to="/login" />
         }
         return isSignedIn ? element : <Navigate to="/login" />;
     };

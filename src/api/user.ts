@@ -5,6 +5,8 @@ const GET_USER_DATA = "http://localhost:3030/user/get";
 const UPDATE_USER_DATA = "http://localhost:3030/user/update";
 
 export function parseUser(user: any): UserProperty {
+    console.log(user);
+    
     return {
         id: "123",
         username: user["username"],
@@ -13,7 +15,9 @@ export function parseUser(user: any): UserProperty {
         theme: user["theme"],
         distance: user["distance"],
         address: "",
-        role: user["role"]
+        role: user["role"],
+        email: user["email"],
+        phone: user["phone"],
     } as UserProperty;
 }
 
@@ -46,8 +50,6 @@ export function updateUserData(data: any): Promise<any> {
         if (data) {
             if (data.username && data.password) {
                 if (data.username !== "" && data.password !== "") {
-                    console.log("Alo");
-                    
                     axios.post(UPDATE_USER_DATA, data, {
                         withCredentials: true,
                         headers: {

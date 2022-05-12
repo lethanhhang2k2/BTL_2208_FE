@@ -14,7 +14,9 @@ export interface UserProperty {
     theme: ThemeColor,
     distance: number,
     address: string,
-    role: UserRole
+    role: UserRole,
+    email: string,
+    phone: string,
 }
 
 export const UserExample: UserProperty = {
@@ -25,5 +27,7 @@ export const UserExample: UserProperty = {
     theme: ThemeColor.Red,
     distance: 1.2,
     address: 'Thanh Xuan Bac',
-    role: UserRole.Renter
+    role: UserRole.Renter,
+    email: "nva@gmail.com",
+    phone: "0981234567"
 }

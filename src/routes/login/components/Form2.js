@@ -3,11 +3,16 @@ import Input from "@components/Form/Input";
 import Switch from "@components/Form/Switch";
 import UploadAvatar from "@components/Form/UploadAvatar";
 import { UserContext } from "@hooks/UserManager";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { updateUserData } from "@api/user";
+import { Navigate } from "react-router-dom";
 
 export default function Form1() {
+    const [isRedirectUrl, setIsRedirectUrl] = useState(false);
+    const [redirectUrl, setRedirectUrl] = useState('');
+    const { user } = useContext(UserContext);
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -23,8 +28,16 @@ export default function Form1() {
             password
         }
 
+        async function updateUser() {
+            const response = await updateUserData(data);
+            if (response.status === 200) {
+                setIsRedirectUrl(true);
+                setRedirectUrl('/login/3');
+            }
+        }
+
         toast.promise(
-            updateUserData({ avatar, role, username, password }), {
+            updateUser, {
             pending: 'Đang cập nhật',
             success: 'Cập nhật thành thành công',
             error: 'Cập nhật thất bại',
@@ -41,31 +54,31 @@ export default function Form1() {
         console.log(data);
     }
 
-    const { user } = useContext(UserContext);
-
     return (
-        <form className="h-full flex flex-col justify-evenly items-center" onSubmit={handleSubmit}>
-            <div className="flex flex-col items-center">
-                <UploadAvatar default_value={user.avtHref} />
-                <div className="form-item flex justify-center mt-3">
-                    <label className="min-w-fit truncate font-bold text-gray-600">Chủ trọ</label>
-                    <Switch name="role" value={user.role !== UserRole.LandLord} />
-                    <label className="min-w-fit truncate font-bold text-gray-600">Thuê trọ</label>
+        (isRedirectUrl)
+            ? <Navigate to={redirectUrl} />
+            : <form className="h-full flex flex-col justify-evenly items-center" onSubmit={handleSubmit}>
+                <div className="flex flex-col items-center">
+                    <UploadAvatar default_value={user.avtHref} />
+                    <div className="form-item flex justify-center mt-3">
+                        <label className="min-w-fit truncate font-bold text-gray-600">Chủ trọ</label>
+                        <Switch name="role" value={user.role !== UserRole.LandLord} />
+                        <label className="min-w-fit truncate font-bold text-gray-600">Thuê trọ</label>
+                    </div>
                 </div>
-            </div>
-            <div className="w-full px-5">
-                <Input name="username" label="Username" placeholder="Aha move" value={user.username} onChange={() => { }} />
-                <Input name="password" label="Password" type="password" />
-                <Input name="re-password" label="Password" type="password" />
-            </div>
-            <div className="pt-2 flex justify-center">
-                <button
-                    type="submit"
-                    className="h-[48px] w-[120px] p-4 rounded-full bg-violet text-white
+                <div className="w-full px-5">
+                    <Input name="username" label="Username" placeholder="Aha move" value={user.username} onChange={() => { }} />
+                    <Input name="password" label="Password" type="password" />
+                    <Input name="re-password" label="Password" type="password" />
+                </div>
+                <div className="pt-2 flex justify-center">
+                    <button
+                        type="submit"
+                        className="h-[48px] w-[120px] p-4 rounded-full bg-violet text-white
                      flex items-center justify-center transition ease-in-out duration-700 hover:bg-violet/80">
-                    Lưu
-                </button>
-            </div>
-        </form>
+                        Lưu
+                    </button>
+                </div>
+            </form>
     )
 }
