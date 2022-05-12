@@ -21,65 +21,71 @@ import { ReactComponent as ChevronSmallLeft } from "@icons/chevronsmallleft.svg"
 import { ReactComponent as MenuHorizontal } from "@icons/menuhorizontal.svg";
 import { ReactComponent as Bookmark } from "@icons/bookmark.svg";
 import { ReactComponent as Share1 } from "@icons/share1.svg";
-
+import "./index.scss";
 
 interface IconsProps {
-    iconName: string
-    color?: string
+    iconName: IconName
+    color?: string,
+    stroke?: string,
+    size?: string,
+    strokeWidth?: string
 }
 
 export enum IconName {
-    User1 = "user1",
-    Mail = "mail",
-    Phone = "phone",
-    MessageSquareDots = "messagesquaredots",
-    TrendingUp = "trendingup",
-    Location1 = "location1",
-    InfoCircle = "infocircle",
-    Coin = "coin",
-    Filters3 = "filters3",
-    Bell = "bell",
-    Explore = "explore",
-    Home2 = "home2",
-    MessageCircleLines = "messagecirclelines",
-    PlusCircle = "pluscircle",
-    Edit3 = "edit3",
-    Smartphone = "smartphone",
-    Wallet = "wallet",
-    ChevronSmallRight = "chevronsmallright",
-    ChevronSmallLeft = "chevronsmallleft",
-    MenuHorizontal = "menuhorizontal",
-    Bookmark = "bookmark",
-    Share1 = "share1"
+    User1 = "User1",
+    Mail = "Mail",
+    Phone = "Phone",
+    MessageSquareDots = "Messagesquaredots",
+    TrendingUp = "Trendingup",
+    Location1 = "Location1",
+    InfoCircle = "Infocircle",
+    Coin = "Coin",
+    Filters3 = "Filters3",
+    Bell = "Bell",
+    Explore = "Explore",
+    Home2 = "Home2",
+    MessageCircleLines = "Messagecirclelines",
+    PlusCircle = "Pluscircle",
+    Edit3 = "Edit3",
+    Smartphone = "Smartphone",
+    Wallet = "Wallet",
+    ChevronSmallRight = "Chevronsmallright",
+    ChevronSmallLeft = "Chevronsmallleft",
+    MenuHorizontal = "Menuhorizontal",
+    Bookmark = "Bookmark",
+    Share1 = "Share1"
 }
 
+const IconList = {
+    [IconName.User1]: User1,
+    [IconName.Mail]: Mail,
+    [IconName.Phone]: Phone,
+    [IconName.MessageSquareDots]: MessageSquareDots,
+    [IconName.TrendingUp]: TrendingUp,
+    [IconName.Location1]: Location1,
+    [IconName.InfoCircle]: InfoCircle,
+    [IconName.Coin]: Coin,
+    [IconName.Filters3]: Filters3,
+    [IconName.Bell]: Bell,
+    [IconName.Explore]: Explore,
+    [IconName.Home2]: Home2,
+    [IconName.MessageCircleLines]: MessageCircleLines,
+    [IconName.PlusCircle]: PlusCircle,
+    [IconName.Edit3]: Edit3,
+    [IconName.Smartphone]: Smartphone,
+    [IconName.Wallet]: Wallet,
+    [IconName.ChevronSmallRight]: ChevronSmallRight,
+    [IconName.ChevronSmallLeft]: ChevronSmallLeft,
+    [IconName.MenuHorizontal]: MenuHorizontal,
+    [IconName.Bookmark]: Bookmark,
+    [IconName.Share1]: Share1
+}
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {
+        const { iconName, stroke = "#001a72", size = "24px", strokeWidth = "1.5", ...props } = this.props;
+        const Component = IconList[iconName];
         return (
-            <div>
-                {this.props.iconName === IconName.User1 && <User1 fill={this.props.color} />}
-                {this.props.iconName === IconName.Mail && <Mail fill={this.props.color} />}
-                {this.props.iconName === IconName.Phone && <Phone fill={this.props.color} />}
-                {this.props.iconName === IconName.MessageSquareDots && <MessageSquareDots fill={this.props.color} />}
-                {this.props.iconName === IconName.TrendingUp && <TrendingUp fill={this.props.color} />}
-                {this.props.iconName === IconName.Location1 && <Location1 fill={this.props.color} />}
-                {this.props.iconName === IconName.InfoCircle && <InfoCircle fill={this.props.color} />}
-                {this.props.iconName === IconName.Coin && <Coin fill={this.props.color} />}
-                {this.props.iconName === IconName.Filters3 && <Filters3 fill={this.props.color} />}
-                {this.props.iconName === IconName.Bell && <Bell fill={this.props.color} />}
-                {this.props.iconName === IconName.Explore && <Explore fill={this.props.color} />}
-                {this.props.iconName === IconName.Home2 && <Home2 fill={this.props.color} />}
-                {this.props.iconName === IconName.MessageCircleLines && <MessageCircleLines fill={this.props.color} />}
-                {this.props.iconName === IconName.PlusCircle && <PlusCircle fill={this.props.color} />}
-                {this.props.iconName === IconName.Edit3 && <Edit3 fill={this.props.color} />}
-                {this.props.iconName === IconName.Smartphone && <Smartphone fill={this.props.color} />}
-                {this.props.iconName === IconName.Wallet && <Wallet fill={this.props.color} />}
-                {this.props.iconName === IconName.ChevronSmallRight && <ChevronSmallRight fill={this.props.color} />}
-                {this.props.iconName === IconName.ChevronSmallLeft && <ChevronSmallLeft fill={this.props.color} />}
-                {this.props.iconName === IconName.MenuHorizontal && <MenuHorizontal fill={this.props.color} />}
-                {this.props.iconName === IconName.Bookmark && <Bookmark fill={this.props.color} />}
-                {this.props.iconName === IconName.Share1 && <Share1 fill={this.props.color} />}
-            </div>
+            <Component stroke={stroke} width={size} height={size} strokeWidth={strokeWidth} {...props} />
         );
     }
 }

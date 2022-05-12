@@ -1,15 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baloo+2:wght@500&family=Judson&family=Kaisei+Decol&family=Luxurious+Roman&family=Playfair+Display&family=Praise&family=Ruda&family=Shojumaru&family=Vampiro+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baloo+2:wght@500&family=Judson&family=Kaisei+Decol&family=Luxurious+Roman&family=Playfair+Display&family=Praise&family=Ruda&family=Shojumaru&family=Vampiro+One&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .form-item {
-        @apply flex items-center py-2
-    }
+  .form-item {
+    @apply flex items-center py-2;
+  }
 
-    input:checked ~ .dot {
-        @apply transform translate-x-[150%]
-    }
+  input:checked ~ .dot {
+    @apply transform translate-x-[150%];
+  }
+}
+
+.fadeIn {
+  animation: 0.5s fadeIn forwards;
+}
+
+.fadeOut {
+  animation: 0.5s fadeOut forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(-20px, 0);
+    opacity: 0;
+  }
 }

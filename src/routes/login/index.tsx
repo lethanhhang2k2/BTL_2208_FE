@@ -1,29 +1,77 @@
-import Logo from "@components/Logo";
-import QuickRedirect from "@components/QuickRedirect";
+import { useState } from "react";
 import { useGoogleAuth } from '@hooks/GoogleAuthProvider';
 import { getVerifyToken } from '@api/auth';
+import { Navigate } from "react-router-dom"
+import Logo from "@components/Logo";
+import QuickRedirect from "@components/QuickRedirect";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss";
 
 export default function Login() {
+    const [isRedirectUrl, setIsRedirectUrl] = useState(false);
+    const [redirectUrl, setRedirectUrl] = useState('');
     const { isSignedIn, signIn, signOut } = useGoogleAuth();
-    console.log(isSignedIn, useGoogleAuth());
+
+    const processSignIn = async (token: string | undefined): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            if (token) {
+                const data = await getVerifyToken(token);
+                if (!data || !data.is_correct) {
+                    setIsRedirectUrl(false);
+                    reject();
+                }
+                else if (!data.enough_data) {
+                    setIsRedirectUrl(true);
+                    setRedirectUrl('/login/2');
+                    resolve();
+                }
+                else {
+                    setIsRedirectUrl(true);
+                    setRedirectUrl('/');
+                    resolve();
+                }
+            }
+        });
+    }
 
     const handleSignIn = async () => {
         const googleUser = await signIn();
-        
-        // TODO: check user exist
-        console.log(googleUser);
-        if (googleUser?.tokenId) {
-            await getVerifyToken(googleUser.tokenId);
-        }
+
+        toast.promise(
+            processSignIn(googleUser?.tokenId), {
+            pending: 'Signing in...',
+            success: 'Đăng nhập thành công',
+            error: 'Đăng nhập thất bại',
+        }, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     const handleSignOut = () => {
         signOut();
     }
 
-    return (
-        <div className="w-screen h-screen bg-cover login-page">
+    return (isRedirectUrl)
+        ? <Navigate to={redirectUrl} />
+        : <div className="w-screen h-screen bg-cover login-page">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-white shadow-md rounded-3xl grid grid-cols-6 p-3 w-5/6 ss:w-4/5 3xl:w-3/5 h-3/5">
                     <div className="col-span-6 md:col-span-3 xl:col-span-2 mx-10 my-2 flex flex-col justify-between">
@@ -38,7 +86,9 @@ export default function Login() {
 
                             <div className="pt-5 sm:pt-16">
                                 {!isSignedIn
-                                    ? <button className="flex justify-content-center w-full items-center border-2 border-solid border-gray-150 rounded-full p-2 text-ellipsis" onClick={handleSignIn}>
+                                    ? <button
+                                        className="flex justify-content-center w-full items-center border-2 border-solid border-gray-150 rounded-full p-2 text-ellipsis"
+                                        onClick={handleSignIn}>
                                         <img
                                             src="./images/gg.png"
                                             alt="google"
@@ -68,5 +118,4 @@ export default function Login() {
                 </div>
             </div>
         </div>
-    )
 }

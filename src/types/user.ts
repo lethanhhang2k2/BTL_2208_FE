@@ -1,10 +1,10 @@
-export enum UserRole { Admin, Renter, LandLord }
+export enum UserRole { Admin="admin", Renter="renter", LandLord="landlord" }
 export enum ThemeColor {
     Red = "linear-gradient(135deg, #FD8D32 0%, #A307BA 100%)",
     Violet = "linear-gradient(135deg, #8147FF 0%, #8FB4FF 100%)",
     Orange = "linear-gradient(135deg, #FDCB5C 0%, #ED4956 100%)"
 }
-export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px" }
+export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px" }
 
 export interface UserProperty {
     id: string,
@@ -14,7 +14,9 @@ export interface UserProperty {
     theme: ThemeColor,
     distance: number,
     address: string,
-    role: UserRole
+    role: UserRole,
+    email: string,
+    phone: string,
 }
 
 export const UserExample: UserProperty = {
@@ -24,6 +26,8 @@ export const UserExample: UserProperty = {
     avtHref: 'https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg',
     theme: ThemeColor.Red,
     distance: 1.2,
-    address: 'Thanh Xuan',
-    role: UserRole.Renter
+    address: 'Thanh Xuan Bac',
+    role: UserRole.Renter,
+    email: "nva@gmail.com",
+    phone: "0981234567"
 }

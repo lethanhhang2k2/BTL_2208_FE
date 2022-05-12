@@ -1,5 +1,5 @@
 import React from "react"
-import Icons from "@components/Icons"
+import Icons, { IconName } from "@components/Icons"
 import messenger_logo from "../../assets/images/messengerlogo.jpg"
 import zalo_logo from "../../assets/images/zalologo.png"
 
@@ -14,13 +14,13 @@ export default class ContactBar extends React.Component {
                     <img src={zalo_logo} className="h-[24px] w-[24px]" />
                 </div>
                 <div>
-                    <Icons iconName="mail" />
+                    <Icons iconName={IconName.Mail} />
                 </div>
                 <div>
-                    <Icons iconName="phone" />
+                    <Icons iconName={IconName.Phone} />
                 </div>
                 <div>
-                    <Icons iconName="messagesquaredots" />
+                    <Icons iconName={IconName.MessageSquareDots} />
                 </div>
             </div>
         );

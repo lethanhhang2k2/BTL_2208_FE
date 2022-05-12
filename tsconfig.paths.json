@@ -11,8 +11,14 @@
             "@icons/*": [
                 "./src/assets/icons/*"
             ],
+            "@images/*": [
+                "./src/assets/images/*"
+            ],
             "@components/*": [
                 "./src/components/*"
+            ],
+            "@layouts/*":[
+                "./src/layouts/*"
             ],
             "@routes/*": [
                 "./src/routes/*"

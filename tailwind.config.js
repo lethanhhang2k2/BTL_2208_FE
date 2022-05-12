@@ -22,11 +22,6 @@ module.exports = {
           "3xl": "1600px",
         }
       },
-      colors: {
-        gray: {
-          200: "#949494"
-        }
-      },
       gradientColorStops: theme => ({
         ...theme('colors'),
         'primary': '#3490dc',
