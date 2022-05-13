@@ -8,13 +8,13 @@ export default class ThingCard extends React.Component<MotelProperty, {}> {
         return (
             <div className="bg-white w-[320px] p-2 rounded-lg relative">
                 <div>
-                    <img src={motel.illustrationHref} className="rounded-lg h-2/3 w-full object-cover" />
+                    <img src={motel.images[0]} className="rounded-lg h-2/3 w-full object-cover" />
                 </div>
                 <div className="flex justify-end -mt-[16px]">
                     <div className="flex mr-2 text-green bg-bggreen px-2 rounded-full text-[12px] h-[32px] font-bold w-2/5 items-center justify-center">{motel.status}</div>
                 </div>
                 <div className="px-2 absolute bottom-2">
-                    <div className="text-[20px] font-bold">{motel.name}</div>
+                    <div className="text-[20px] font-bold">{motel.title}</div>
                     <div className="flex flex-col justify-between text-gray-160">
                         <div className="flex">
                             <Icons iconName={IconName.User1} color="#CCCCCC" />

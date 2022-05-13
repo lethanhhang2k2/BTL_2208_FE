@@ -19,26 +19,42 @@ export default function Form1() {
         const avatar = e.target.avatar.files[0]
         const role = (e.target.role.checked) ? "renter" : "landlord";
         const username = e.target.username.value
-        const password = e.target.password.value
+        const name = e.target.name.value
+        const phone = e.target.telephone_number.value
+        const address = e.target.address.value
 
         const data = {
             role,
             username,
-            password
+            given_name: name,
+            phone,
+            address
+        }
+
+        async function checkValid(data) {
+            return new Promise((resolve, reject) => {
+                if (data.username.trim() === '' || data.given_name.trim() === '' || data.phone.trim() === '') {
+                    reject('Please fill all the fields')
+                } else resolve();
+            });
         }
 
         async function updateUser() {
             return new Promise((resolve, reject) => {
-                Promise.all([uploadImage(avatar), updateUserData(data)])
+                checkValid(data)
                     .then(() => {
-                        setIsRedirectUrl(true);
-                        setRedirectUrl('/login/3');
-                        resolve();
-                    }).catch((error) => {
+                        Promise.all([uploadImage(avatar), updateUserData(data)])
+                            .then(() => {
+                                setIsRedirectUrl(true);
+                                setRedirectUrl('/');
+                                resolve();
+                            })
+                    })
+                    .catch((error) => {
                         toast.error(error.message);
                         console.log(error);
                         reject(error);
-                    });
+                    })
             });
         }
 
@@ -47,14 +63,6 @@ export default function Form1() {
             pending: 'Đang cập nhật',
             success: 'Cập nhật thành thành công',
             error: 'Cập nhật thất bại',
-        }, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
         });
 
         console.log(data);
@@ -72,10 +80,13 @@ export default function Form1() {
                         <label className="min-w-fit truncate font-bold text-gray-600">Thuê trọ</label>
                     </div>
                 </div>
-                <div className="w-full px-5">
-                    <Input name="username" label="Username" placeholder="Aha move" value={user.username} onChange={() => { }} />
-                    <Input name="password" label="Password" type="password" />
-                    <Input name="re-password" label="Password" type="password" />
+                <div className="w-full px-4">
+                    <Input name="username" label="Username" placeholder="Aha move" value={user.username} required />
+                    <Input name="name" label="Tên" placeholder="Nguyen Van A" required value={user.name} />
+                    <Input name="email" label="Email" placeholder="nva@gmail.com" value={user.email} disable />
+                    <Input name="telephone_number" label="SĐT" placeholder="+84123456789" required value={user.phone} />
+                    <Input name="address" label="Địa chỉ" placeholder="Hà Nội" value={user.address} />
+                    <i>Các mục đánh dấu <span className="text-red-500">*</span> là buộc phải điền</i>
                 </div>
                 <div className="pt-2 flex justify-center">
                     <button

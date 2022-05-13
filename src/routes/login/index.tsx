@@ -19,6 +19,7 @@ export default function Login() {
                 const data = await getVerifyToken(token);
                 if (!data || !data.is_correct) {
                     setIsRedirectUrl(false);
+                    signOut();
                     reject();
                 }
                 else if (!data.enough_data) {
@@ -43,14 +44,6 @@ export default function Login() {
             pending: 'Signing in...',
             success: 'Đăng nhập thành công',
             error: 'Đăng nhập thất bại',
-        }, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
         });
     }
 
