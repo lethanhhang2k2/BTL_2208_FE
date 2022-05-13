@@ -16,23 +16,28 @@ export default function Form1() {
         e.preventDefault()
 
         const name = e.target.name.value
-        const email = e.target.email.value
         const phone = e.target.telephone_number.value
         const address = e.target.address.value
 
         const data = {
-            name,
-            email,
+            given_name: name,
             phone,
             address
         }
 
         async function updateUser() {
-            const response = await updateUserData(data);
-            if (response.status === 200) {
-                setIsRedirectUrl(true);
-                setRedirectUrl('/');
-            }
+            return new Promise((resolve, reject) => {
+                Promise.all([updateUserData(data)])
+                    .then(() => {
+                        setIsRedirectUrl(true);
+                        setRedirectUrl('/');
+                        resolve();
+                    }).catch((error) => {
+                        toast.error(error.message);
+                        console.log(error);
+                        reject(error);
+                    });
+            });
         }
 
         toast.promise(
@@ -59,10 +64,10 @@ export default function Form1() {
                 <Avatar user={user} size={AvatarSize.XLarge} />
 
                 <div className="w-full px-5">
-                    <Input name="name" label="Tên" placeholder="Nguyen Van A" required value={user.name}/>
-                    <Input name="email" label="Email" placeholder="nva@gmail.com" value={user.email} disable/>
-                    <Input name="telephone_number" label="SĐT" placeholder="+84123456789" required value={user.phone}/>
-                    <Input name="address" label="Địa chỉ" placeholder="Hà Nội" value={user.address}/>
+                    <Input name="name" label="Tên" placeholder="Nguyen Van A" required value={user.name} />
+                    <Input name="email" label="Email" placeholder="nva@gmail.com" value={user.email} disable />
+                    <Input name="telephone_number" label="SĐT" placeholder="+84123456789" required value={user.phone} />
+                    <Input name="address" label="Địa chỉ" placeholder="Hà Nội" value={user.address} />
                     <i>Các mục đánh dấu <span className="text-red-500">*</span> là buộc phải điền</i>
                 </div>
 

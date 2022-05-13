@@ -21,6 +21,9 @@ import { ReactComponent as ChevronSmallLeft } from "@icons/chevronsmallleft.svg"
 import { ReactComponent as MenuHorizontal } from "@icons/menuhorizontal.svg";
 import { ReactComponent as Bookmark } from "@icons/bookmark.svg";
 import { ReactComponent as Share1 } from "@icons/share1.svg";
+import { ReactComponent as Setting } from "@icons/settings.svg";
+import { ReactComponent as QRCode } from "@icons/qrcode.svg";
+
 import "./index.scss";
 
 interface IconsProps {
@@ -53,7 +56,9 @@ export enum IconName {
     ChevronSmallLeft = "Chevronsmallleft",
     MenuHorizontal = "Menuhorizontal",
     Bookmark = "Bookmark",
-    Share1 = "Share1"
+    Share1 = "Share1",
+    Setting = "Settings",
+    QRCode = "Qrcode"
 }
 
 const IconList = {
@@ -78,7 +83,9 @@ const IconList = {
     [IconName.ChevronSmallLeft]: ChevronSmallLeft,
     [IconName.MenuHorizontal]: MenuHorizontal,
     [IconName.Bookmark]: Bookmark,
-    [IconName.Share1]: Share1
+    [IconName.Share1]: Share1,
+    [IconName.Setting]: Setting,
+    [IconName.QRCode]: QRCode
 }
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {

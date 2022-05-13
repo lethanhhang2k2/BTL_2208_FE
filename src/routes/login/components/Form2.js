@@ -5,7 +5,7 @@ import UploadAvatar from "@components/Form/UploadAvatar";
 import { UserContext } from "@hooks/UserManager";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { updateUserData } from "@api/user";
+import { updateUserData, uploadImage } from "@api/user";
 import { Navigate } from "react-router-dom";
 
 export default function Form1() {
@@ -17,23 +17,29 @@ export default function Form1() {
         e.preventDefault()
 
         const avatar = e.target.avatar.files[0]
-        const role = (e.target.role.checked) ? "landlord" : "renter"
+        const role = (e.target.role.checked) ? "renter" : "landlord";
         const username = e.target.username.value
         const password = e.target.password.value
 
         const data = {
-            avatar,
             role,
             username,
             password
         }
 
         async function updateUser() {
-            const response = await updateUserData(data);
-            if (response.status === 200) {
-                setIsRedirectUrl(true);
-                setRedirectUrl('/login/3');
-            }
+            return new Promise((resolve, reject) => {
+                Promise.all([uploadImage(avatar), updateUserData(data)])
+                    .then(() => {
+                        setIsRedirectUrl(true);
+                        setRedirectUrl('/login/3');
+                        resolve();
+                    }).catch((error) => {
+                        toast.error(error.message);
+                        console.log(error);
+                        reject(error);
+                    });
+            });
         }
 
         toast.promise(

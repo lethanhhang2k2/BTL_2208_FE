@@ -6,14 +6,15 @@ import Icons, { IconName } from "@components/Icons";
 interface IAvatarProps {
     user: UserProperty,
     size: AvatarSize,
-    border?: boolean
+    border?: boolean,
+    link_to_profile?: string
 }
 
 export default class Avatar extends React.Component<IAvatarProps, {}>{
     render() {
-        const { user, size, border = false } = this.props;
+        const { link_to_profile, user, size, border = false } = this.props;
         return (
-            <Link to="/" className="flex-none">
+            <Link to={(link_to_profile ? link_to_profile : "/profile")} className="flex-none">
                 {user.avtHref ? (
                     <img
                         src={user.avtHref}
