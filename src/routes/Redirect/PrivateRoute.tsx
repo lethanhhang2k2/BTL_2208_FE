@@ -9,7 +9,7 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
     const { setUser } = React.useContext(UserContext);
     const [loading, setLoading] = React.useState(true);
     const [state, setState] = React.useState(false);
-    const { isSignedIn, isInitialized } = useGoogleAuth();
+    const { isSignedIn, isInitialized, signOut } = useGoogleAuth();
 
     useEffect(() => {
         if (isInitialized) {
@@ -18,11 +18,13 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
                     // console.log(user);
                     setUser(parseUser(user.data["user_data"]));
                     setState(user.ok);
+                    if (!user.ok) signOut();
                     setLoading(false);
 
                 }).catch((error) => {
                     console.log(error);
                     setState(false);
+                    signOut();
                     setLoading(false);
                 });
         }

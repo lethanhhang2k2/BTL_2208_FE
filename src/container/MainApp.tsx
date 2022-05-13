@@ -18,6 +18,8 @@ const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
 const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
+const SearchPage = React.lazy(() => import("@routes/search"));
+const Profile = React.lazy(() => import("@routes/profile"));
 
 function Wrapper() {
     const location = useLocation();
@@ -55,6 +57,12 @@ function Wrapper() {
                         element={<PrivateRoute element={<QuickCard />} />} />
                     <Route path="/quickcard/edit"
                         element={<PrivateRoute element={<QuickCardEdit />} />} />
+                    <Route path="/search"
+                        element={<PrivateRoute element={<SearchPage />} />} />
+                    <Route path="/profile"
+                        element={<PrivateRoute element={<Profile />} />} />
+                    <Route path="/profile/:userID"
+                        element={<PrivateRoute element={<Profile />} />} />
                 </Routes>
             </Suspense>
         </div>

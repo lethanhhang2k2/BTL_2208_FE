@@ -1,7 +1,7 @@
 import Logo from "@components/Logo";
 import Search from "@components/Search";
 import ActionAppHeader from "./components/ActionAppHeader";
-import { AvatarSize } from "../../types/user";
+import { AvatarSize } from "@AppTypes/user";
 import Avatar from "@components/Avatar";
 import { useContext } from "react";
 import { UserContext } from "@hooks/UserManager";
@@ -15,7 +15,9 @@ export default function AppHeader() {
                 <Search />
                 <div className="flex items-center">
                     <ActionAppHeader />
-                    <Avatar user={user} size={AvatarSize.SSmall} border />
+                    <div className="mx-3">
+                        <Avatar user={user} size={AvatarSize.SSmall} border />
+                    </div>
                 </div>
             </div>
         </div>

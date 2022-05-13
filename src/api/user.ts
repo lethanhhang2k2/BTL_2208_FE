@@ -1,14 +1,15 @@
 import axios from "axios";
 import { UserProperty } from "@AppTypes/user";
+import FormData from 'form-data'
 
 const GET_USER_DATA = "http://localhost:3030/user/get";
 const UPDATE_USER_DATA = "http://localhost:3030/user/update";
 
 export function parseUser(user: any): UserProperty {
     console.log(user);
-    
+
     return {
-        id: "123",
+        id: user["_id"],
         username: user["username"],
         name: user["given_name"],
         avtHref: user["picture"]["name"],
@@ -48,26 +49,47 @@ export async function getUserData(): Promise<{ ok: boolean, data: any }> {
 export function updateUserData(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
         if (data) {
-            if (data.username && data.password) {
-                if (data.username !== "" && data.password !== "") {
-                    axios.post(UPDATE_USER_DATA, data, {
-                        withCredentials: true,
-                        headers: {
-                            "Access-Control-Allow-Origin": "*",
-                            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-                        }
-                    }).then(response => {
-                        if (response.status === 200) resolve(undefined)
-                        else reject(undefined)
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        reject(undefined)
-                    });
+            axios.post(UPDATE_USER_DATA, data, {
+                withCredentials: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
                 }
-                reject(undefined);
-            }
-            reject(undefined);
-        }
+            })
+                .then(response => {
+                    if (response.status === 200) resolve(undefined)
+                    else reject("Error updating user data");
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        } else reject("No data to update");
     });
 }
+
+export function uploadImage(file: File): Promise<any> {
+    return new Promise((resolve, reject) => {
+        if (file) {
+            const formData = new FormData();
+            formData.append("file", file);
+            console.log(formData);
+
+            axios.post(UPDATE_USER_DATA, formData, {
+                withCredentials: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) resolve(undefined)
+                    else reject("Error uploading image");
+                })
+                .catch(error => {
+                    reject(error)
+                });
+        } else resolve(undefined);
+    });
+}
+

@@ -8,7 +8,7 @@ interface IImageFeedProps {
 
 export default function ImageFeed({ images }: IImageFeedProps) {
     return (
-        <div className="w-full my-2 h-[400px]">
+        <div className="w-full my-2 h-[400px] overflow-hidden">
             <Carousel
                 nextIcon={(
                     <div className="h-[24px] w-[24px] rounded-md bg-white">

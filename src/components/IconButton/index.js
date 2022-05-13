@@ -1,7 +1,10 @@
-export default function IconButton({ children }) {
+export default function IconButton({ children, ...props }) {
+    const { href, onClick } = props;
     return (
-        <div className="mx-[9px] cursor-pointer">
-            { children }
-        </div>
+        href
+            ? <a href={href}>{children}</a>
+            : <div className="mx-[9px] cursor-pointer" onClick={onClick}>
+                {children}
+            </div>
     )
 }

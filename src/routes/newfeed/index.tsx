@@ -2,7 +2,7 @@
 import React from "react"
 import AuthLayout from "@layouts/AuthLayout"
 import { UserExample } from "../../types/user"
-import Feed from "./components/Feed"
+import Feed from "../../components/Feed"
 import Suggest from "./components/Suggest"
 import { DataTagsExample } from "@AppTypes/tag"
 const feeds = [
