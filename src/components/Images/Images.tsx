@@ -33,7 +33,7 @@ function ImagesList() {
         <>
             {imgs.map(img => {
                 return (
-                    <div className="w-1/5">
+                    <div className="w-1/5 shadow-md rounded-lg">
                         <img src={img} className="rounded-lg object-cover w-full h-[100px] shadow-md" />
                     </div>
                 )

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Image } from "react-bootstrap";
-import * as SWMIconPack from "react-swm-icon-pack";
+import { Icons } from "react-toastify";
 
 export default function UploadImage() {
     const [img, setImg] = useState(null)
@@ -27,7 +27,7 @@ export default function UploadImage() {
                 </div>
             ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                      <SWMIconPack.PlusCircle className="h-16 w-16" color="#CCCCCC" />  
+                      <Icons.PlusCircle className="h-16 w-16" color="#CCCCCC" />  
                 </div>
             )}
             <input

@@ -14,10 +14,10 @@ export default function Nav() {
                 <img src={qrcode} className="w-[28px] h-[28px]" />
             </NavLink>
             <NavLink path="/quickcard">
-                <Icons iconName={IconName.Smartphone} width="28px" height="28px" color="white" />
+                <Icons iconName={IconName.Smartphone} width="28px" height="28px" stroke="white" />
             </NavLink>
             <NavLink path="/quickcard/edit">
-                <Icons iconName={IconName.Edit3} width="28px" height="28px" color="white" />
+                <Icons iconName={IconName.Edit3} width="28px" height="28px" stroke="white" />
             </NavLink>
         </div>
     )
