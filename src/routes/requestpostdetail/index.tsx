@@ -19,7 +19,7 @@ export default function RequestPostDetail() {
     }, [])
 
     return (
-        <AuthLayout user={UserExample}>
+        <AuthLayout>
             <div className="w-screen h-screen flex justify-center pt-8 fixed bg-gray-150">
                 <div className="w-4/5 h-5/6 p-4 shadow-md rounded-lg bg-white">
                     <div className="flex justify-between pb-2 px-2 border-b-2 border-gray-150 border-solid">
