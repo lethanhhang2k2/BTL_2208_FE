@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/809.524d56be.chunk.css","mappings":"AAAA,eAKI,YADA,gBAFA,YACA,UAFA,UAIA","sources":["components/Feed/components/ImageFeed/index.scss"],"sourcesContent":[".img-thumbnail{\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    border-radius: 0;\r\n    border: none;\r\n}"],"names":[],"sourceRoot":""}
