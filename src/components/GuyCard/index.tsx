@@ -1,10 +1,8 @@
-import React from "react";
-import Avatar from "../Avatar";
-import User from "../User";
+import User from "@components/User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../types/user";
-import { MotelExample } from "../../types/motel";
+import { AvatarSize, UserExample, UserProperty } from "@AppTypes/user";
+import { MotelExample } from "@AppTypes/motel";
 
 interface IGuyCard {
     user: UserProperty,
@@ -12,7 +10,6 @@ interface IGuyCard {
 }
 
 export default function GuyCard({ user = UserExample, quickCard = true }: IGuyCard) {
-
     return (
         <div className="h-4/5 w-[320px] bg-white rounded-lg p-2 shadow-md relative justify-between flex flex-col">
             <div className="h-1/3">
@@ -36,20 +33,20 @@ export default function GuyCard({ user = UserExample, quickCard = true }: IGuyCa
                 </div>
             </div>
             {quickCard ? (
-                <div className="h-2/5 rounded-lg" style={{ background:  ThemeColor[user.theme] }}>
+                <div className="h-2/5 rounded-lg" style={{ background: user.theme }}>
                     <MotelInfo motel={MotelExample} />
                 </div>
             ) : (
-                    <div className="flex w-full justify-evenly text-[20px] text-gray-160 h-2/5 items-center">
-                        <div className="bg-gray-160/20 rounded-lg w-[100px] h-[100px] flex flex-col justify-center items-center">
-                            <div>{user.posts}</div>
-                            <div>Posts</div>
-                        </div>
-                        <div className="bg-gray-160/20 rounded-lg w-[100px] h-[100px] flex flex-col justify-center items-center">
-                            <div>{user.pending}</div>
-                            <div>Pending</div>
-                        </div>
+                <div className="flex w-full justify-evenly text-[20px] text-gray-160 h-2/5 items-center">
+                    <div className="bg-gray-160/20 rounded-lg w-[100px] h-[100px] flex flex-col justify-center items-center">
+                        <div>{user.posts}</div>
+                        <div>Posts</div>
                     </div>
+                    <div className="bg-gray-160/20 rounded-lg w-[100px] h-[100px] flex flex-col justify-center items-center">
+                        <div>{ }</div>
+                        <div>Pending</div>
+                    </div>
+                </div>
             )}
         </div>
     );

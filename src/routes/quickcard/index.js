@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ThemeColor, UserExample } from "../../types/user";
-import GuyCard from "../../components/GuyCard";
-import BgEditLayout from "../../layouts/AuthLayout/components/BgEditLayout";
+import { ThemeColor, UserExample } from "@AppTypes/user";
+import GuyCard from "@components/GuyCard";
+import BgEditLayout from "@layouts/AuthLayout/components/BgEditLayout";
 
 export default function QuickCard({ user = { ...UserExample } }) {
     const [bgColor, setBgColor] = useState({})
@@ -16,9 +16,8 @@ export default function QuickCard({ user = { ...UserExample } }) {
     return (
         <BgEditLayout
             user={UserExample}
-            backgroundColor={bgColor.color}
-        >
-            <GuyCard user={user} />
+            backgroundColor={bgColor.color}>
+            <GuyCard theme={bgColor.color}/>
         </BgEditLayout>
     )
 }

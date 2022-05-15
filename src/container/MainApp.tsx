@@ -14,7 +14,6 @@ import { UserProvider } from "@hooks/UserManager";
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
 const LoginTwo = React.lazy(() => import("@routes/login/pages/login2"));
-const LoginThree = React.lazy(() => import("@routes/login/pages/login3"));
 const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
@@ -48,12 +47,10 @@ function Wrapper() {
                     <Route path="/login"
                         element={<Login />} />
 
-                    {/* <Route path="/"
+                    <Route path="/"
                         element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
-                    <Route path="/login/3"
-                        element={<PrivateRoute element={<LoginThree />} />} />
                     <Route path="/nametag"
                         element={<PrivateRoute element={<Nametag />} />} />
                     <Route path="/quickcard"
@@ -69,16 +66,10 @@ function Wrapper() {
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
-                        element={<PrivateRoute element={<Profile />} />} /> */}
-                    
-                    <Route path="/" element={<NewFeed />} />
-                    <Route path="/inbox" element={<Inbox />} />
-                    <Route path="/search" element={<SearchPage />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/quickcard/edit" element={<QuickCardEdit />} />
-                    <Route path="/quickcard" element={<QuickCard />} />
-                    <Route path="/nametag" element={<Nametag />} />
-                    <Route path="/post/add" element={<AddPost />} />
+
+                        element={<PrivateRoute element={<Profile />} />} />
+                    <Route path="/create-post/"
+                        element={<PrivateRoute element={<AddPost />} />} />
                 </Routes>
             </Suspense>
         </div>

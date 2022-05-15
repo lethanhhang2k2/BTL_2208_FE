@@ -1,5 +1,4 @@
 import Icons, { IconName } from "@components/Icons"
-import { createContext, useContext, useEffect, useState } from "react"
 
 const ImagesContext = createContext<{} | null>({})
 

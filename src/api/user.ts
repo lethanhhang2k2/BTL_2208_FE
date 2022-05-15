@@ -2,8 +2,8 @@ import axios from "axios";
 import { UserProperty } from "@AppTypes/user";
 import FormData from 'form-data'
 
-const GET_USER_DATA = "http://localhost:3030/user/get";
-const UPDATE_USER_DATA = "http://localhost:3030/user/update";
+const GET_USER_DATA = process.env["REACT_APP_HOST"] + "/user/get";
+const UPDATE_USER_DATA = process.env["REACT_APP_HOST"] + "/user/update";
 
 export function parseUser(user: any): UserProperty {
     console.log(user);

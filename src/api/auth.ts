@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from 'js-cookie'
 
-const POST_VERIFY_TOKEN = "http://localhost:3030/user/auth/google-login";
+const POST_VERIFY_TOKEN = process.env["REACT_APP_HOST"] + "/user/auth/google-login";
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",
@@ -18,7 +18,7 @@ interface IAccountResponse {
 }
 
 // This function is only used for testing purposes.
-function setToken(token:string){
+function setToken(token: string) {
     Cookies.set('session-token', token);
 }
 

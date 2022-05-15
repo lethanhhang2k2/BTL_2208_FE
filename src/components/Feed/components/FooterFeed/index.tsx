@@ -2,14 +2,14 @@ import UpdateTime from "@components/UpdateTime";
 import ActionFooterFeed from "./ActionFooterFeed";
 
 interface IFooterFeedProps {
-    time_ago: string
+    createAt: Date
 }
 
-export default function FooterFeed({ time_ago }: IFooterFeedProps) {
+export default function FooterFeed({ createAt }: IFooterFeedProps) {
     return (
         <div className="px-[20px] flex justify-between border-t-2 border-gray-100 pt-2">
             <ActionFooterFeed />
-            <UpdateTime time_ago={time_ago} />
+            <UpdateTime createAt={createAt} />
         </div>
     )
 }
