@@ -14,7 +14,7 @@ interface IGuyCard {
 export default function GuyCard({ user = UserExample, quickCard = true }: IGuyCard) {
 
     return (
-        <div className="h-3/4 w-[320px] bg-white rounded-lg p-2 shadow-md relative justify-between flex flex-col">
+        <div className="h-4/5 w-[320px] bg-white rounded-lg p-2 shadow-md relative justify-between flex flex-col">
             <div className="h-1/3">
                 <img
                     src="https://docs.microsoft.com/en-us/windows/apps/design/controls/images/image-licorice.jpg"

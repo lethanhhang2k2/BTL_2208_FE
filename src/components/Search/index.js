@@ -3,7 +3,7 @@ import IconButton from '../IconButton';
 
 export default function Search() {
     return (
-        <div className="bg-gray-150 h-[40px] w-[380px] rounded-lg flex items-center">
+        <div className="bg-gray-150 h-[40px] w-[380px] rounded-lg items-center ml-2 hidden sm:flex">
             <div className="flex mx-[8px] justify-between w-full">
                 <input
                     className="bg-transparent w-4/5 outline-0"

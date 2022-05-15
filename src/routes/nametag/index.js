@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import BgEditLayout from "../../layouts/AuthLayout/BsEditLayout/BgEditLayout";
+import { useEffect, useState, useContext } from "react";
+import BgEditLayout from "@layouts/AuthLayout/components/BgEditLayout";
+import { ThemeColor } from "@AppTypes/user"
 import ButtonLink from "./ButtonLink";
-import { ThemeColor, UserExample } from "../../types/user"
 import ColorOption from "./ColorOption";
+import { UserContext } from "@hooks/UserManager";
 
 const linkOptions = [
     {
@@ -16,9 +17,10 @@ const linkOptions = [
     }
 ]
 
-export default function Nametag({ user = { ...UserExample } }) {
+export default function Nametag() {
     const [bgColor, setBgColor] = useState({})
-    const [currentOption, setCurrentOption] = useState(0)
+    const [currentOption, setCurrentOption] = useState(0);
+    const {user} = useContext(UserContext)
 
     useEffect(() => {
         setBgColor({
@@ -30,29 +32,28 @@ export default function Nametag({ user = { ...UserExample } }) {
     const handleClickColor = (color) => {
 
         console.log(color);
-        if (bgColor.id != color.id) {
+        if (bgColor.id !== color.id) {
             setBgColor(color)
         }
     }
 
     const handleOption = (index) => {
-        if (index != currentOption) setCurrentOption(index)
+        if (index !== currentOption) setCurrentOption(index)
     }
 
     return (
         <BgEditLayout
-            user={UserExample}
-            backgroundColor={bgColor.color}
-        >
-            <div className="flex w-3/4 h-fit justify-between">
-                <div className="w-[300px] h-fit bg-white p-8 rounded-lg">
+            backgroundColor={bgColor.color}>
+            <div className="flex w-2/3 h-fit justify-between">
+                <div className="w-[300px] h-fit bg-white p-8 rounded-xl">
                     <div className="flex justify-center">
                         <div className="w-[236px] h-[236px]" style={{ background: bgColor.color }}></div>
                     </div>
                     <p className={`italic text-[2rem] font-qr text-center text-bg${bgColor.id}`}>
-                        {user.name}
+                        {user.username}
                     </p>
                 </div>
+
                 <div className="w-4/6 flex flex-col justify-between py-2">
                     <div className="text-[36px] text-white">
                         QR code helps people follow you quickly
@@ -67,7 +68,7 @@ export default function Nametag({ user = { ...UserExample } }) {
                                     key={index}
                                     contentButton={option.content}
                                     handleOptionLink={() => handleOption(index)}
-                                    active={index == currentOption}
+                                    active={index === currentOption}
                                 />
                             )
                         })}
@@ -78,9 +79,8 @@ export default function Nametag({ user = { ...UserExample } }) {
                                 <ColorOption
                                     key={id}
                                     color={color}
-                                    borderWidth={id == bgColor.id ? "4" : "2"}
-                                    handleColor={() => handleClickColor({ id, color})}
-                                />
+                                    borderWidth={id === bgColor.id ? "4" : "2"}
+                                    handleColor={() => handleClickColor({ id, color })}                                />
                             )
                         })}
                     </div>

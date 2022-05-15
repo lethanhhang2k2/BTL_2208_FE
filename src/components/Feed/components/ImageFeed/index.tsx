@@ -1,6 +1,6 @@
-import React from "react"
 import { Carousel, Image } from "react-bootstrap"
 import Icons, { IconName } from "@components/Icons";
+import "./index.scss";
 
 interface IImageFeedProps {
     images: string[],
@@ -8,7 +8,7 @@ interface IImageFeedProps {
 
 export default function ImageFeed({ images }: IImageFeedProps) {
     return (
-        <div className="w-full my-2">
+        <div className="w-full my-2 h-[400px] overflow-hidden">
             <Carousel
                 nextIcon={(
                     <div className="h-[24px] w-[24px] rounded-md bg-white">
@@ -20,8 +20,8 @@ export default function ImageFeed({ images }: IImageFeedProps) {
                         <Icons iconName={IconName.ChevronSmallLeft} />
                     </div>
                 )}
-                controls={images.length > 1 ? true : false}
-            >
+                controls={images.length > 1 ? true : false}>
+
                 {images.map(image => {
                     return (
                         <Carousel.Item>

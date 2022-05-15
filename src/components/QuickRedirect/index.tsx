@@ -6,13 +6,13 @@ export interface LinkObject {
 
 const defaultValue: LinkObject[] = [
     { href: "#", text: "Điều khoản" },
-    { href: "#", text: "Nhóm" },
+    { href: "#", text: "Nhóm 7" },
     { href: "#", text: "Tiro" }
 ];
 
 export default function QuickRedirect({ link = defaultValue }: { link?: LinkObject[] }) {
     return (
-        <div className="text-gray-400 flex flex-wrap justify-center">
+        <div className="text-gray-400 flex flex-wrap justify-center mb-10">
             {link.map((item, index) => {
                 return (
                     <div key={index} className="flex items-center">

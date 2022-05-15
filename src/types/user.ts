@@ -1,11 +1,13 @@
 import { MotelProperty, MotelExample, MotelStatus, BestMotelEx } from './motel';
-export enum UserRole { Admin, Renter, LandLord }
 export const ThemeColor: any = {
     red: "linear-gradient(135deg, #FD8D32 0%, #A307BA 100%)",
     violet: "linear-gradient(135deg, #8147FF 0%, #8FB4FF 100%)",
     orange: "linear-gradient(135deg, #FDCB5C 0%, #ED4956 100%)"
 }
-export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px" }
+
+export enum UserRole { Admin="admin", Renter="renter", LandLord="landlord" }
+
+export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px", X2Large = "180px" }
 
 export interface UserProperty {
     id: string,
@@ -20,6 +22,9 @@ export interface UserProperty {
     pending: number
     bestMotel?: MotelProperty,
     others?: UserProperty[]
+    email: string,
+    phone: string,
+    profile_link: string,
 }
 
 export const UserExample: UserProperty = {
@@ -29,9 +34,12 @@ export const UserExample: UserProperty = {
     avtHref: 'https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg',
     theme: 'red',
     distance: 1.2,
-    address: 'Thanh Xuan',
     role: UserRole.Renter,
     posts: 16,
-    pending: 4
+    pending: 4,
     //bestMotel: BestMotelEx
+    address: 'Thanh Xuan Bac',
+    email: "nva@gmail.com",
+    phone: "0981234567",
+    profile_link: "/profile/001",
 }

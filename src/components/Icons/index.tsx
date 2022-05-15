@@ -24,6 +24,9 @@ import { ReactComponent as MenuHorizontal } from "@icons/menuhorizontal.svg";
 import { ReactComponent as Bookmark } from "@icons/bookmark.svg";
 import { ReactComponent as Share1 } from "@icons/share1.svg";
 import { ReactComponent as Edit4 } from "@icons/edit4.svg";
+import { ReactComponent as Setting } from "@icons/settings.svg";
+import { ReactComponent as QRCode } from "@icons/qrcode.svg";
+
 import "./index.scss";
 
 interface IconsProps {
@@ -59,7 +62,9 @@ export enum IconName {
     MenuHorizontal = "Menuhorizontal",
     Bookmark = "Bookmark",
     Share1 = "Share1",
-    Edit4 = "Edit4"
+    Edit4 = "Edit4",
+    Setting = "Settings",
+    QRCode = "Qrcode"
 }
 
 const IconList = {
@@ -87,15 +92,16 @@ const IconList = {
     [IconName.MenuHorizontal]: MenuHorizontal,
     [IconName.Bookmark]: Bookmark,
     [IconName.Share1]: Share1,
-    [IconName.Edit4]: Edit4
-    
+    [IconName.Edit4]: Edit4,
+    [IconName.Setting]: Setting,
+    [IconName.QRCode]: QRCode
 }
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {
-        const { iconName, stroke = "#001a72", size = "24px", ...props } = this.props;
+        const { iconName, stroke = "#001a72", size = "24px", strokeWidth = "1.5", ...props } = this.props;
         const Component = IconList[iconName];
         return (
-            <Component stroke={stroke} width={size} height={size} {...props} />
+            <Component stroke={stroke} width={size} height={size} strokeWidth={strokeWidth} {...props} />
         );
     }
 }
