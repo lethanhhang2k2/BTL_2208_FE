@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type"
 import { createContext, useContext, useEffect, useState } from "react"
 import UploadImage from "../UploadImage"
 

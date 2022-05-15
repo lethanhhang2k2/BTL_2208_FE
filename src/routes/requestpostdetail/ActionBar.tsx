@@ -1,4 +1,3 @@
-import Action from "../../components/Action";
 import { ActionButton } from "../../components/Action/ActionButton";
 
 const actions = [

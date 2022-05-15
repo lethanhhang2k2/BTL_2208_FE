@@ -1,42 +1,68 @@
-import { UserProperty, UserExample, UserRole } from "./user";
+import { UserProperty, UserExample } from "@AppTypes/user";
+import { DataTag, DataTagsExample } from "@AppTypes/tag";
+import { CommentProperty, CommentExample } from "./comment";
 
 export enum MotelStatus { Approved, NotApproved, Decline }
-
 export interface MotelProperty {
-    name: string,
+    id: string,
+    title: string,
     owner: UserProperty,
     address: string,
     fee: string,
     description: string,
-    illustrationHref: string[],
+    images: string[]
     status: MotelStatus
+    data_tags?: DataTag[]
+    createAt: Date,
+    comments: CommentProperty[],
+    post_link: string
 }
 
-export const MotelExample = {
-    name: "Chung cư mini tại cầu giấy",
+export const MotelExample: MotelProperty = {
+    id: "15651321651",
+    title: "Chung cư tại cầu giấy",
     owner: UserExample,
-    address: "Mai Dịch",
+    address: "Xuan Thuy Cau Giay",
     fee: "2tr",
-    description: "Gần ĐHQG.",
-    illustrationHref: ["https://o.rada.vn/data/image/2020/02/25/adorable-home-bedroom-3.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLeaomJP6AeMuJLI6Hkv13jaWvWLMD-GlGIpiCiibZpUvBKDORoKIIUZjsPVed9C5AtVc&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpX8NQ3lD10QplQ7LyD5lxqzpPXJdUu3vSZE-7gcUBzA_5nfPAGd7AtzoM1VXRs6cd8xc&usqp=CAU"],
-    status: MotelStatus.Approved
+    description: "Rong rai, thoang mat",
+    images: ["https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"],
+    status: MotelStatus.Approved,
+    data_tags: DataTagsExample,
+    createAt: new Date(),
+    comments: [CommentExample],
+    post_link: "/post/15651321651"
 }
 
-export const BestMotelEx = {
-    name: "Chung cư mini tại cầu giấy",
-    owner: {
-        id: '001',
-        username: '@john',
-        name: 'John',
-        avtHref: 'https://haycafe.vn/wp-content/uploads/2021/11/hinh-anh-hoat-hinh-de-thuong-cute-dep-nhat.jpg',
-        theme: "red",
-        distance: 1.2,
-        address: 'Thanh Xuan',
-        role: UserRole.Renter,
+export const MotelExampleList: MotelProperty[] = [
+    {
+        id: "5156121",
+        title: "Chung cư moi",
+        owner: UserExample,
+        address: "Xuan Thuy Cau Giay",
+        fee: "2tr",
+        description: "Rong rai, thoang mat",
+        images: ["https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"],
+        status: MotelStatus.Approved,
+        data_tags: DataTagsExample,
+        createAt: new Date(),
+        comments: [CommentExample],
+        post_link: "/post/5156121"
     },
-    address: "Mai Dịch",
-    fee: "2tr",
-    description: "Gần ĐHQG.",
-    illustrationHref: "https://o.rada.vn/data/image/2020/02/25/adorable-home-bedroom-3.jpg",
-    status: MotelStatus.Approved
-}
+
+    {
+        id: "1651321351",
+        title: "Chung cư day du",
+        owner: UserExample,
+        address: "Xuan Thuy Thanh Giay",
+        fee: "2tr",
+        description: "Rong rai, thoang mat",
+        images: ["https://vnn-imgs-a1.vgcloud.vn/images.vov.vn/w800/uploaded/krb8sl5hrwuly8uzveukg/2019_08_29/Hinh_5_YRLH.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVGcoBEQ2CKpkcXPIiahwFo0UOFpNxvAsfeQ&usqp=CAU",
+            "https://img5.thuthuatphanmem.vn/uploads/2021/11/09/hinh-anh-dam-my-cuc-dep_084954718.jpg"],
+        status: MotelStatus.Approved,
+        data_tags: undefined,
+        createAt: new Date(),
+        comments: [CommentExample],
+        post_link: "/post/5156121"
+    }
+]

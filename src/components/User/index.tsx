@@ -41,7 +41,7 @@ export default class User extends React.Component<IUserProps, {}> {
                         <p className="ml-2 font-semibold">{user.name}</p>
                         <div className="flex ml-2 text-gray-400 text-[14px] w-full">
                             {showName && <div className="flex mr-2">@{user.name}</div>}
-                            {showRole && <div className="flex mr-2 text-green bg-bggreen px-2 rounded-lg">{user.role}</div>}
+                            {showRole && <div className="flex mr-2 text-green bg-bggreen px-2 rounded-lg font-semibold">{user.role}</div>}
                             <div className="flex items-center">
                                 <Icons iconName={IconName.TrendingUp} stroke="#949494" size="20px" />
                                 <p className="mx-1 truncate">{user.distance}</p>

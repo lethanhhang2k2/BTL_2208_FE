@@ -7,6 +7,9 @@ import QuickRedirect from "@components/QuickRedirect";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss";
+import GG_Logo from "@images/gg.png"
+import illus from "@images/login2.jpg"
+
 
 export default function Login() {
     const [isRedirectUrl, setIsRedirectUrl] = useState(false);
@@ -19,6 +22,7 @@ export default function Login() {
                 const data = await getVerifyToken(token);
                 if (!data || !data.is_correct) {
                     setIsRedirectUrl(false);
+                    signOut();
                     reject();
                 }
                 else if (!data.enough_data) {
@@ -43,14 +47,6 @@ export default function Login() {
             pending: 'Signing in...',
             success: 'Đăng nhập thành công',
             error: 'Đăng nhập thất bại',
-        }, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
         });
     }
 
@@ -90,7 +86,7 @@ export default function Login() {
                                         className="flex justify-content-center w-full items-center border-2 border-solid border-gray-150 rounded-full p-2 text-ellipsis"
                                         onClick={handleSignIn}>
                                         <img
-                                            src="./images/gg.png"
+                                            src={GG_Logo}
                                             alt="google"
                                             width="32"
                                             height="32"
@@ -108,9 +104,9 @@ export default function Login() {
                         </div>
                     </div>
 
-                    <div className="hidden md:flex col-auto md:col-span-3 xl:col-span-4 overflow-hidden rounded-2xl shadow-md">
+                    <div className="hidden md:flex col-auto md:col-span-3 xl:col-span-4 overflow-hidden rounded-2xl">
                         <img
-                            src="./images/login-illus.png"
+                            src={illus}
                             alt="login-illus"
                             className="w-full h-full object-cover"
                         />

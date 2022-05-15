@@ -9,12 +9,9 @@ import PostCard from "@components/PostCard";
 import { useParams } from "react-router-dom";
 
 const tabList = [
-    { title: "Đã duyệt", isActive: true },
-    { title: "Chưa duyệt", isActive: false },
     { title: "Gắn thẻ", isActive: false },
     { title: "Đã lưu", isActive: false },
     { title: "Bán thành công", isActive: false },
-    { title: "Review", isActive: false },
 ]
 
 const postList = [

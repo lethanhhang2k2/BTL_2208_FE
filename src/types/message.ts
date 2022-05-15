@@ -1,4 +1,3 @@
-import { UserProperty, UserExample } from './user';
 export interface MessageProps {
     id: string,
     userId: string,
