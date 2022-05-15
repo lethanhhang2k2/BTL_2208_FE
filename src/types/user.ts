@@ -1,4 +1,4 @@
-import { MotelProperty, MotelExample, MotelStatus, BestMotelEx } from './motel';
+import { MotelProperty} from './motel';
 export const ThemeColor: any = {
     red: "linear-gradient(135deg, #FD8D32 0%, #A307BA 100%)",
     violet: "linear-gradient(135deg, #8147FF 0%, #8FB4FF 100%)",

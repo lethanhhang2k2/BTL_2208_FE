@@ -69,7 +69,7 @@ function Wrapper() {
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
                         element={<PrivateRoute element={<Profile />} />} /> */}
-                    
+
                     <Route path="/" element={<NewFeed />} />
                     <Route path="/inbox" element={<Inbox />} />
                     <Route path="/search" element={<SearchPage />} />
@@ -77,6 +77,7 @@ function Wrapper() {
                     <Route path="/quickcard/edit" element={<QuickCardEdit />} />
                     <Route path="/quickcard" element={<QuickCard />} />
                     <Route path="/nametag" element={<Nametag />} />
+                    <Route path="/post/" element={<RequestPostDetail />} />
                 </Routes>
             </Suspense>
         </div>
