@@ -18,7 +18,8 @@ export interface UserProperty {
     role: UserRole,
     posts: number,
     pending: number
-    //bestMotel?: MotelProperty
+    bestMotel?: MotelProperty,
+    others?: UserProperty[]
 }
 
 export const UserExample: UserProperty = {
