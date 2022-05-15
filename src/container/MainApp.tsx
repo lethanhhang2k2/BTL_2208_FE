@@ -22,6 +22,7 @@ const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
 const RequestPostDetail = React.lazy(() => import("@routes/requestpostdetail"))
 const SearchPage = React.lazy(() => import("@routes/search"));
 const Profile = React.lazy(() => import("@routes/profile"));
+const AddPost = React.lazy(() => import("@routes/addpost"));
 
 function Wrapper() {
     const location = useLocation();
@@ -77,6 +78,7 @@ function Wrapper() {
                     <Route path="/quickcard/edit" element={<QuickCardEdit />} />
                     <Route path="/quickcard" element={<QuickCard />} />
                     <Route path="/nametag" element={<Nametag />} />
+                    <Route path="/post/add" element={<AddPost />} />
                 </Routes>
             </Suspense>
         </div>
