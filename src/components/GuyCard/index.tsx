@@ -1,36 +1,37 @@
 import React from "react";
-import Avatar from "../Avatar";
-import User from "../User";
+import User from "@components/User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import { UserProperty, ThemeColor, UserRole, AvatarSize, UserExample } from "../../types/user";
-import { MotelExample } from "../../types/motel";
+import { ThemeColor, AvatarSize, UserExample } from "@AppTypes/user";
+import { MotelExample } from "@AppTypes/motel";
 
-export default class GuyCard extends React.Component<{}, {}> {
+export default class GuyCard extends React.Component<{ theme?: ThemeColor }> {
     render() {
+        const { theme } = this.props
         return (
-            <div className="h-3/4 w-[320px] bg-white rounded-lg p-2">
-                <div className="h-1/3">
+            <div className="w-[320px] bg-white rounded-xl p-2">
+                <div className="h-40 overflow-hidden rounded-xl">
                     <img
-                        src="https://docs.microsoft.com/en-us/windows/apps/design/controls/images/image-licorice.jpg"
-                        className="object-cover h-full w-full rounded-lg"
+                        src="https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262__340.jpg"
+                        className="object-scale-down rounded-lg"
                     />
                 </div>
-                <div className="h-1/4 flex flex-col justify-between">
+
+                <div className="flex flex-col justify-between">
                     <div className="-mt-[12px]">
                         <User
                             user={UserExample}
-                            sizeAvt={AvatarSize.Medium}
-                            border={true} />
-                        showRole={true}
-                        twoLine={true}
+                            sizeAvt={AvatarSize.Large}
+                            border={true}
+                            showRole={true}
+                            twoLine={true} />
                     </div>
-                    <div className="flex justify-center mb-4">
+                    <div className="flex justify-center mb-4 mt-3">
                         <ContactBar />
                     </div>
                 </div>
-                <div className="h-2/5 rounded-lg" style={{ background: ThemeColor.Red }}>
-                    <MotelInfo motel={MotelExample} />
+                <div className="h-36 rounded-lg">
+                    <MotelInfo motel={MotelExample} theme={theme} />
                 </div>
             </div>
         );

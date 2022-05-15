@@ -1,10 +1,10 @@
 import AuthLayout from "../index";
 import Nav from "./Nav";
 
-export default function BgEditLayout({ user, backgroundColor, children }) {
+export default function BgEditLayout({ backgroundColor, children }) {
     return (
         <AuthLayout>
-            <div className="h-screen w-full flex flex-col items-center fixed"
+            <div className="min-h-screen w-full flex flex-col items-center fixed"
                 style={{
                     backgroundColor: "black",
                     background: backgroundColor
