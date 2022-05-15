@@ -18,9 +18,12 @@ import { ReactComponent as Smartphone } from "@icons/smartphone.svg";
 import { ReactComponent as Wallet } from "@icons/wallet.svg";
 import { ReactComponent as ChevronSmallRight } from "@icons/chevronsmallright.svg";
 import { ReactComponent as ChevronSmallLeft } from "@icons/chevronsmallleft.svg";
+import { ReactComponent as ChevronSmallDown } from "@icons/chevronsmalldown.svg";
+import { ReactComponent as ChevronDown } from "@icons/chevrondown.svg";
 import { ReactComponent as MenuHorizontal } from "@icons/menuhorizontal.svg";
 import { ReactComponent as Bookmark } from "@icons/bookmark.svg";
 import { ReactComponent as Share1 } from "@icons/share1.svg";
+import { ReactComponent as Edit4 } from "@icons/edit4.svg";
 import { ReactComponent as Setting } from "@icons/settings.svg";
 import { ReactComponent as QRCode } from "@icons/qrcode.svg";
 
@@ -54,9 +57,12 @@ export enum IconName {
     Wallet = "Wallet",
     ChevronSmallRight = "Chevronsmallright",
     ChevronSmallLeft = "Chevronsmallleft",
+    ChevronSmallDown = "ChevronSmallDown",
+    ChevronDown = "ChevronDown",
     MenuHorizontal = "Menuhorizontal",
     Bookmark = "Bookmark",
     Share1 = "Share1",
+    Edit4 = "Edit4",
     Setting = "Settings",
     QRCode = "Qrcode"
 }
@@ -81,9 +87,12 @@ const IconList = {
     [IconName.Wallet]: Wallet,
     [IconName.ChevronSmallRight]: ChevronSmallRight,
     [IconName.ChevronSmallLeft]: ChevronSmallLeft,
+    [IconName.ChevronSmallDown]: ChevronSmallDown,
+    [IconName.ChevronDown]: ChevronDown,
     [IconName.MenuHorizontal]: MenuHorizontal,
     [IconName.Bookmark]: Bookmark,
     [IconName.Share1]: Share1,
+    [IconName.Edit4]: Edit4,
     [IconName.Setting]: Setting,
     [IconName.QRCode]: QRCode
 }

@@ -10,7 +10,21 @@
     @apply flex items-center py-2;
   }
 
-  input:checked ~ .dot {
+/* <<<<<<< HEAD
+    input:checked ~ .dot {
+        @apply transform translate-x-[150%]
+    }
+*/
+
+    .link-nav {
+        @apply p-2 h-[30px]
+    }
+
+    .link-nav:hover:after, .active:after {
+        @apply content-[''] block w-1/2 h-[4px] mx-auto bg-white rounded-full mt-2
+    }
+
+    input:checked ~ .dot {
     @apply transform translate-x-[150%];
   }
 }

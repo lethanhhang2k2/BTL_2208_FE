@@ -25,11 +25,12 @@ export default function Nametag() {
     useEffect(() => {
         setBgColor({
             id: user.theme,
-            color: ThemeColor.Violet
+            color: ThemeColor[user.theme]
         })
     }, [])
 
     const handleClickColor = (color) => {
+
         console.log(color);
         if (bgColor.id !== color.id) {
             setBgColor(color)
@@ -43,7 +44,7 @@ export default function Nametag() {
     return (
         <BgEditLayout
             backgroundColor={bgColor.color}>
-            <div className="flex w-3/5 h-fit justify-between">
+            <div className="flex w-2/3 h-fit justify-between">
                 <div className="w-[300px] h-fit bg-white p-8 rounded-xl">
                     <div className="flex justify-center">
                         <div className="w-[236px] h-[236px]" style={{ background: bgColor.color }}></div>
@@ -79,8 +80,7 @@ export default function Nametag() {
                                     key={id}
                                     color={color}
                                     borderWidth={id === bgColor.id ? "4" : "2"}
-                                    handleColor={() => handleClickColor({ id, color })}
-                                />
+                                    handleColor={() => handleClickColor({ id, color })}                                />
                             )
                         })}
                     </div>

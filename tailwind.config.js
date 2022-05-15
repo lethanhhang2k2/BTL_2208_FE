@@ -12,7 +12,9 @@ module.exports = {
           bgred: "#FD8D32",
           bgorange: "#FDCB5C",
           green: "#26DA38",
-          bggreen: "#E5FEE6"
+          bggreen: "#E5FEE6",
+          white: "#FFFFFF",
+          red: "#F40D26"
         },
         fontFamily: {
           'logo': ['Shojumaru', 'cursive'],
