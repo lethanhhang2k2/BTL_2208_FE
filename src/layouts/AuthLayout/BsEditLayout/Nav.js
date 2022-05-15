@@ -1,10 +1,12 @@
 import Icons, { IconName } from "../../../components/Icons";
 import qrcode from "../../../assets/images/qrcode.png";
-import { Link } from "react-router-dom";
+import { Link, useHref } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const path = [ "/nametag", "/quickcard", "/quickcard/edit"]
 
 export default function Nav() {
+
 
     return (
         <div className="flex">

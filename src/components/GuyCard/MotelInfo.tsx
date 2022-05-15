@@ -14,21 +14,21 @@ export default class MotelInfo extends React.Component<MotelInfoProps, {}> {
                 <p className="h-1/4 text-[20px] font-bold">{motel.name}</p>
                 <div className="h-2/3 flex flex-col justify-between">
                     <div className="flex">
-                        <Icons iconName={IconName.User1} color="white" />
-                        {motel.owner}
+                        <Icons iconName={IconName.User1} stroke="white" />
+                        {motel.owner.name}
                     </div>
                     <div className="flex w-3/5 justify-between">
                         <div className="flex">
-                            <Icons iconName={IconName.Location1} color="white" />
+                            <Icons iconName={IconName.Location1} stroke="white" />
                             {motel.address}
                         </div>
                         <div className="flex">
-                            <Icons iconName={IconName.Coin} color="white" />
-                            {motel.fee}F
+                            <Icons iconName={IconName.Coin} stroke="white" />
+                            {motel.fee}
                         </div>
                     </div>
                     <div className="flex">
-                        <Icons iconName={IconName.InfoCircle} color="white" />
+                        <Icons iconName={IconName.InfoCircle} stroke="white" />
                         {motel.description}
                     </div>
                 </div>

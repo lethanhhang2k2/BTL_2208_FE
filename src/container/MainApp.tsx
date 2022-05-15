@@ -8,6 +8,7 @@ import {
 
 import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
+import Inbox from "@routes/inbox";
 import { UserProvider } from "@hooks/UserManager";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
@@ -18,6 +19,7 @@ const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
 const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
+const RequestPostDetail = React.lazy(() => import("@routes/requestpostdetail"))
 const SearchPage = React.lazy(() => import("@routes/search"));
 const Profile = React.lazy(() => import("@routes/profile"));
 
@@ -45,7 +47,7 @@ function Wrapper() {
                     <Route path="/login"
                         element={<Login />} />
 
-                    <Route path="/"
+                    {/* <Route path="/"
                         element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
@@ -57,12 +59,24 @@ function Wrapper() {
                         element={<PrivateRoute element={<QuickCard />} />} />
                     <Route path="/quickcard/edit"
                         element={<PrivateRoute element={<QuickCardEdit />} />} />
+                    <Route path="/request/detail"
+                        element={<PrivateRoute element={<RequestPostDetail />} />} />
+                    <Route path="/inbox"
+                        element={<PrivateRoute element={<Inbox />} />} />
                     <Route path="/search"
                         element={<PrivateRoute element={<SearchPage />} />} />
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
-                        element={<PrivateRoute element={<Profile />} />} />
+                        element={<PrivateRoute element={<Profile />} />} /> */}
+                    
+                    <Route path="/" element={<NewFeed />} />
+                    <Route path="/inbox" element={<Inbox />} />
+                    <Route path="/search" element={<SearchPage />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/quickcard/edit" element={<QuickCardEdit />} />
+                    <Route path="/quickcard" element={<QuickCard />} />
+                    <Route path="/nametag" element={<Nametag />} />
                 </Routes>
             </Suspense>
         </div>

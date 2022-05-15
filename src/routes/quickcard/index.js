@@ -3,13 +3,13 @@ import { ThemeColor, UserExample } from "../../types/user";
 import GuyCard from "../../components/GuyCard";
 import BgEditLayout from "../../layouts/AuthLayout/components/BgEditLayout";
 
-export default function QuickCard({ user = { theme: "red" } }) {
+export default function QuickCard({ user = { ...UserExample } }) {
     const [bgColor, setBgColor] = useState({})
 
     useEffect(() => {
         setBgColor({
             id: user.theme,
-            color: ThemeColor.Violet
+            color: ThemeColor[user.theme]
         })
     }, [])
 
@@ -18,7 +18,7 @@ export default function QuickCard({ user = { theme: "red" } }) {
             user={UserExample}
             backgroundColor={bgColor.color}
         >
-            <GuyCard />
+            <GuyCard user={user} />
         </BgEditLayout>
     )
 }
