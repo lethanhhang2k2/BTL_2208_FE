@@ -6,7 +6,6 @@ export enum ThemeColor {
 }
 
 export enum UserRole { Admin = "admin", Renter = "renter", LandLord = "landlord" }
-
 export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px", X2Large = "180px" }
 
 export interface UserProperty {
@@ -19,7 +18,6 @@ export interface UserProperty {
     address: string,
     role: UserRole,
     posts: number,
-    pending: number
     bestMotel?: MotelProperty,
     others?: UserProperty[]
     email: string,
@@ -36,8 +34,6 @@ export const UserExample: UserProperty = {
     distance: 1.2,
     role: UserRole.Renter,
     posts: 16,
-    pending: 4,
-    //bestMotel: BestMotelEx
     address: 'Thanh Xuan Bac',
     email: "nva@gmail.com",
     phone: "0981234567",
@@ -54,8 +50,6 @@ export const UserExample2: UserProperty[] = [
         distance: 1.2,
         role: UserRole.Renter,
         posts: 16,
-        pending: 4,
-        //bestMotel: BestMotelEx
         address: 'Thanh Xuan Bac',
         email: "nva@gmail.com",
         phone: "0981234567",
@@ -70,8 +64,6 @@ export const UserExample2: UserProperty[] = [
         distance: 1.2,
         role: UserRole.Renter,
         posts: 16,
-        pending: 4,
-        //bestMotel: BestMotelEx
         address: 'Thanh Xuan Bac',
         email: "nva@gmail.com",
         phone: "0981234567",
@@ -86,8 +78,6 @@ export const UserExample2: UserProperty[] = [
         distance: 1.2,
         role: UserRole.Renter,
         posts: 16,
-        pending: 4,
-        //bestMotel: BestMotelEx
         address: 'Thanh Xuan Bac',
         email: "nva@gmail.com",
         phone: "0981234567",

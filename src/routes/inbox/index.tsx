@@ -1,5 +1,5 @@
 import { MessageProps, MessagesEx } from "@AppTypes/message";
-import { AvatarSize, UserExample, UserExample2, UserProperty, UserRole } from "@AppTypes/user";
+import { AvatarSize, UserExample, UserExample2, UserProperty } from "@AppTypes/user";
 import Avatar from "@components/Avatar";
 import ChatInput from "@components/ChatInput";
 import Icons, { IconName } from "@components/Icons";

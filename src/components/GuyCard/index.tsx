@@ -1,7 +1,7 @@
 import User from "@components/User";
 import ContactBar from "./ContactBar";
 import MotelInfo from "./MotelInfo";
-import { ThemeColor, AvatarSize, UserExample, UserProperty } from "@AppTypes/user";
+import { AvatarSize, UserExample, UserProperty } from "@AppTypes/user";
 import { MotelExample } from "@AppTypes/motel";
 
 interface IGuyCard {
@@ -33,7 +33,7 @@ export default function GuyCard({ user = UserExample, quickCard = true }: IGuyCa
                 </div>
             </div>
             {quickCard ? (
-                <div className="h-2/5 rounded-lg" style={{ background: ThemeColor[user.theme] }}>
+                <div className="h-2/5 rounded-lg" style={{ background: user.theme }}>
                     <MotelInfo motel={MotelExample} />
                 </div>
             ) : (
@@ -43,7 +43,7 @@ export default function GuyCard({ user = UserExample, quickCard = true }: IGuyCa
                         <div>Posts</div>
                     </div>
                     <div className="bg-gray-160/20 rounded-lg w-[100px] h-[100px] flex flex-col justify-center items-center">
-                        <div>{user.pending}</div>
+                        <div>{ }</div>
                         <div>Pending</div>
                     </div>
                 </div>

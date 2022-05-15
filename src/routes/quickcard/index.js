@@ -16,14 +16,8 @@ export default function QuickCard({ user = { ...UserExample } }) {
     return (
         <BgEditLayout
             user={UserExample}
-<<<<<<< HEAD
             backgroundColor={bgColor.color}>
             <GuyCard theme={bgColor.color}/>
-=======
-            backgroundColor={bgColor.color}
-        >
-            <GuyCard user={user} />
->>>>>>> main
         </BgEditLayout>
     )
 }

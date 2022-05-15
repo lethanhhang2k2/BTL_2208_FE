@@ -47,7 +47,7 @@ function Wrapper() {
                     <Route path="/login"
                         element={<Login />} />
 
-                    {/* <Route path="/"
+                    <Route path="/"
                         element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
@@ -66,16 +66,9 @@ function Wrapper() {
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
-                        element={<PrivateRoute element={<Profile />} />} /> */}
-
-                    <Route path="/" element={<NewFeed />} />
-                    <Route path="/inbox" element={<Inbox />} />
-                    <Route path="/search" element={<SearchPage />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/quickcard/edit" element={<QuickCardEdit />} />
-                    <Route path="/quickcard" element={<QuickCard />} />
-                    <Route path="/nametag" element={<Nametag />} />
-                    <Route path="/post/" element={<RequestPostDetail />} />
+                        element={<PrivateRoute element={<Profile />} />} />
+                    <Route path="/create-post/"
+                        element={<PrivateRoute element={<RequestPostDetail />} />} />
                 </Routes>
             </Suspense>
         </div>
