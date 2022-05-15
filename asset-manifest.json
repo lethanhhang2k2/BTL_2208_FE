@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/BTL_2208_FE/static/css/main.ffa66765.css",
-    "main.js": "/BTL_2208_FE/static/js/main.45b9c217.js",
+    "main.js": "/BTL_2208_FE/static/js/main.6db66c89.js",
     "static/js/951.b46533fd.chunk.js": "/BTL_2208_FE/static/js/951.b46533fd.chunk.js",
     "static/css/47.a719cebf.chunk.css": "/BTL_2208_FE/static/css/47.a719cebf.chunk.css",
-    "static/js/47.65d0387a.chunk.js": "/BTL_2208_FE/static/js/47.65d0387a.chunk.js",
+    "static/js/47.e752373d.chunk.js": "/BTL_2208_FE/static/js/47.e752373d.chunk.js",
     "static/css/541.a719cebf.chunk.css": "/BTL_2208_FE/static/css/541.a719cebf.chunk.css",
     "static/js/541.55f24dd7.chunk.js": "/BTL_2208_FE/static/js/541.55f24dd7.chunk.js",
     "static/js/720.ab0f3cb0.chunk.js": "/BTL_2208_FE/static/js/720.ab0f3cb0.chunk.js",
@@ -56,10 +56,10 @@
     "static/media/chevronsmallright.svg": "/BTL_2208_FE/static/media/chevronsmallright.a88692ac4eb15fd60a7f1df4a27b8f02.svg",
     "static/media/chevronsmallleft.svg": "/BTL_2208_FE/static/media/chevronsmallleft.6769c7e31b5a81ae63dfa4d2b1e5856d.svg",
     "main.ffa66765.css.map": "/BTL_2208_FE/static/css/main.ffa66765.css.map",
-    "main.45b9c217.js.map": "/BTL_2208_FE/static/js/main.45b9c217.js.map",
+    "main.6db66c89.js.map": "/BTL_2208_FE/static/js/main.6db66c89.js.map",
     "951.b46533fd.chunk.js.map": "/BTL_2208_FE/static/js/951.b46533fd.chunk.js.map",
     "47.a719cebf.chunk.css.map": "/BTL_2208_FE/static/css/47.a719cebf.chunk.css.map",
-    "47.65d0387a.chunk.js.map": "/BTL_2208_FE/static/js/47.65d0387a.chunk.js.map",
+    "47.e752373d.chunk.js.map": "/BTL_2208_FE/static/js/47.e752373d.chunk.js.map",
     "541.a719cebf.chunk.css.map": "/BTL_2208_FE/static/css/541.a719cebf.chunk.css.map",
     "541.55f24dd7.chunk.js.map": "/BTL_2208_FE/static/js/541.55f24dd7.chunk.js.map",
     "720.ab0f3cb0.chunk.js.map": "/BTL_2208_FE/static/js/720.ab0f3cb0.chunk.js.map",
@@ -78,6 +78,6 @@
   },
   "entrypoints": [
     "static/css/main.ffa66765.css",
-    "static/js/main.45b9c217.js"
+    "static/js/main.6db66c89.js"
   ]
 }
