@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useEffect } from "react";
 import {
-    BrowserRouter,
+    BrowserRouter as Router,
     Routes,
     Route,
     useLocation
@@ -79,9 +79,9 @@ function Wrapper() {
 export default function MainApp() {
     return (
         <UserProvider>
-            <BrowserRouter>
+            <Router>
                 <Wrapper />
-            </BrowserRouter>
+            </Router>
         </UserProvider>
     )
 }
