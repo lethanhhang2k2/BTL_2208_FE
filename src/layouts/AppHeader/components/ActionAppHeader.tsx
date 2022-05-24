@@ -9,7 +9,7 @@ export default function ActionAppHeader() {
             <IconButton href="/">
                 <Icons iconName={IconName.Home2} />
             </IconButton>
-            <IconButton onClick={() => { toast('🦄 Không có tin nhắn mới') }}>
+            <IconButton href="/inbox" onClick={() => { toast('🦄 Không có tin nhắn mới') }}>
                 <Icons iconName={IconName.MessageCircleLines} />
             </IconButton>
             <IconButton href="/post">

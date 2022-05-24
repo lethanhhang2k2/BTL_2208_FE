@@ -1,7 +1,11 @@
+import { getChat } from "@api/chat";
+import { createPost, getAllPosts, getPost } from "@api/post";
+import { getUser } from "@api/user";
+import { useEffect, useState } from "react";
 import { Carousel, Image } from "react-bootstrap";
 import GuyCard from "../components/GuyCard";
 import ThingCard from "../components/ThingCard";
-import { MotelExample } from "../types/motel";
+import { MotelExample, MotelProperty } from "../types/motel";
 import { UserExample } from "../types/user";
 
 const images = [
@@ -11,6 +15,41 @@ const images = [
 ]
 
 export default function TestSlide() {
+    const [post, setPost] = useState<MotelProperty>()
+    const [posts, setPosts] = useState<MotelProperty[]>()
+    
+    useEffect(() => {
+        // getPost("627b8c3aa13751dc148450bc")
+        //     .then(post => {
+        //         console.log(post)
+        //     })
+        //     .catch(err => console.log(err))
+        
+        // getAllPosts()
+        //     .then(posts => {
+        //         console.log(posts.data)
+        //     })
+        //     .catch(err => console.log(err))
+        
+        // getUser("627b1c89a87b21580aad7d7c")
+        //     .then(user => {
+        //         console.log(user)
+        //     })
+        //     .catch(err => console.log(err))
+
+        console.log(document.cookie, typeof document.cookie);
+
+        const cookie = document.cookie
+            const token = cookie.split("session-token=")
+            console.log(token);
+
+        
+        getChat({ _id: "627b1c89a87b21580aad7d7c" })
+            .then(chat => console.log(chat.data))
+            .catch(err => console.log(err))
+    }, [])
+
+
     return (
         <div className="h-[50%] w-[50%] bg-black">
             <h1>

@@ -1,3 +1,6 @@
+import { getUser, parseUser } from "@api/user"
+import { UserProperty } from "@AppTypes/user"
+import { useEffect, useState } from "react"
 import { MotelProperty, MotelExample } from "../../types/motel"
 import Icons, { IconName } from "../Icons"
 
@@ -5,7 +8,15 @@ interface IThingCard {
     motel: MotelProperty
 }
 
-export default function ThingCard({ motel = MotelExample } : IThingCard) {
+export default function ThingCard({ motel = MotelExample }: IThingCard) {
+    const [ user, setUser ] = useState<UserProperty>()
+
+    useEffect(() => {
+        getUser(motel.owner)
+            .then(res => setUser(parseUser(res.data.user)))
+            .catch(err => console.log(err))
+    })
+
         return (
             <div className="bg-white w-[320px] p-2 rounded-lg relative">
                 <div>
@@ -19,7 +30,7 @@ export default function ThingCard({ motel = MotelExample } : IThingCard) {
                     <div className="flex flex-col justify-between text-gray-160">
                         <div className="flex">
                             <Icons iconName={IconName.User1} stroke="#CCCCCC" />
-                            {motel.owner.name}
+                            {user && user.name}
                         </div>
                         <div className="flex w-3/5 justify-between">
                             <div className="flex">

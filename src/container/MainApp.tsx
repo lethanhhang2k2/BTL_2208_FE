@@ -10,6 +10,7 @@ import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
 import Inbox from "@routes/inbox";
 import { UserProvider } from "@hooks/UserManager";
+import TestSlide from "./TestSlide";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
@@ -21,7 +22,7 @@ const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
 const RequestPostDetail = React.lazy(() => import("@routes/requestpostdetail"))
 const SearchPage = React.lazy(() => import("@routes/search"));
 const Profile = React.lazy(() => import("@routes/profile"));
-const PostDetail = React.lazy(() => import("@routes/PostDetail"));
+const AddPost = React.lazy(() => import("@routes/addpost"));
 
 function Wrapper() {
     const location = useLocation();
@@ -66,9 +67,15 @@ function Wrapper() {
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
+
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/create-post/"
-                        element={<PrivateRoute element={<RequestPostDetail />} />} />
+                        element={<PrivateRoute element={<AddPost />} />} />
+                    
+                    <Route path="/test"
+                        element={<TestSlide />} />
+                    <Route path="/"
+                        element={<NewFeed />} />
                 </Routes>
             </Suspense>
         </div>
