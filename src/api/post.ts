@@ -1,3 +1,4 @@
+import { TOKEN } from './auth';
 import { DataTag } from '@AppTypes/tag';
 import { TagType } from '@AppTypes/tag';
 import { DataTagsExample } from '@AppTypes/tag';
@@ -133,7 +134,22 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
 
 export async function createPost(params: object): Promise<{ ok: boolean, data: any }> {
     try {
-        const response = await axios.post(CREATE_POST, params);
+        let form_data = new FormData();
+
+        for ( let key in params ) {
+            form_data.append(key, params[key]);
+        }
+
+        const response = await axios.post(CREATE_POST, {
+            ...params,
+            token: TOKEN
+        }, {
+            withCredentials: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            }
+        });
         if (response.status === 200) {
             return {
                 ok: true,

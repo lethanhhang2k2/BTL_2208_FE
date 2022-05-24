@@ -69,7 +69,7 @@ function Wrapper() {
                     <Route path="/profile/:userID"
 
                         element={<PrivateRoute element={<Profile />} />} />
-                    <Route path="/create-post/"
+                    <Route path="/create-post"
                         element={<PrivateRoute element={<AddPost />} />} />
                     
                     <Route path="/test"

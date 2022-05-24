@@ -5,19 +5,24 @@ const ImagesContext = createContext<{} | null>({})
 
 interface IImages {
     children: JSX.Element,
-    images: string[]
+    images: string[],
+    setImages?: (i: any) => void
 }
 
 type ImagesContextType = {
     imgs: string[],
-    setImgs: (i: any) => void
+    is: File[],
+    setImgs: (i: any) => void,
+    setImages: (i: any) => void,
+    setIs: (i: any) => void
 }
 
-function Images({ children, images }: IImages) {
+function Images({ children, images, setImages }: IImages) {
     const [imgs, setImgs] = useState(images)
+    const [is, setIs] = useState(images)
 
     return (
-        <ImagesContext.Provider value={{ imgs, setImgs }}>
+        <ImagesContext.Provider value={{ imgs, is, setImgs, setImages, setIs }}>
             <div className="flex justify-start p-4">
                 {children}
             </div>
@@ -42,7 +47,7 @@ function ImagesList() {
 }
 
 function UploadImg() {
-    const { imgs, setImgs } = useContext(ImagesContext) as ImagesContextType 
+    const { is, imgs, setImgs, setImages, setIs } = useContext(ImagesContext) as ImagesContextType 
     
     const handleChangeImg = (e: React.SyntheticEvent) => {
 
@@ -53,7 +58,11 @@ function UploadImg() {
         const img = target.files[0]
 
         setImgs(imgs.concat(URL.createObjectURL(img)))
+        setIs(is.concat(img))
+        setImages(is.concat(img))
 
+        console.log(is)
+        
     }
 
     return (

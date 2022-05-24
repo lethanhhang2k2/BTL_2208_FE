@@ -1,7 +1,8 @@
-import { getChat } from "@api/chat";
+import { getChat, getChatBox } from "@api/chat";
 import { createPost, getAllPosts, getPost } from "@api/post";
 import { getUser } from "@api/user";
-import { useEffect, useState } from "react";
+import { UserContext } from "@hooks/UserManager";
+import { useContext, useEffect, useState } from "react";
 import { Carousel, Image } from "react-bootstrap";
 import GuyCard from "../components/GuyCard";
 import ThingCard from "../components/ThingCard";
@@ -17,6 +18,7 @@ const images = [
 export default function TestSlide() {
     const [post, setPost] = useState<MotelProperty>()
     const [posts, setPosts] = useState<MotelProperty[]>()
+    const { user } = useContext(UserContext)
     
     useEffect(() => {
         // getPost("627b8c3aa13751dc148450bc")
@@ -44,8 +46,12 @@ export default function TestSlide() {
             console.log(token);
 
         
-        getChat({ _id: "627b1c89a87b21580aad7d7c" })
+        getChat({ _id: })
             .then(chat => console.log(chat.data))
+            .catch(err => console.log(err))
+        
+        getChatBox("627cbf1e44b1954e72b8bf24")
+            .then(res => console.log(res.data))
             .catch(err => console.log(err))
     }, [])
 
