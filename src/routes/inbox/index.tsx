@@ -7,7 +7,7 @@ import AuthLayout from "@layouts/AuthLayout";
 import { memo, useState, useEffect, useContext, useRef } from "react";
 import ChatBubble from "./ChatBubble";
 import OtherBubble from "./OtherBubble";
-import { getAllConversation, getChatBox, getChatMenu } from "@api/chat";
+import { getAllConversation, getChatBox, getChatMenu, parseMessage } from "@api/chat";
 import { UserContext } from "@hooks/UserManager";
 import io from "socket.io-client";
 import { transform } from "typescript";
@@ -17,9 +17,9 @@ const socket = io("http://tiro-app.herokuapp.com", {transports: ['websocket']})
 
 function Inbox() {
     const { user } = useContext(UserContext)
-    const [other, setOther] = useState<UserProperty>()
+    const [other, setOther] = useState<any>()
     const [room, setRoom] = useState<string>("")
-    const [messages, setMessages] = useState<MessageProps[]>()
+    const [messages, setMessages] = useState<MessageProps[]>([])
     const [others, setOthers] = useState<any[]>([])
 
     const socketRef = useRef();
@@ -39,12 +39,20 @@ function Inbox() {
 
         getChatBox(other.partner_id)
             .then(res => {
-                console.log(res.data)
+                const messages = res.data.conversation.messages
+                
+                const msgs = messages.map((message: any) => {
+                    
+                    return parseMessage(message)
+                })
+
+                console.log(msgs)
+                
+
+                setMessages(msgs.reverse())
                 
                 setRoom(res.data.conversation._id)
             })
-
-        setMessages(MessagesEx.reverse())
     }
 
     const initConversation = (sender_id: string, conv_id: string, sender_name: string) => {
@@ -110,7 +118,7 @@ function Inbox() {
                                     </div>
                                     <div className="w-full h-[78%] max-h-[935px] bg-white overflow-y-auto flex flex-col-reverse pl-4 z-0">
                                         {messages?.map((message, index) => {
-                                            if (message.userId === other.id) {
+                                            if (message.userId === other.partner_id) {
                                                 return (
                                                     <OtherBubble key={index} other={other} content={message.content} />
                                                 )
