@@ -34,7 +34,7 @@ export default function AddPost() {
         postData.append("room_description", target.room_description.value)
         postData.append("rental_price", target.rental_price.value.toString())
         for (const i in images) {
-            postData.append('files', i)
+            postData.append('file', i)
         }
         
         const newPost = {

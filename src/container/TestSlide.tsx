@@ -1,4 +1,4 @@
-import { getChat, getChatBox } from "@api/chat";
+import { getAllConversation, getChatBox, getChatMenu } from "@api/chat";
 import { createPost, getAllPosts, getPost } from "@api/post";
 import { getUser } from "@api/user";
 import { UserContext } from "@hooks/UserManager";
@@ -46,12 +46,16 @@ export default function TestSlide() {
             console.log(token);
 
         
-        getChat({ _id: user.id })
+        getAllConversation({ _id: user.id })
             .then(chat => console.log(chat.data))
             .catch(err => console.log(err))
         
         getChatBox("627cbf1e44b1954e72b8bf24")
             .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        
+        getChatMenu({ _id: user.id })
+            .then(chat => console.log(chat.data))
             .catch(err => console.log(err))
     }, [])
 

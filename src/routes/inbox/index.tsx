@@ -4,20 +4,54 @@ import Avatar from "@components/Avatar";
 import ChatInput from "@components/ChatInput";
 import Icons, { IconName } from "@components/Icons";
 import AuthLayout from "@layouts/AuthLayout";
-import { memo, useState } from "react";
+import { memo, useState, useEffect, useContext, useRef } from "react";
 import ChatBubble from "./ChatBubble";
 import OtherBubble from "./OtherBubble";
+import { getAllConversation, getChatBox, getChatMenu } from "@api/chat";
+import { UserContext } from "@hooks/UserManager";
+import socketClient from "socket.io-client";
 
-const others: UserProperty[] = UserExample2
+// const ENDPOINT = "http://tiro-app.herokuapp.com"
+// const socket = socketClient("http://tiro-app.herokuapp.com")
+
 function Inbox() {
-    const user = UserExample
+    const { user } = useContext(UserContext)
     const [other, setOther] = useState<UserProperty>()
+    const [room, setRoom] = useState<string>("")
     const [messages, setMessages] = useState<MessageProps[]>()
+    const [others, setOthers] = useState<any[]>([])
 
-    const handleClickOther = (other: UserProperty) => {
+    const socketRef = useRef();
+
+    useEffect(() => {
+        getAllConversation({ _id: user.id })
+            .then(chat => {
+                const others = chat.data.AllConversation
+                console.log(others)
+                setOthers(others)
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    const handleClickOther = (other: any) => {
         setOther(other)
+
+        getChatBox(other.partner_id)
+            .then(res => {
+                console.log(res.data)
+                
+                setRoom(res.data.conversation._id)
+            })
+
         setMessages(MessagesEx.reverse())
     }
+
+    const initConversation = (sender_id: string, conv_id: string, sender_name: string) => {
+        const room_id = conv_id;
+        const user_id = sender_id;
+        const user_name = sender_name;
+        //socket.emit('setRoom', conv_id);
+     };
 
     const handleSendMessage = (msg: string) => {
         const newMsg: MessageProps = {
@@ -27,12 +61,14 @@ function Inbox() {
             sent_at: String(new Date())
         }
 
+        //socket.emit('msg', {message: msg, user: user.username, userId: user.id, room_id: room,})
+
         setMessages(messages?.reverse().concat(newMsg).reverse())
     }
 
     return (
         <AuthLayout>
-            {/* <div className="h-screen fixed top-0 w-screen">
+            <div onLoad={() => initConversation(user.id, room, user.name)} className="h-screen fixed top-0 w-screen">
                 <div className="h-full pt-16">
                     <div className="w-full h-full flex items-center justify-center p-2">
                         <div className="w-3/5 h-full rounded-sm border-2 border-solid border-gray-150 bg-white flex">
@@ -51,10 +87,10 @@ function Inbox() {
                                 <div className="overflow-y-auto max-h-[935px] h-[90%]">
                                     {others.map(other => {
                                         return (
-                                            <div className="flex items-center p-2 cursor-pointer hover:bg-gray-150/20" onClick={() => handleClickOther(other)}>
-                                                <img src={other.avtHref} width={AvatarSize.Large} height={AvatarSize.Large} className="rounded-full" />
+                                            <div key={other.partner_id} className="flex items-center p-2 cursor-pointer hover:bg-gray-150/20" onClick={() => handleClickOther(other)}>
+                                                <img src={other.avatar} width={AvatarSize.Large} height={AvatarSize.Large} className="rounded-full" />
                                                 <div>
-                                                    <div>{other.name}</div>
+                                                    <div>{other.username}</div>
                                                     <div className="text-gray-160">Trạng thái</div>
                                                 </div>
                                             </div>
@@ -67,19 +103,19 @@ function Inbox() {
                                     <div className="px-4 bg-white z-10 border-b-2 border-gray-150 border-solid h-[10%] font-bold w-full flex items-center">
                                         <Avatar size={AvatarSize.Small} user={other} border={true} />
                                         <div>
-                                            <div>{other.name}</div>
+                                            <div>{other.username}</div>
                                             <div className="text-gray-160 text-[12px]">Trạng thái</div>
                                         </div>
                                     </div>
                                     <div className="w-full h-[78%] max-h-[935px] bg-white overflow-y-auto flex flex-col-reverse pl-4 z-0">
-                                        {messages?.map(message => {
+                                        {messages?.map((message, index) => {
                                             if (message.userId === other.id) {
                                                 return (
-                                                    <OtherBubble other={other} content={message.content} />
+                                                    <OtherBubble key={index} other={other} content={message.content} />
                                                 )
                                             } else if (message.userId === user.id) {
                                                 return (
-                                                    <div className="flex justify-end py-1 px-4 relative">
+                                                    <div key={index} className="flex justify-end py-1 px-4 relative">
                                                         <ChatBubble content={message.content} />
                                                     </div>
                                                 )
@@ -95,7 +131,7 @@ function Inbox() {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </AuthLayout>
     )
 }
