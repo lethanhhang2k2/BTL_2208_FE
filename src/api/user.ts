@@ -80,8 +80,8 @@ export function updateUserData(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
         if (data) {
             axios.post(UPDATE_USER_DATA, {
-                    ...data,
-                    token: TOKEN
+                ...data,
+                token: TOKEN
             }, {
                 withCredentials: true,
                 headers: {

@@ -28,7 +28,7 @@ export default function Form1() {
             username,
             given_name: name,
             phone,
-            address
+            address,
         }
 
         async function checkValid(data) {
