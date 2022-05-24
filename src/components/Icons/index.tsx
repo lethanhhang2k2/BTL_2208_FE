@@ -26,6 +26,7 @@ import { ReactComponent as Share1 } from "@icons/share1.svg";
 import { ReactComponent as Edit4 } from "@icons/edit4.svg";
 import { ReactComponent as Setting } from "@icons/settings.svg";
 import { ReactComponent as QRCode } from "@icons/qrcode.svg";
+import { ReactComponent as CrossCircle } from "@icons/crosscircle.svg";
 
 import "./index.scss";
 
@@ -64,7 +65,8 @@ export enum IconName {
     Share1 = "Share1",
     Edit4 = "Edit4",
     Setting = "Settings",
-    QRCode = "Qrcode"
+    QRCode = "Qrcode",
+    CrossCircle= "CrossCircle"
 }
 
 const IconList = {
@@ -94,7 +96,8 @@ const IconList = {
     [IconName.Share1]: Share1,
     [IconName.Edit4]: Edit4,
     [IconName.Setting]: Setting,
-    [IconName.QRCode]: QRCode
+    [IconName.QRCode]: QRCode,
+    [IconName.CrossCircle]: CrossCircle
 }
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {

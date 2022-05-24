@@ -9,12 +9,12 @@ interface ITagBoxProps {
 function renderTagType(tag: DataTag) {
     switch (tag.type) {
         case TagType.Position:
-            return (<Tag iconName={IconName.Location1} value={tag.value} />)
+            return (<Tag key={tag.type} iconName={IconName.Location1} value={tag.value} />)
         case TagType.Price:
-            return (<Tag iconName={IconName.Coin} value={tag.value} />)
+            return (<Tag key={tag.type} iconName={IconName.Coin} value={tag.value} />)
         case TagType.Deposit:
-            return (<Tag iconName={IconName.Wallet} value={tag.value} />)
-        default: 
+            return (<Tag key={tag.type} iconName={IconName.Wallet} value={tag.value} />)
+        default:
             return (<span />)
     }
 }
