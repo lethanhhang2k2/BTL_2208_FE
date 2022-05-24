@@ -10,7 +10,7 @@ import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
 import Inbox from "@routes/inbox";
 import { UserProvider } from "@hooks/UserManager";
-import TestSlide from "./TestSlide";
+// import TestSlide from "./TestSlide";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
@@ -19,7 +19,6 @@ const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
 const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
-const RequestPostDetail = React.lazy(() => import("@routes/requestpostdetail"))
 const SearchPage = React.lazy(() => import("@routes/search"));
 const Profile = React.lazy(() => import("@routes/profile"));
 const AddPost = React.lazy(() => import("@routes/addpost"));
@@ -58,8 +57,6 @@ function Wrapper() {
                         element={<PrivateRoute element={<QuickCard />} />} />
                     <Route path="/quickcard/edit"
                         element={<PrivateRoute element={<QuickCardEdit />} />} />
-                    <Route path="/request/detail"
-                        element={<PrivateRoute element={<RequestPostDetail />} />} />
                     <Route path="/inbox"
                         element={<PrivateRoute element={<Inbox />} />} />
                     <Route path="/search"
@@ -67,13 +64,14 @@ function Wrapper() {
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
-
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/create-post"
                         element={<PrivateRoute element={<AddPost />} />} />
-                    
-                    <Route path="/test"
-                        element={<TestSlide />} />
+                    <Route path="/post/:postID"
+                        element={<PrivateRoute element={<AddPost />} />} />
+
+                    {/* <Route path="/test"
+                        element={<TestSlide />} /> */}
                     <Route path="/"
                         element={<NewFeed />} />
                 </Routes>

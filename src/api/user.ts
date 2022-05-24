@@ -8,13 +8,11 @@ const GET_USER = "http://tiro-app.herokuapp.com/user/get/";
 const UPDATE_USER_DATA = "http://tiro-app.herokuapp.com/user/update";
 
 export function parseUser(user: any): UserProperty {
-    console.log(user);
-
     return {
         id: user["_id"],
         username: user["username"],
         name: user["given_name"],
-        avtHref: user["picture"]["name"],
+        avtHref: (user["picture"]["name"].includes("http")) ? user["picture"]["name"] : "https://tiro-app.herokuapp.com/upload/avatar/" + user["picture"]["name"],
         theme: user["theme"],
         distance: user["distance"],
         address: "",
@@ -27,7 +25,7 @@ export function parseUser(user: any): UserProperty {
 export async function getUserData(): Promise<{ ok: boolean, data: any }> {
     try {
         console.log(TOKEN)
-        
+
         const response = await axios.post(GET_USER_ME, {
             withCredentials: true,
             headers: {

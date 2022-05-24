@@ -7,6 +7,7 @@ import { parseUser } from '@api/user';
 import { getUser, getUserData } from '@api/user';
 import { MotelProperty } from "@AppTypes/motel";
 import axios from "axios";
+import { AnyARecord } from 'dns';
 
 const GET_ALL_POSTS = "http://tiro-app.herokuapp.com/post/get-all";
 const GET_POST = "http://tiro-app.herokuapp.com/post/get/";
@@ -132,7 +133,7 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
     }
 }
 
-export async function createPost(params: object): Promise<{ ok: boolean, data: any }> {
+export async function createPost(params: any): Promise<{ ok: boolean, data: any }> {
     try {
         let form_data = new FormData();
 

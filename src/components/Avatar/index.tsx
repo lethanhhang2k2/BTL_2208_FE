@@ -14,7 +14,7 @@ export default class Avatar extends React.Component<IAvatarProps, {}>{
     render() {
         const { link_to_profile, user, size, border = false } = this.props;
         return (
-            <Link to={(link_to_profile ? link_to_profile : "/profile")} className="flex-none">
+            <Link to={(link_to_profile ? "/profile/" + link_to_profile : "/profile")} className="flex-none">
                 {user.avtHref ? (
                     <img
                         src={user.avtHref}

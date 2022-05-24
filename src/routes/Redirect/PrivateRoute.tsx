@@ -13,7 +13,6 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
 
     useEffect(() => {
         if (isInitialized) {
-            
             getUserData()
                 .then(user => {
                     console.log(user);
@@ -31,7 +30,6 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
         }
     }, [isInitialized]);
 
-    console.log(isInitialized);
     if (!isInitialized) {
         return <Loading />
     } else {
@@ -44,20 +42,6 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
         }
         return isSignedIn ? element : <Navigate to="/login" />;
     };
-
-    // if (!isInitialized) {
-    //     return element;
-    // } else {
-    //     if (isSignedIn) {
-    //         return (loading)
-    //             ? element
-    //             : (state)
-    //                 ? element
-    //                 : element
-    //     }
-    //     return isSignedIn ? element : element;
-    // };
-
 }
 
 export default PrivateRoute;

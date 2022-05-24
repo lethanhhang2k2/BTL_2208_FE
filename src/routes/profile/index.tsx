@@ -1,12 +1,15 @@
 import React from "react";
 import AuthLayout from "@layouts/AuthLayout";
 import Avatar from "@components/Avatar";
-import { UserExample, AvatarSize } from "@AppTypes/user";
+import { UserExample, AvatarSize, UserProperty } from "@AppTypes/user";
 import QuickRedirect from "@components/QuickRedirect";
 import UserInfo from "./components/userInfo";
 import Tab from "./components/tab";
 import PostCard from "@components/PostCard";
 import { useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { UserContext } from "@hooks/UserManager";
+import { parseUser, getUser } from "@api/user";
 
 const tabList = [
     { title: "Gắn thẻ", isActive: false },
@@ -51,14 +54,36 @@ const postList = [
 
 interface IState {
     tabList_: { title: string, isActive: boolean }[],
+    user: UserProperty;
 }
 
 
 
 export default function Profile() {
     const [tabList_, setTabList_] = React.useState<IState["tabList_"]>(tabList);
+    const [user_, setUser] = React.useState<IState["user"]>(UserExample);
     const { userID } = useParams();
-    console.log(userID);
+    const { user } = useContext(UserContext);
+
+    useEffect(() => {
+        console.log(userID);
+        
+        if (userID) {
+            getUser(userID as string)
+                .then(user => {
+                    if (user.ok) {
+                        setUser(parseUser(user.data.user));
+                    } else {
+                        console.log("error");
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            setUser(user);
+        }
+    }, []);
 
     const handleTabClick = (selectedIndex: number) => {
         let tabListModifier = tabList_;
@@ -75,9 +100,9 @@ export default function Profile() {
                 <div className="max-w-[1000px] w-full flex flex-col items-center">
                     <div className="flex mt-5 mb-5 flex-col md:flex-row">
                         <div className="mx-auto mb-5 md:mb-0 md:mx-0">
-                            <Avatar user={UserExample} size={AvatarSize.X2Large} />
+                            <Avatar user={user_} size={AvatarSize.X2Large} />
                         </div>
-                        <UserInfo user={UserExample} />
+                        <UserInfo user={user_} />
                     </div>
                     <div className="md:flex hidden">
                         {tabList_.map((tab, index) => (
