@@ -4,8 +4,10 @@ import Feed from "@components/Feed";
 import { MotelProperty, MotelStatus } from "@AppTypes/motel";
 import { UserExample } from "@AppTypes/user";
 import { DataTagsExample } from "@AppTypes/tag";
+import { useEffect, useState } from "react";
+import { getPost, parsePost } from "@api/post";
 
-const feedData: MotelProperty = {
+const feedDataDemo: MotelProperty = {
     id: "15651321651",
     title: "Chung cư tại cầu giấy",
     owner: "",
@@ -36,6 +38,17 @@ const feedData: MotelProperty = {
 
 export default function PostDetail() {
     const { postID } = useParams();
+    const [feedData, setFeedData] = useState(feedDataDemo);
+    useEffect(() => {
+        if (postID) {
+            getPost(postID as string)
+                .then(res => {
+                    console.log(res.data.post);
+                    setFeedData(parsePost(res.data.post))
+                })
+                .catch(err => console.log(err));
+        }
+    }, [])
     return (
         <AuthLayout>
             <div className="pt-16 flex justify-center">

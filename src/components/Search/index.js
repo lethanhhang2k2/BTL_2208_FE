@@ -8,6 +8,12 @@ export default function Search() {
                 <input
                     className="bg-transparent w-4/5 outline-0"
                     placeholder="Tìm trọ / Khu vực / Giá cả"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            var text = e.target.value;
+                            window.location.href = `/search?q=${text}`;
+                        }                        
+                    }}
                 />
                 <IconButton>
                     <Icons iconName={IconName.Filters3} stroke="#bbbbbb" />
