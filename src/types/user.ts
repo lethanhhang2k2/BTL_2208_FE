@@ -9,6 +9,7 @@ export enum UserRole { Admin = "admin", Renter = "renter", LandLord = "landlord"
 export enum AvatarSize { SSmall = "32px", Small = "50px", Medium = "60px", Large = "80px", XLarge = "120px", X2Large = "180px" }
 
 export interface UserProperty {
+    partner_id: string;
     id: string,
     username: string,
     name: string,
