@@ -9,10 +9,11 @@ import ChatBubble from "./ChatBubble";
 import OtherBubble from "./OtherBubble";
 import { getAllConversation, getChatBox, getChatMenu } from "@api/chat";
 import { UserContext } from "@hooks/UserManager";
-import socketClient from "socket.io-client";
+import io from "socket.io-client";
+import { transform } from "typescript";
 
 // const ENDPOINT = "http://tiro-app.herokuapp.com"
-// const socket = socketClient("http://tiro-app.herokuapp.com")
+const socket = io("http://tiro-app.herokuapp.com", {transports: ['websocket']})
 
 function Inbox() {
     const { user } = useContext(UserContext)
@@ -50,7 +51,7 @@ function Inbox() {
         const room_id = conv_id;
         const user_id = sender_id;
         const user_name = sender_name;
-        //socket.emit('setRoom', conv_id);
+        socket.emit('setRoom', conv_id);
      };
 
     const handleSendMessage = (msg: string) => {
@@ -61,7 +62,7 @@ function Inbox() {
             sent_at: String(new Date())
         }
 
-        //socket.emit('msg', {message: msg, user: user.username, userId: user.id, room_id: room,})
+        socket.emit('msg', {message: msg, user: user.username, userId: user.id, room_id: room,})
 
         setMessages(messages?.reverse().concat(newMsg).reverse())
     }
