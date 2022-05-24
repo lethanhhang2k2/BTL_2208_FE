@@ -143,6 +143,12 @@ export async function createPost(params: any): Promise<{ ok: boolean, data: any 
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             }
         });
+        for (var pair of params.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
+        
+        console.log(response);
+        
         if (response.status === 200) {
             return {
                 ok: true,
@@ -157,7 +163,3 @@ export async function createPost(params: any): Promise<{ ok: boolean, data: any 
         data: undefined
     }
 }
-
-
-
-

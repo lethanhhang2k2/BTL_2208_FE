@@ -8,6 +8,7 @@ import { MotelProperty, MotelExampleList } from "@AppTypes/motel"
 import TagSearch from "./components/tag_search";
 import IconButton from "@components/IconButton";
 import Icons, { IconName } from "@components/Icons";
+import { getSearch } from "@api/search";
 
 
 const feeds: MotelProperty[] = MotelExampleList;
@@ -26,6 +27,7 @@ interface IState {
     priceFilter: {
         title: string;
         isCheck: boolean;
+        id: number;
     }[],
     keyword: string;
 }
@@ -39,16 +41,19 @@ export default class SearchPage extends React.Component<{}, IState> {
             addressFilter: [],
             priceFilter: [
                 {
-                    title: "Dưới 4tr",
-                    isCheck: false
+                    title: "Dưới 2tr",
+                    isCheck: false,
+                    id: 0
                 },
                 {
                     title: "Từ 2 - 4tr",
-                    isCheck: false
+                    isCheck: false,
+                    id: 1
                 },
                 {
                     title: "Trên 4tr",
-                    isCheck: false
+                    isCheck: false,
+                    id: 2
                 }
             ]
         }
@@ -59,15 +64,24 @@ export default class SearchPage extends React.Component<{}, IState> {
         this.setState({ keyword: q as string });
     }
 
-    find():void {
+    find(): void {
         console.log("find");
+        getSearch(this.state.addressFilter, this.state.priceFilter.map(item => item.id), this.state.keyword)
+            .then(res => {
+                console.log(res);
+                if (res.ok) {
+                    // List of filter
+                    // List of users
+                    // Handle success
+                }
+            })
     }
 
     render() {
         return (
             <AuthLayout>
                 <div className="pt-16 flex flex-col items-center">
-                    <div className="text-5xl font-bold text-gray-600 mb-14">{"Kết quả tìm kiếm của " + this.state.keyword} </div>
+                    <div className="text-5xl font-bold text-gray-600 mb-14">{"Kết quả tìm kiếm của: " + this.state.keyword} </div>
                     <div className="max-w-[950px] w-full rounded-lg bg-indigo-50 mb-5 p-4">
                         <div className="flex mb-3 items-center">
                             <p className="font-semibold mr-3 min-w-fit">Xem kết quả tại</p>
