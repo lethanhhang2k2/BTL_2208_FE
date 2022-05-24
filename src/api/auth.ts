@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from 'js-cookie'
 
-const POST_VERIFY_TOKEN = process.env["REACT_APP_HOST"] + "/user/auth/google-login";
+const POST_VERIFY_TOKEN = "http://tiro-app.herokuapp.com/user/auth/google-login";
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",
@@ -19,7 +19,7 @@ interface IAccountResponse {
 
 // This function is only used for testing purposes.
 function setToken(token: string) {
-    Cookies.set('session-token', token);
+    Cookies.set('session-token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5naGlhY2FuZ2FvQGdtYWlsLmNvbSIsImlhdCI6MTY1MzI3MDk3NSwiZXhwIjoxNjUzMjgxNzc1fQ.0jCW2tRzZIWVjdE1tvnbL_eNFIDiZ_5dINIyuO9SOYY");
 }
 
 export async function getVerifyToken(token: string): Promise<IAccountResponse | undefined> {

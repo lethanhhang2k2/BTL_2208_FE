@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useEffect } from "react";
 import {
-    BrowserRouter,
+    BrowserRouter as Router,
     Routes,
     Route,
     useLocation
@@ -10,6 +10,7 @@ import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
 import Inbox from "@routes/inbox";
 import { UserProvider } from "@hooks/UserManager";
+import TestSlide from "./TestSlide";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
@@ -47,8 +48,8 @@ function Wrapper() {
                     <Route path="/login"
                         element={<Login />} />
 
-                    <Route path="/"
-                        element={<PrivateRoute element={<NewFeed />} />} />
+                    {/* <Route path="/"
+                        element={<PrivateRoute element={<NewFeed />} />} /> */}
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
                     <Route path="/nametag"
@@ -70,6 +71,11 @@ function Wrapper() {
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/create-post/"
                         element={<PrivateRoute element={<AddPost />} />} />
+                    
+                    <Route path="/test"
+                        element={<TestSlide />} />
+                    <Route path="/"
+                        element={<NewFeed />} />
                 </Routes>
             </Suspense>
         </div>
@@ -79,9 +85,9 @@ function Wrapper() {
 export default function MainApp() {
     return (
         <UserProvider>
-            <BrowserRouter>
+            <Router>
                 <Wrapper />
-            </BrowserRouter>
+            </Router>
         </UserProvider>
     )
 }

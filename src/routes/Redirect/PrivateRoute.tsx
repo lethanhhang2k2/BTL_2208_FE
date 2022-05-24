@@ -4,6 +4,7 @@ import { useGoogleAuth } from "@hooks/GoogleAuthProvider";
 import Loading from "./Components/Loading";
 import { getUserData, parseUser } from "@api/user";
 import { UserContext } from "@hooks/UserManager";
+import Cookies from "js-cookie";
 
 const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
     const { setUser } = React.useContext(UserContext);
@@ -13,10 +14,14 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
 
     useEffect(() => {
         if (isInitialized) {
-            getUserData()
+            const cookie = document.cookie
+            const token = cookie.split("session-token=")
+            console.log(token);
+            
+            getUserData(token[1])
                 .then(user => {
-                    // console.log(user);
-                    setUser(parseUser(user.data["user_data"]));
+                    console.log(user);
+                    setUser(parseUser(user.data.user_data));
                     setState(user.ok);
                     if (!user.ok) signOut();
                     setLoading(false);
@@ -31,18 +36,32 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
     }, [isInitialized]);
 
     // console.log(isInitialized);
+    // if (!isInitialized) {
+    //     return <Loading />
+    // } else {
+    //     if (isSignedIn) {
+    //         return (loading)
+    //             ? <Loading />
+    //             : (state)
+    //                 ? element
+    //                 : <Navigate to="/login" />
+    //     }
+    //     return isSignedIn ? element : <Navigate to="/login" />;
+    // };
+
     if (!isInitialized) {
-        return <Loading />
+        return element;
     } else {
         if (isSignedIn) {
             return (loading)
-                ? <Loading />
+                ? element
                 : (state)
                     ? element
-                    : <Navigate to="/login" />
+                    : element
         }
-        return isSignedIn ? element : <Navigate to="/login" />;
+        return isSignedIn ? element : element;
     };
+
 }
 
 export default PrivateRoute;
