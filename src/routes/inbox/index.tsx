@@ -70,7 +70,11 @@ function Inbox() {
             sent_at: String(new Date())
         }
 
-        socket.emit('msg', {message: msg, user: user.username, userId: user.id, room_id: room,})
+        socket.emit('msg', { message: msg, user: user.username, userId: user.id, room_id: room, })
+        
+        socket.on('newmsg', function ({  }) {
+            
+        })
 
         setMessages(messages?.reverse().concat(newMsg).reverse())
     }

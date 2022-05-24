@@ -8,20 +8,34 @@ import AddComment from "./components/AddComment";
 
 import { MotelProperty } from "@AppTypes/motel";
 import { getUser, parseUser } from "@api/user";
-import { UserProperty } from "@AppTypes/user";
+import { UserExample, UserProperty } from "@AppTypes/user";
+import { CommentExample, CommentProperty } from "@AppTypes/comment";
 interface IFeedProps {
     data: any,
     isShowFullComment?: boolean,
 }
 
 export default function Feed({ data, isShowFullComment = false } : IFeedProps) {
-        const [ user, setUser ] = useState<UserProperty>()
+    const [user, setUser] = useState<UserProperty>(UserExample)
+    const [comments, setComments] = useState([CommentExample])
 
         useEffect(() => {
             getUser(data.owner)
                 .then(res => setUser(parseUser(res.data.user)))
                 .catch(err => console.log(err))
         }, [])
+    
+    const handleAddComment = (comment: string) => {
+        
+        const newCmt: CommentProperty = {
+            id: "",
+            owner: user,
+            content: comment,
+            createdAt: new Date(),
+        }
+            
+            setComments(comments.concat(newCmt))
+        }
 
         return (
             <div className="w-full bg-white sm:rounded-xl border-solid sm:border-gray-150  sm:border-2 mb-16">
@@ -33,12 +47,12 @@ export default function Feed({ data, isShowFullComment = false } : IFeedProps) {
                 <ImageFeed images={data.images} />
                 <FooterFeed createAt={data.createAt} />
                 {data.comments && <Comment
-                    data={data.comments}
-                    dataSize={data.comments.length}
-                    post_link={data.post_link}
+                    data={comments}
+                    dataSize={comments.length}
+                    //post_link={data.post_link}
                     isShowFullComment={isShowFullComment}
                 />}
-                <AddComment />
+                <AddComment handleAddComment={handleAddComment} />
             </div>
         )
     }
