@@ -4,9 +4,10 @@ interface IAddInput {
     iconName: IconName,
     name: string,
     placeholder: string,
+    type?: string
 }
 
-export default function AddInput({ iconName, name, placeholder }: IAddInput) {
+export default function AddInput({ type = "text", iconName, name, placeholder }: IAddInput) {
     return (
         <div className="flex p-2 w-full bg-gray-150/50 rounded-full my-2">
             <Icons iconName={iconName} stroke="#CCCCCC" strokeWidth="2" />
@@ -15,6 +16,7 @@ export default function AddInput({ iconName, name, placeholder }: IAddInput) {
                     name={name}
                     placeholder={placeholder}
                     className="outline-none bg-transparent w-full"
+                    type={type}
                     required
                 />
             </div>

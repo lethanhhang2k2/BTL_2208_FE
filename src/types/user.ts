@@ -23,6 +23,7 @@ export interface UserProperty {
     email: string,
     phone: string,
     profile_link: string,
+    token?: string
 }
 
 export const UserExample: UserProperty = {

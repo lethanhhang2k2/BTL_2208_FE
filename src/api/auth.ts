@@ -3,6 +3,8 @@ import Cookies from 'js-cookie'
 
 const POST_VERIFY_TOKEN = "http://tiro-app.herokuapp.com/user/auth/google-login";
 
+export const TOKEN = document.cookie.split("session-token=")[1].split(";")[0]
+
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",
     EXISTENT_ACCOUNT = "EXISTENT_ACCOUNT",
@@ -19,14 +21,14 @@ interface IAccountResponse {
 
 // This function is only used for testing purposes.
 function setToken(token: string) {
-    Cookies.set('session-token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5naGlhY2FuZ2FvQGdtYWlsLmNvbSIsImlhdCI6MTY1MzI3MDk3NSwiZXhwIjoxNjUzMjgxNzc1fQ.0jCW2tRzZIWVjdE1tvnbL_eNFIDiZ_5dINIyuO9SOYY");
+    Cookies.set('session-token', token);
 }
 
 export async function getVerifyToken(token: string): Promise<IAccountResponse | undefined> {
     try {
         const response = await axios.post(POST_VERIFY_TOKEN, { credential: token }, {
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "localhost:3000",
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
             }
         });
