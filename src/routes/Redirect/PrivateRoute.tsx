@@ -36,18 +36,32 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
     }, [isInitialized]);
 
     // console.log(isInitialized);
+    // if (!isInitialized) {
+    //     return <Loading />
+    // } else {
+    //     if (isSignedIn) {
+    //         return (loading)
+    //             ? <Loading />
+    //             : (state)
+    //                 ? element
+    //                 : <Navigate to="/login" />
+    //     }
+    //     return isSignedIn ? element : <Navigate to="/login" />;
+    // };
+
     if (!isInitialized) {
-        return <Loading />
+        return element;
     } else {
         if (isSignedIn) {
             return (loading)
-                ? <Loading />
+                ? element
                 : (state)
                     ? element
-                    : <Navigate to="/login" />
+                    : element
         }
-        return isSignedIn ? element : <Navigate to="/login" />;
+        return isSignedIn ? element : element;
     };
+
 }
 
 export default PrivateRoute;

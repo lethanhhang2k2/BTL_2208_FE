@@ -2,9 +2,16 @@ import axios from "axios";
 import { UserProperty } from "@AppTypes/user";
 import FormData from 'form-data'
 
+<<<<<<< HEAD
 const GET_USER_ME = "http://tiro-app.herokuapp.com/user/get-me";
 const GET_USER = "http://tiro-app.herokuapp.com/user/get/";
 const UPDATE_USER_DATA = "http://tiro-app.herokuapp.com/user/update";
+=======
+const GET_USER_DATA = process.env["REACT_APP_HOST"] + "/user/get";
+const UPDATE_USER_DATA = process.env["REACT_APP_HOST"] + "/user/update";
+console.log(process.env, GET_USER_DATA, UPDATE_USER_DATA);
+
+>>>>>>> 5437dbf2cee099b0be2ade42c6732a9039240a2f
 
 export function parseUser(user: any): UserProperty {
     console.log(user);
@@ -25,10 +32,18 @@ export function parseUser(user: any): UserProperty {
 
 export async function getUserData(token: string): Promise<{ ok: boolean, data: any }> {
     try {
+<<<<<<< HEAD
         const response = await axios.post(GET_USER_ME, {
+=======
+        const response = await axios(GET_USER_DATA, {
+            method: "get",
+            data:{
+                cookies: document.cookie
+            },
+>>>>>>> 5437dbf2cee099b0be2ade42c6732a9039240a2f
             withCredentials: true,
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             },
             token
@@ -76,10 +91,13 @@ export async function getUser(id: string): Promise<{ ok: boolean, data: any }> {
 export function updateUserData(data: any): Promise<any> {
     return new Promise((resolve, reject) => {
         if (data) {
-            axios.post(UPDATE_USER_DATA, data, {
+            axios.post(UPDATE_USER_DATA, {
+                cookies: document.cookie,
+                data
+            }, {
                 withCredentials: true,
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
                 }
             })
@@ -101,10 +119,13 @@ export function uploadImage(file: File): Promise<any> {
             formData.append("file", file);
             console.log(formData);
 
-            axios.post(UPDATE_USER_DATA, formData, {
+            axios.post(UPDATE_USER_DATA, {
+                cookies: document.cookie,
+                data: formData
+            }, {
                 withCredentials: true,
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
                     'Content-Type': 'multipart/form-data'
                 }

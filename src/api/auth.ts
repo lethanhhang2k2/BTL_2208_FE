@@ -19,7 +19,7 @@ interface IAccountResponse {
 
 // This function is only used for testing purposes.
 function setToken(token: string) {
-    Cookies.set('session-token', token);
+    Cookies.set('session-token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5naGlhY2FuZ2FvQGdtYWlsLmNvbSIsImlhdCI6MTY1MzI3MDk3NSwiZXhwIjoxNjUzMjgxNzc1fQ.0jCW2tRzZIWVjdE1tvnbL_eNFIDiZ_5dINIyuO9SOYY");
 }
 
 export async function getVerifyToken(token: string): Promise<IAccountResponse | undefined> {
