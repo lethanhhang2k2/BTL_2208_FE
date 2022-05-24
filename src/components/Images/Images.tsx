@@ -1,10 +1,6 @@
 import Icons, { IconName } from "@components/Icons"
-<<<<<<< HEAD
 import { createContext, useContext, useState } from "react"
 
-=======
-import { useState, useContext, useEffect, createContext } from "react"
->>>>>>> 5437dbf2cee099b0be2ade42c6732a9039240a2f
 const ImagesContext = createContext<{} | null>({})
 
 interface IImages {
@@ -46,14 +42,8 @@ function ImagesList() {
 }
 
 function UploadImg() {
-<<<<<<< HEAD
     const { imgs, setImgs } = useContext(ImagesContext) as ImagesContextType 
     
-=======
-    const { imgs, setImgs } = useContext(ImagesContext) as ImagesContextType
-    const [img, setImg] = useState("")
-
->>>>>>> 5437dbf2cee099b0be2ade42c6732a9039240a2f
     const handleChangeImg = (e: React.SyntheticEvent) => {
 
         const target = e.target as typeof e.target & {
