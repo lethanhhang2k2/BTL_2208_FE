@@ -134,12 +134,6 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
 
 export async function createPost(params: object): Promise<{ ok: boolean, data: any }> {
     try {
-        let form_data = new FormData();
-
-        for ( let key in params ) {
-            form_data.append(key, params[key]);
-        }
-
         const response = await axios.post(CREATE_POST, {
             ...params,
             token: TOKEN

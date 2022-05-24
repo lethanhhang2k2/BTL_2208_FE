@@ -46,7 +46,7 @@ export default function TestSlide() {
             console.log(token);
 
         
-        getChat({ _id: })
+        getChat({ _id: user.id })
             .then(chat => console.log(chat.data))
             .catch(err => console.log(err))
         
