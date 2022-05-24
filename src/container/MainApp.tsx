@@ -47,7 +47,6 @@ function Wrapper() {
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path="/login"
                         element={<Login />} />
-
                     <Route path="/"
                         element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
