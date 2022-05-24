@@ -1,4 +1,5 @@
 import Icons, { IconName } from "@components/Icons"
+import { createContext, useContext, useState } from "react"
 
 const ImagesContext = createContext<{} | null>({})
 
@@ -42,7 +43,6 @@ function ImagesList() {
 
 function UploadImg() {
     const { imgs, setImgs } = useContext(ImagesContext) as ImagesContextType 
-    const [img, setImg] = useState("")
     
     const handleChangeImg = (e: React.SyntheticEvent) => {
 
@@ -54,14 +54,7 @@ function UploadImg() {
 
         setImgs(imgs.concat(URL.createObjectURL(img)))
 
-        console.log(URL.createObjectURL(img));
     }
-
-    useEffect(() => {
-        return () => {
-            URL.revokeObjectURL(img)
-        }
-    }, [img])
 
     return (
         <>

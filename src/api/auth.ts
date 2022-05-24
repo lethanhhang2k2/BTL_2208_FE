@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from 'js-cookie'
 
-const POST_VERIFY_TOKEN = process.env["REACT_APP_HOST"] + "/user/auth/google-login";
+const POST_VERIFY_TOKEN = "http://tiro-app.herokuapp.com/user/auth/google-login";
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",

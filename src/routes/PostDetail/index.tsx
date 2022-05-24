@@ -8,7 +8,7 @@ import { DataTagsExample } from "@AppTypes/tag";
 const feedData: MotelProperty = {
     id: "15651321651",
     title: "Chung cư tại cầu giấy",
-    owner: UserExample,
+    owner: "",
     address: "Xuan Thuy Cau Giay",
     fee: "2tr",
     description: "Rong rai, thoang mat",
