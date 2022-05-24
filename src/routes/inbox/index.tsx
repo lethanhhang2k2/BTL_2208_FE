@@ -32,7 +32,7 @@ function Inbox() {
 
     return (
         <AuthLayout>
-            {/* <div className="h-screen fixed top-0 w-screen">
+            <div className="h-screen fixed top-0 w-screen">
                 <div className="h-full pt-16">
                     <div className="w-full h-full flex items-center justify-center p-2">
                         <div className="w-3/5 h-full rounded-sm border-2 border-solid border-gray-150 bg-white flex">
@@ -95,7 +95,7 @@ function Inbox() {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </AuthLayout>
     )
 }

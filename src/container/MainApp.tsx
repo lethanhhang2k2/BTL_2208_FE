@@ -48,8 +48,8 @@ function Wrapper() {
                     <Route path="/login"
                         element={<Login />} />
 
-                    {/* <Route path="/"
-                        element={<PrivateRoute element={<NewFeed />} />} /> */}
+                    <Route path="/"
+                        element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
                     <Route path="/nametag"
