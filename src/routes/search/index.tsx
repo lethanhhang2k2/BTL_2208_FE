@@ -26,12 +26,14 @@ interface IState {
     priceFilter: {
         title: string;
         isCheck: boolean;
-    }[]
+    }[],
+    keyword: string;
 }
 export default class SearchPage extends React.Component<{}, IState> {
     constructor(prop: any) {
         super(prop);
         this.state = {
+            keyword: "",
             addressTyping: "",
             isTypingFilterAddress: false,
             addressFilter: [],
@@ -50,13 +52,22 @@ export default class SearchPage extends React.Component<{}, IState> {
                 }
             ]
         }
-
     }
+    componentDidMount() {
+        var url = new URL(window.location.href);
+        var q = (url.searchParams.get("q")) ? url.searchParams.get("q") : "";
+        this.setState({ keyword: q as string });
+    }
+
+    find():void {
+        console.log("find");
+    }
+
     render() {
         return (
             <AuthLayout>
                 <div className="pt-16 flex flex-col items-center">
-                    <div className="text-5xl font-bold text-gray-600 mb-14">Kết quả tìm kiếm của "Tim tro" </div>
+                    <div className="text-5xl font-bold text-gray-600 mb-14">{"Kết quả tìm kiếm của " + this.state.keyword} </div>
                     <div className="max-w-[950px] w-full rounded-lg bg-indigo-50 mb-5 p-4">
                         <div className="flex mb-3 items-center">
                             <p className="font-semibold mr-3 min-w-fit">Xem kết quả tại</p>
@@ -123,6 +134,11 @@ export default class SearchPage extends React.Component<{}, IState> {
                                 }
                             </div>
                         </div>
+                        <button
+                            className="rounded-xl bg-blue-200 m-1 mt-4 px-4 w-fit py-1 font-semibold hover:bg-blue-300"
+                            onClick={this.find.bind(this)}>
+                            Lọc
+                        </button>
                     </div>
                     <div className="max-w-[950px] w-full flex flex-col lg:flex-row justify-center items-center lg:items-start relative">
                         <div className="mr-0 max-w-[596px] lg:mr-[32px] w-full">

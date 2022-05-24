@@ -1,13 +1,7 @@
 import { TOKEN } from './auth';
-import { DataTag } from '@AppTypes/tag';
-import { TagType } from '@AppTypes/tag';
 import { DataTagsExample } from '@AppTypes/tag';
-import { UserProperty } from './../types/user';
-import { parseUser } from '@api/user';
-import { getUser, getUserData } from '@api/user';
 import { MotelProperty } from "@AppTypes/motel";
 import axios from "axios";
-import { AnyARecord } from 'dns';
 
 const GET_ALL_POSTS = "http://tiro-app.herokuapp.com/post/get-all";
 const GET_POST = "http://tiro-app.herokuapp.com/post/get/";
@@ -17,10 +11,7 @@ const GET_MY_POST = "http://tiro-app.herokuapp.com/post/my-post";
 const CREATE_POST = "http://tiro-app.herokuapp.com/post/new"
 
 export function parsePost(post: any): any {
-    const expenses: any = post.information.expenses
-
-     console.log(expenses);
-
+    const expenses: any = post.information.expenses;
     // const rentalPrice = expenses.rental_price
     // const deposit = expenses.deposit
 
@@ -56,7 +47,8 @@ export function parsePost(post: any): any {
         comments: [],
         post_link: ""
     };
-
+    console.log(p);
+    
     return p 
 }
 
