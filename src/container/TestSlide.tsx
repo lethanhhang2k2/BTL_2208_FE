@@ -40,7 +40,8 @@ export default function TestSlide() {
         
         getChatBox("628d4e87c0949da4e14be571")
             .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+        .catch(err => console.log(err))
+    
         
     //     getChatMenu({ _id: user.id })
     //         .then(chat => console.log(chat.data))
@@ -49,7 +50,9 @@ export default function TestSlide() {
 
 
     return (
-        <div></div>);
+        <div>
+
+        </div>);
     //         <div className="h-[50%] w-[50%] bg-black">
     //             <h1>
     //                 Trang này là để test slide của boostrap.
