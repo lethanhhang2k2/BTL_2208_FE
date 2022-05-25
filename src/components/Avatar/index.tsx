@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserProperty, AvatarSize } from "@AppTypes/user";
 import Icons, { IconName } from "@components/Icons";
+import { UserContext } from "@hooks/UserManager";
 
 interface IAvatarProps {
     user: UserProperty,
@@ -10,18 +11,18 @@ interface IAvatarProps {
     link_to_profile?: string
 }
 
-export default class Avatar extends React.Component<IAvatarProps, {}>{
-    render() {
-        const { link_to_profile, user, size, border = false } = this.props;
+export default function Avatar({ user, size, border, link_to_profile }: IAvatarProps) {
+    const { user: u} = useContext(UserContext)
+
         return (
-            <Link to={(link_to_profile ? "/profile/" + link_to_profile : "/profile")} className="flex-none">
+            <Link to={user.id !== u.id ? "/profile/" + user.id : "/profile"} className="flex-none">
                 {user.avtHref ? (
                     <img
                         src={user.avtHref}
                         alt="user-avatar"
                         width={size}
                         height={size}
-                        className={`rounded-full ${border && "border-4 border-white border-solid"}`}
+                        className={`rounded-full object-cover ${border && "border-4 border-white border-solid"}`}
                     ></img>
                 ) : (
                     <div
@@ -33,4 +34,3 @@ export default class Avatar extends React.Component<IAvatarProps, {}>{
             </Link>
         );
     }
-};

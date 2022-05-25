@@ -83,7 +83,7 @@ export default function Profile() {
         } else {
             setUser(user);
         }
-    }, []);
+    }, [userID]);
 
     const handleTabClick = (selectedIndex: number) => {
         let tabListModifier = tabList_;

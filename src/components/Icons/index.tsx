@@ -27,6 +27,7 @@ import { ReactComponent as Edit4 } from "@icons/edit4.svg";
 import { ReactComponent as Setting } from "@icons/settings.svg";
 import { ReactComponent as QRCode } from "@icons/qrcode.svg";
 import { ReactComponent as CrossCircle } from "@icons/crosscircle.svg";
+import { ReactComponent as Logout } from "@icons/logout.svg";
 
 import "./index.scss";
 
@@ -66,7 +67,8 @@ export enum IconName {
     Edit4 = "Edit4",
     Setting = "Settings",
     QRCode = "Qrcode",
-    CrossCircle= "CrossCircle"
+    CrossCircle = "CrossCircle",
+    Logout = "Logout"
 }
 
 const IconList = {
@@ -97,7 +99,8 @@ const IconList = {
     [IconName.Edit4]: Edit4,
     [IconName.Setting]: Setting,
     [IconName.QRCode]: QRCode,
-    [IconName.CrossCircle]: CrossCircle
+    [IconName.CrossCircle]: CrossCircle,
+    [IconName.Logout]: Logout
 }
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {
