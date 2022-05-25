@@ -25,19 +25,21 @@ export function parseUser(user: any): UserProperty {
 export async function getUserData(): Promise<{ ok: boolean, data: any }> {
     try {
         console.log(TOKEN)
-
-        const response = await axios.post(GET_USER_ME, {
-            withCredentials: true,
-            headers: {
-                "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            },
-            token: TOKEN
-        });
-        if (response.status === 200) {
-            return {
-                ok: true,
-                data: response.data
+        
+        if (TOKEN) {
+            const response = await axios.post(GET_USER_ME, {
+                withCredentials: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+                },
+                token: TOKEN
+            });
+            if (response.status === 200) {
+                return {
+                    ok: true,
+                    data: response.data
+                }
             }
         }
     } catch (error) {
