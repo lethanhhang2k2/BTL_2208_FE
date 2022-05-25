@@ -42,23 +42,6 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
         }
         return isSignedIn ? element : <Navigate to="/login" />;
     };
-<<<<<<< HEAD
-
-    // if (!isInitialized) {
-    //     return element;
-    // } else {
-    //     if (isSignedIn) {
-    //         return (loading)
-    //             ? element
-    //             : (state)
-    //                 ? element
-    //                 : element
-    //     }
-    //     return isSignedIn ? element : element;
-    // };
-
-=======
->>>>>>> hahacontribute
 }
 
 export default PrivateRoute;
