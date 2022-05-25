@@ -53,6 +53,9 @@ export default function AddPost() {
         
         createPost(postData)
             .then(res => console.log(res.data))
+            .then(() => {
+                window.location.href = "/"
+            })
             .catch(err => console.log(err))
 
     }

@@ -3,7 +3,15 @@ import Cookies from 'js-cookie'
 
 const POST_VERIFY_TOKEN = "http://tiro-app.herokuapp.com/user/auth/google-login";
 
+<<<<<<< HEAD
 export let TOKEN = document.cookie?.split("session-token=")[1]?.split(";")[0].trim()
+=======
+<<<<<<< HEAD
+export const TOKEN = (document.cookie.split("session-token=")[1]) ? document.cookie.split("session-token=")[1].split(";")[0] : "";
+=======
+export let TOKEN = undefined
+>>>>>>> ead802459a9c21a54592721a96c22d48f2887148
+>>>>>>> 42c2b78037b68a3b5a9f736016f5eea888be361d
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",

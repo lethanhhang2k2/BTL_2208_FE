@@ -2,16 +2,15 @@ import React from "react";
 import AuthLayout from "@layouts/AuthLayout"
 import Feed from "@components/Feed"
 import User from "@components/User"
-import { UserExample, AvatarSize } from "@AppTypes/user";
+import { UserExample, AvatarSize, UserProperty } from "@AppTypes/user";
 import QuickRedirect from "@components/QuickRedirect";
 import { MotelProperty, MotelExampleList } from "@AppTypes/motel"
 import TagSearch from "./components/tag_search";
 import IconButton from "@components/IconButton";
 import Icons, { IconName } from "@components/Icons";
 import { getSearch } from "@api/search";
-
-
-const feeds: MotelProperty[] = MotelExampleList;
+import { parseUser } from "@api/user";
+import { parsePost } from "@api/post";
 
 const Districts = [
     "Thanh Xuân",
@@ -30,6 +29,8 @@ interface IState {
         id: number;
     }[],
     keyword: string;
+    user_list: UserProperty[];
+    post_list: MotelProperty[];
 }
 export default class SearchPage extends React.Component<{}, IState> {
     constructor(prop: any) {
@@ -55,24 +56,33 @@ export default class SearchPage extends React.Component<{}, IState> {
                     isCheck: false,
                     id: 2
                 }
-            ]
+            ],
+            user_list: [],
+            post_list: []
         }
     }
     componentDidMount() {
         var url = new URL(window.location.href);
         var q = (url.searchParams.get("q")) ? url.searchParams.get("q") : "";
-        this.setState({ keyword: q as string });
+        this.setState({ keyword: q as string }, this.find.bind(this));
     }
 
     find(): void {
-        console.log("find");
-        getSearch(this.state.addressFilter, this.state.priceFilter.map(item => item.id), this.state.keyword)
+        getSearch(
+            this.state.addressFilter,
+            this.state.priceFilter
+                .filter(item => item.isCheck)
+                .map(item => item.id),
+            this.state.keyword)
             .then(res => {
                 console.log(res);
                 if (res.ok) {
-                    // List of filter
-                    // List of users
-                    // Handle success
+                    // List of user 
+                    const user_list: UserProperty[] = res.data.users.map((item: any) => parseUser(item));
+                    this.setState({ user_list: user_list });
+                    // List of post
+                    const post_list: MotelProperty[] = res.data.posts.map((item: any) => parsePost(item));
+                    this.setState({ post_list: post_list });
                 }
             })
     }
@@ -160,7 +170,7 @@ export default class SearchPage extends React.Component<{}, IState> {
                                 Bài viết liên quan
                             </div>
                             <div>
-                                {feeds.map(feed => {
+                                {this.state.post_list.map(feed => {
                                     return (
                                         <Feed
                                             key={feed.id}
@@ -175,13 +185,12 @@ export default class SearchPage extends React.Component<{}, IState> {
                             <div className="font-semibold text-gray-600 text-xl mb-8">
                                 Tài khoản liên quan
                             </div>
-
-                            <a href="#" className="mb-[20px] bg-white rounded-lg border-2 border-gray-200 p-2 py-4 cursor-pointer block">
-                                <User user={UserExample} sizeAvt={AvatarSize.Medium} showName={true} twoLine={true} />
-                            </a>
-                            <a href="#" className="mb-[20px] bg-white rounded-lg border-2 border-gray-200 p-2 py-4 cursor-pointer block">
-                                <User user={UserExample} sizeAvt={AvatarSize.Medium} showName={true} twoLine={true} />
-                            </a>
+                            {
+                                this.state.user_list.map(user => (
+                                    <a key={user.id} href="#" className="mb-[20px] bg-white rounded-lg border-2 border-gray-200 p-2 py-4 cursor-pointer block">
+                                        <User user={user} sizeAvt={AvatarSize.Medium} showName={true} twoLine={true} />
+                                    </a>))
+                            }
                         </div>
                     </div>
                     <QuickRedirect />

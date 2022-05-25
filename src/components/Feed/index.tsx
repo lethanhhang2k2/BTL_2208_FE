@@ -49,7 +49,7 @@ export default function Feed({ data, isShowFullComment = false } : IFeedProps) {
                 {data.comments && <Comment
                     data={comments}
                     dataSize={comments.length}
-                    //post_link={data.post_link}
+                    post_link={"/post/" + data.id}
                     isShowFullComment={isShowFullComment}
                 />}
                 <AddComment handleAddComment={handleAddComment} />
