@@ -38,15 +38,9 @@ export default function TestSlide() {
     //         .then(chat => console.log(chat.data))
     //         .catch(err => console.log(err))
         
-<<<<<<< HEAD
         getChatBox("628d4e87c0949da4e14be571")
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
-=======
-    //     getChatBox("627cbf1e44b1954e72b8bf24")
-    //         .then(res => console.log(res.data))
-    //         .catch(err => console.log(err))
->>>>>>> 3e54caab78cdbada025e580e0d805a003a466008
         
     //     getChatMenu({ _id: user.id })
     //         .then(chat => console.log(chat.data))

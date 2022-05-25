@@ -10,7 +10,7 @@ import PrivateRoute from "@routes/Redirect/PrivateRoute";
 import Loading from "@routes/Redirect/Components/Loading";
 import Inbox from "@routes/inbox";
 import { UserProvider } from "@hooks/UserManager";
-// import TestSlide from "./TestSlide";
+import TestSlide from "./TestSlide";
 
 const NotFoundPage = React.lazy(() => import("@routes/404_page"));
 const Login = React.lazy(() => import("@routes/login"));
@@ -68,21 +68,11 @@ function Wrapper() {
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/create-post"
                         element={<PrivateRoute element={<AddPost />} />} />
-<<<<<<< HEAD
                     
                     <Route path="/test"
                         element={<TestSlide />} />
                     <Route path="/nametag"
                         element={<Nametag />} />
-=======
-                    <Route path="/post/:postID"
-                        element={<PrivateRoute element={<PostDetail />} />} />
-
-                    {/* <Route path="/test"
-                        element={<TestSlide />} /> */}
-                    <Route path="/"
-                        element={<NewFeed />} />
->>>>>>> 3e54caab78cdbada025e580e0d805a003a466008
                 </Routes>
             </Suspense>
         </div>

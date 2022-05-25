@@ -25,7 +25,6 @@ export function parseUser(user: any): UserProperty {
 export async function getUserData(): Promise<{ ok: boolean, data: any }> {
     try {
         console.log(TOKEN)
-<<<<<<< HEAD
         
         if (TOKEN) {
             const response = await axios.post(GET_USER_ME, {
@@ -41,21 +40,6 @@ export async function getUserData(): Promise<{ ok: boolean, data: any }> {
                     ok: true,
                     data: response.data
                 }
-=======
-
-        const response = await axios.post(GET_USER_ME, {
-            withCredentials: true,
-            headers: {
-                "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            },
-            token: TOKEN
-        });
-        if (response.status === 200) {
-            return {
-                ok: true,
-                data: response.data
->>>>>>> 3e54caab78cdbada025e580e0d805a003a466008
             }
         }
     } catch (error) {
