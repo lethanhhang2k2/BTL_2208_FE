@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const SEARCH_HOST = "http://tiro-app.herokuapp.com/post/search";
+const SEARCH_HOST = "http://tiro-app.herokuapp.com/search-by-text";
 
 async function getSearch(address: string[], price: number[], username: string) {
+    console.log(address[0], price[0], username);
+    
     try {
         const response = await axios.post(SEARCH_HOST, {
-            address,
-            price,
-            username
+            address: address[0],
+            price_category: price[0],
+            text: username
         }, {
             withCredentials: true,
             headers: {
