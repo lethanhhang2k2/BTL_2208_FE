@@ -36,7 +36,8 @@ interface IconsProps {
     color?: string,
     stroke?: string,
     size?: string,
-    strokeWidth?: string
+    strokeWidth?: string,
+    fill?: string
 }
 
 export enum IconName {
@@ -104,10 +105,10 @@ const IconList = {
 }
 export default class Icons extends React.Component<IconsProps, {}> {
     render() {
-        const { iconName, stroke = "#001a72", size = "24px", strokeWidth = "1.5", ...props } = this.props;
+        const { iconName, stroke = "#001a72", size = "24px", strokeWidth = "1.5", fill = "none", ...props } = this.props;
         const Component = IconList[iconName];
         return (
-            <Component stroke={stroke} width={size} height={size} strokeWidth={strokeWidth} {...props} />
+            <Component stroke={stroke} width={size} height={size} strokeWidth={strokeWidth} fill={fill} {...props} />
         );
     }
 }

@@ -19,6 +19,7 @@ export function parseUser(user: any): UserProperty {
         role: user["role"],
         email: user["email"],
         phone: user["phone"],
+        savedPosts: user["saved_posts"]
     } as UserProperty;
 }
 

@@ -22,6 +22,9 @@ function NewFeed() {
                 setFeeds(posts)
             })
             .catch(err => console.log(err))
+        
+        console.log(user.savedPosts)
+        
     }, [])
 
     return (
@@ -31,7 +34,7 @@ function NewFeed() {
                     <div className="mr-0 lg:mr-[32px] max-w-[596px] w-full">
                         {feeds && feeds.map(feed => {
                             console.log(feed)
-                            return (<Feed key={feed.id} data={feed} isShowFullComment />)
+                            return (<Feed key={feed.id} data={feed} isShowFullComment bookmark={user.savedPosts?.includes(feed.id)} />)
                         })}
                     </div>
 

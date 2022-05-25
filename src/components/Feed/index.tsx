@@ -13,9 +13,10 @@ import { CommentExample, CommentProperty } from "@AppTypes/comment";
 interface IFeedProps {
     data: any,
     isShowFullComment?: boolean,
+    bookmark?: boolean
 }
 
-export default function Feed({ data, isShowFullComment = false } : IFeedProps) {
+export default function Feed({ data, isShowFullComment = false, bookmark } : IFeedProps) {
     const [user, setUser] = useState<UserProperty>(UserExample)
     const [comments, setComments] = useState([CommentExample])
 
@@ -39,7 +40,7 @@ export default function Feed({ data, isShowFullComment = false } : IFeedProps) {
 
         return (
             <div className="w-full bg-white sm:rounded-xl border-solid sm:border-gray-150  sm:border-2 mb-16">
-                <HeaderNews user={user} />
+                <HeaderNews user={user} post={data} bookmark={bookmark} />
                 <Info
                     data_tags={data.data_tags}
                     content={data.description}

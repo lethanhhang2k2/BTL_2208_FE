@@ -4,8 +4,9 @@ import Feed from "@components/Feed";
 import { MotelProperty, MotelStatus } from "@AppTypes/motel";
 import { UserExample } from "@AppTypes/user";
 import { DataTagsExample } from "@AppTypes/tag";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getPost, parsePost } from "@api/post";
+import { UserContext } from "@hooks/UserManager";
 
 const feedDataDemo: MotelProperty = {
     id: "15651321651",
@@ -39,6 +40,7 @@ const feedDataDemo: MotelProperty = {
 export default function PostDetail() {
     const { postID } = useParams();
     const [feedData, setFeedData] = useState(feedDataDemo);
+    const { user } = useContext(UserContext)
     useEffect(() => {
         if (postID) {
             getPost(postID as string)

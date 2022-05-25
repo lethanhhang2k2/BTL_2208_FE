@@ -10,6 +10,9 @@ const GET_MY_POST = "http://tiro-app.herokuapp.com/post/my-post";
 
 const CREATE_POST = "http://tiro-app.herokuapp.com/post/new"
 
+const SAVE_POST = "http://tiro-app.herokuapp.com/post/save/"
+const UNSAVE_POST = "http://tiro-app.herokuapp.com/post/unsave/"
+
 export function parsePost(post: any): any {
     const expenses: any = post.information.expenses;
     const rentalPrice = expenses.rental_price
@@ -143,6 +146,73 @@ export async function createPost(params: any): Promise<{ ok: boolean, data: any 
         for (var pair of params.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
+
+        console.log(response);
+
+        if (response.status === 200) {
+            return {
+                ok: true,
+                data: response.data
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    return {
+        ok: false,
+        data: undefined
+    }
+}
+
+
+export async function savePost(postId: string, ): Promise<{ ok: boolean, data: any }> {
+    try {
+
+        const response = await axios.post(SAVE_POST + postId, {
+            token: TOKEN
+        }, {
+            withCredentials: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
+            params: {
+                id: postId
+            }
+        });
+
+        console.log(response);
+
+        if (response.status === 200) {
+            return {
+                ok: true,
+                data: response.data
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    return {
+        ok: false,
+        data: undefined
+    }
+}
+
+export async function unsavePost(postId: string, ): Promise<{ ok: boolean, data: any }> {
+    try {
+
+        const response = await axios.post(UNSAVE_POST + postId, {
+            token: TOKEN
+        }, {
+            withCredentials: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
+            params: {
+                id: postId
+            }
+        });
 
         console.log(response);
 
