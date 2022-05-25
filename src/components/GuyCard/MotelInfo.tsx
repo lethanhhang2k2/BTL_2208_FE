@@ -7,7 +7,7 @@ import { getUser, parseUser } from "@api/user";
 
 interface MotelInfoProps {
     motel: MotelProperty
-    theme?: ThemeColor
+    theme?: string
 }
 
 export default function MotelInfo({ motel, theme }: MotelInfoProps) {

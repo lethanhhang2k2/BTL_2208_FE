@@ -50,7 +50,7 @@ export default function TestSlide() {
             .then(chat => console.log(chat.data))
             .catch(err => console.log(err))
         
-        getChatBox("627cbf1e44b1954e72b8bf24")
+        getChatBox("628d4e87c0949da4e14be571")
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
         

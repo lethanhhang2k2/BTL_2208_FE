@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 const POST_VERIFY_TOKEN = "http://tiro-app.herokuapp.com/user/auth/google-login";
 
-export const TOKEN = document.cookie.split("session-token=")[1].split(";")[0]
+export let TOKEN = undefined
 
 enum AccountStatus {
     NEW_ACCOUNT = "NEW_ACCOUNT",
@@ -35,6 +35,7 @@ export async function getVerifyToken(token: string): Promise<IAccountResponse | 
         console.log(response);
         if (response.status === 200) {
             setToken(response.data.token);
+            TOKEN = response.data.token
             return response.data;
         }
     } catch (error) {

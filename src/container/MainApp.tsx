@@ -52,8 +52,8 @@ function Wrapper() {
                         element={<PrivateRoute element={<NewFeed />} />} /> */}
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
-                    <Route path="/nametag"
-                        element={<PrivateRoute element={<Nametag />} />} />
+                    {/* <Route path="/nametag"
+                        element={<PrivateRoute element={<Nametag />} />} /> */}
                     <Route path="/quickcard"
                         element={<PrivateRoute element={<QuickCard />} />} />
                     <Route path="/quickcard/edit"
@@ -74,8 +74,8 @@ function Wrapper() {
                     
                     <Route path="/test"
                         element={<TestSlide />} />
-                    <Route path="/"
-                        element={<NewFeed />} />
+                    <Route path="/nametag"
+                        element={<Nametag />} />
                 </Routes>
             </Suspense>
         </div>

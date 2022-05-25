@@ -11,18 +11,30 @@ import { getAllConversation, getChatBox, getChatMenu, parseMessage } from "@api/
 import { UserContext } from "@hooks/UserManager";
 import io from "socket.io-client";
 import { transform } from "typescript";
+import socket from "src/socket/socket";
 
 // const ENDPOINT = "http://tiro-app.herokuapp.com"
-const socket = io("http://tiro-app.herokuapp.com", {transports: ['websocket']})
+
+export let pushMessage = (sender: string, message: string) => {}
 
 function Inbox() {
     const { user } = useContext(UserContext)
-    const [other, setOther] = useState<any>()
-    const [room, setRoom] = useState<string>("")
-    const [messages, setMessages] = useState<MessageProps[]>([])
+    const [ other, setOther ] = useState<any>()
+    const [ room, setRoom ] = useState<string>("")
+    const [ messages, setMessages ] = useState<MessageProps[]>([])
     const [others, setOthers] = useState<any[]>([])
 
-    const socketRef = useRef();
+
+    pushMessage = (sender: string, message: string) => {
+        const newMsg: MessageProps = {
+            id: "011",
+            userId: sender === user.name ? user.id : other.id,
+            content: message,
+            sent_at: String(new Date())
+        }
+        
+        setMessages(messages.reverse().concat(newMsg).reverse())
+    }
 
     useEffect(() => {
         getAllConversation({ _id: user.id })
@@ -63,18 +75,15 @@ function Inbox() {
      };
 
     const handleSendMessage = (msg: string) => {
+
+        socket.emit('msg', { message: msg, user: user.username, userId: user.id, room_id: room, })
+
         const newMsg: MessageProps = {
             id: "011",
             userId: user.id,
             content: msg,
             sent_at: String(new Date())
         }
-
-        socket.emit('msg', { message: msg, user: user.username, userId: user.id, room_id: room, })
-        
-        socket.on('newmsg', function ({  }) {
-            
-        })
 
         setMessages(messages?.reverse().concat(newMsg).reverse())
     }
