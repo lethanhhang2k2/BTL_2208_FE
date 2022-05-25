@@ -8,13 +8,11 @@ const GET_USER = "http://tiro-app.herokuapp.com/user/get/";
 const UPDATE_USER_DATA = "http://tiro-app.herokuapp.com/user/update";
 
 export function parseUser(user: any): UserProperty {
-    console.log(user);
-
     return {
         id: user["_id"],
         username: user["username"],
         name: user["given_name"],
-        avtHref: user["picture"]["name"],
+        avtHref: (user["picture"]["name"].includes("http")) ? user["picture"]["name"] : "https://tiro-app.herokuapp.com/upload/avatar/" + user["picture"]["name"],
         theme: user["theme"],
         distance: user["distance"],
         address: "",
@@ -27,6 +25,7 @@ export function parseUser(user: any): UserProperty {
 export async function getUserData(): Promise<{ ok: boolean, data: any }> {
     try {
         console.log(TOKEN)
+<<<<<<< HEAD
         
         if (TOKEN) {
             const response = await axios.post(GET_USER_ME, {
@@ -42,6 +41,21 @@ export async function getUserData(): Promise<{ ok: boolean, data: any }> {
                     ok: true,
                     data: response.data
                 }
+=======
+
+        const response = await axios.post(GET_USER_ME, {
+            withCredentials: true,
+            headers: {
+                "Access-Control-Allow-Origin": "https://lethanhhang2k2.github.io/",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
+            token: TOKEN
+        });
+        if (response.status === 200) {
+            return {
+                ok: true,
+                data: response.data
+>>>>>>> 3e54caab78cdbada025e580e0d805a003a466008
             }
         }
     } catch (error) {

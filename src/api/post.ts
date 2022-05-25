@@ -1,10 +1,5 @@
 import { TOKEN } from './auth';
-import { DataTag } from '@AppTypes/tag';
-import { TagType } from '@AppTypes/tag';
 import { DataTagsExample } from '@AppTypes/tag';
-import { UserProperty } from './../types/user';
-import { parseUser } from '@api/user';
-import { getUser, getUserData } from '@api/user';
 import { MotelProperty } from "@AppTypes/motel";
 import axios from "axios";
 
@@ -16,10 +11,7 @@ const GET_MY_POST = "http://tiro-app.herokuapp.com/post/my-post";
 const CREATE_POST = "http://tiro-app.herokuapp.com/post/new"
 
 export function parsePost(post: any): any {
-    const expenses: any = post.information.expenses
-
-     console.log(expenses);
-
+    const expenses: any = post.information.expenses;
     // const rentalPrice = expenses.rental_price
     // const deposit = expenses.deposit
 
@@ -55,7 +47,8 @@ export function parsePost(post: any): any {
         comments: [],
         post_link: ""
     };
-
+    console.log(p);
+    
     return p 
 }
 
@@ -132,10 +125,12 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
     }
 }
 
-export async function createPost(params: object): Promise<{ ok: boolean, data: any }> {
+export async function createPost(params: any): Promise<{ ok: boolean, data: any }> {
     try {
+        console.log(params);
+        
         const response = await axios.post(CREATE_POST, {
-            ...params,
+            params,
             token: TOKEN
         }, {
             withCredentials: true,
@@ -144,6 +139,12 @@ export async function createPost(params: object): Promise<{ ok: boolean, data: a
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             }
         });
+        for (var pair of params.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
+        
+        console.log(response);
+        
         if (response.status === 200) {
             return {
                 ok: true,
@@ -158,7 +159,3 @@ export async function createPost(params: object): Promise<{ ok: boolean, data: a
         data: undefined
     }
 }
-
-
-
-
