@@ -127,8 +127,10 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
 
 export async function createPost(params: any): Promise<{ ok: boolean, data: any }> {
     try {
+        console.log(params);
+        
         const response = await axios.post(CREATE_POST, {
-            ...params,
+            params,
             token: TOKEN
         }, {
             withCredentials: true,

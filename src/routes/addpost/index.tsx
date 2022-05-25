@@ -30,10 +30,13 @@ export default function AddPost() {
         postData.append("room_area", target.room_area.value.toString())
         postData.append("room_description", target.room_description.value)
         postData.append("rental_price", target.rental_price.value.toString())
-        console.log(images);
-        for (const i in images) {
-            postData.append('file', i)
-        }
+        postData.append("file", images[0])
+        console.log(images[0]);
+        // for (const i in images) {
+        //     console.log(i);
+            
+        //     postData.append('file', i)
+        // }
         
         const newPost = {
             title_of_post: target.title_of_post.value,
@@ -41,7 +44,7 @@ export default function AddPost() {
             room_area: target.room_area.value,
             room_description: target.room_description.value,
             rental_price: target.rental_price.value,
-            //filename_list: images,
+            // filename_list: images,
             //phone_number: "",
         }
 

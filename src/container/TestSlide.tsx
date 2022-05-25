@@ -33,43 +33,19 @@ export default function TestSlide() {
     //         //     })
     //         //     .catch(err => console.log(err))
 
-<<<<<<< HEAD
         
-        getAllConversation({ _id: user.id })
-            .then(chat => console.log(chat.data))
-            .catch(err => console.log(err))
+    //     getAllConversation({ _id: user.id })
+    //         .then(chat => console.log(chat.data))
+    //         .catch(err => console.log(err))
         
-        getChatBox("627cbf1e44b1954e72b8bf24")
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+    //     getChatBox("627cbf1e44b1954e72b8bf24")
+    //         .then(res => console.log(res.data))
+    //         .catch(err => console.log(err))
         
-        getChatMenu({ _id: user.id })
-            .then(chat => console.log(chat.data))
-            .catch(err => console.log(err))
-    }, [])
-=======
-    //         // getUser("627b1c89a87b21580aad7d7c")
-    //         //     .then(user => {
-    //         //         console.log(user)
-    //         //     })
-    //         //     .catch(err => console.log(err))
-
-    //         console.log(document.cookie, typeof document.cookie);
-
-    //         const cookie = document.cookie
-    //             const token = cookie.split("session-token=")
-    //             console.log(token);
-
-
-    //         getChat({ _id: })
-    //             .then(chat => console.log(chat.data))
-    //             .catch(err => console.log(err))
-
-    //         getChatBox("627cbf1e44b1954e72b8bf24")
-    //             .then(res => console.log(res.data))
-    //             .catch(err => console.log(err))
-    //     }, [])
->>>>>>> main
+    //     getChatMenu({ _id: user.id })
+    //         .then(chat => console.log(chat.data))
+    //         .catch(err => console.log(err))
+    // }, [])
 
 
     return (
