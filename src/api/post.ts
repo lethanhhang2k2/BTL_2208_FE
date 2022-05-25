@@ -1,9 +1,5 @@
-import { DataTag } from '@AppTypes/tag';
-import { TagType } from '@AppTypes/tag';
-import { DataTagsExample } from '@AppTypes/tag';
-import { UserProperty } from './../types/user';
-import { parseUser } from '@api/user';
-import { getUser, getUserData } from '@api/user';
+import { TOKEN } from './auth';
+import { DataTag, TagType, DataTagsExample } from '@AppTypes/tag';
 import { MotelProperty } from "@AppTypes/motel";
 import axios from "axios";
 
@@ -15,25 +11,22 @@ const GET_MY_POST = "http://tiro-app.herokuapp.com/post/my-post";
 const CREATE_POST = "http://tiro-app.herokuapp.com/post/new"
 
 export function parsePost(post: any): any {
-    const expenses: any = post.information.expenses
-
-     console.log(expenses);
-
-    // const rentalPrice = expenses.rental_price
+    const expenses: any = post.information.expenses;
+    const rentalPrice = expenses.rental_price
     // const deposit = expenses.deposit
 
     // console.log(rentalPrice, deposit);
-    
 
-    // const positionTag: DataTag = {
-    //     type: TagType.Position,
-    //     value: post.address.district
-    // }
 
-    // const priceTag: DataTag = {
-    //     type: TagType.Price,
-    //     value: rentalPrice
-    // }
+    const positionTag: DataTag = {
+        type: TagType.Position,
+        value: post.address.address
+    }
+
+    const priceTag: DataTag = {
+        type: TagType.Price,
+        value: rentalPrice
+    }
 
     // const depositTag: DataTag = {
     //     type: TagType.Deposit,
@@ -45,17 +38,19 @@ export function parsePost(post: any): any {
         title: post.confirmation.title_of_post,
         owner: post.author,
         address: post.address.houser_number + "," + post.address.district,
-        fee: "XX", //post.information.expenses.rental_price,
+        fee: rentalPrice,
         description: post.confirmation.room_description,
         images: post.utilities.images,
         status: post.status,
-        data_tags: DataTagsExample, //[ positionTag, priceTag, depositTag ],
+        // data_tags: DataTagsExample, //[ positionTag, priceTag, depositTag ],
+        data_tags: [positionTag, priceTag],
         createAt: new Date(post.createdAt),
         comments: [],
         post_link: ""
     };
+    console.log(p);
 
-    return p 
+    return p
 }
 
 export async function getAllPosts(): Promise<{ ok: boolean, data: any }> {
@@ -131,9 +126,26 @@ export async function getMyPost(): Promise<{ ok: boolean, data: any }> {
     }
 }
 
-export async function createPost(params: object): Promise<{ ok: boolean, data: any }> {
+export async function createPost(params: any): Promise<{ ok: boolean, data: any }> {
     try {
-        const response = await axios.post(CREATE_POST, params);
+        console.log(params);
+
+        const response = await axios.post(CREATE_POST, {
+            params,
+            token: TOKEN
+        }, {
+            withCredentials: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            }
+        });
+        for (var pair of params.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+        }
+
+        console.log(response);
+
         if (response.status === 200) {
             return {
                 ok: true,
@@ -148,7 +160,3 @@ export async function createPost(params: object): Promise<{ ok: boolean, data: a
         data: undefined
     }
 }
-
-
-
-

@@ -5,6 +5,7 @@ const UserContext = createContext({ user: UserExample, setUser: (user: UserPrope
 
 const UserProvider = ({ children }: { children: React.ReactNode; }) => {
     const [user, setUser] = useState(UserExample);
+    
     return <UserContext.Provider value={{ user, setUser }}>
         {children}
     </UserContext.Provider>;

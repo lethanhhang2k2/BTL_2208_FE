@@ -19,10 +19,10 @@ const Nametag = React.lazy(() => import("@routes/nametag"));
 const NewFeed = React.lazy(() => import("@routes/newfeed/index"));
 const QuickCard = React.lazy(() => import("@routes/quickcard"));
 const QuickCardEdit = React.lazy(() => import("@routes/QuickCardEdit"));
-const RequestPostDetail = React.lazy(() => import("@routes/requestpostdetail"))
 const SearchPage = React.lazy(() => import("@routes/search"));
 const Profile = React.lazy(() => import("@routes/profile"));
 const AddPost = React.lazy(() => import("@routes/addpost"));
+const PostDetail = React.lazy(() => import("@routes/PostDetail"));
 
 function Wrapper() {
     const location = useLocation();
@@ -51,14 +51,12 @@ function Wrapper() {
                         element={<PrivateRoute element={<NewFeed />} />} />
                     <Route path="/login/2"
                         element={<PrivateRoute element={<LoginTwo />} />} />
-                    <Route path="/nametag"
-                        element={<PrivateRoute element={<Nametag />} />} />
+                    {/* <Route path="/nametag"
+                        element={<PrivateRoute element={<Nametag />} />} /> */}
                     <Route path="/quickcard"
                         element={<PrivateRoute element={<QuickCard />} />} />
                     <Route path="/quickcard/edit"
                         element={<PrivateRoute element={<QuickCardEdit />} />} />
-                    <Route path="/request/detail"
-                        element={<PrivateRoute element={<RequestPostDetail />} />} />
                     <Route path="/inbox"
                         element={<PrivateRoute element={<Inbox />} />} />
                     <Route path="/search"
@@ -66,15 +64,14 @@ function Wrapper() {
                     <Route path="/profile"
                         element={<PrivateRoute element={<Profile />} />} />
                     <Route path="/profile/:userID"
-
                         element={<PrivateRoute element={<Profile />} />} />
-                    <Route path="/create-post/"
+                    <Route path="/create-post"
                         element={<PrivateRoute element={<AddPost />} />} />
                     
                     <Route path="/test"
                         element={<TestSlide />} />
-                    <Route path="/"
-                        element={<NewFeed />} />
+                    <Route path="/nametag"
+                        element={<Nametag />} />
                 </Routes>
             </Suspense>
         </div>

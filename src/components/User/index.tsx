@@ -34,7 +34,7 @@ export default class User extends React.Component<IUserProps, {}> {
                     </div>
                 )}
 
-                <Avatar user={user} size={sizeAvt} border={border} />
+                <Avatar user={user} size={sizeAvt} border={border} link_to_profile={user.id} />
 
                 {directionLeft && (
                     <div className={`flex overflow-hidden w-[210px] ${twoLine ? "flex-col" : ""}`}>

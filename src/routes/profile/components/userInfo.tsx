@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UserProperty } from "@AppTypes/user"
 import Icons, { IconName } from "@components/Icons"
 import IconButton from "@components/IconButton"
 import LabelCount from "@components/LabelGroup/countLabel"
 import IconLabel from "@components/LabelGroup/iconLabel"
+import { useGoogleAuth } from "@hooks/GoogleAuthProvider";
+import { UserContext } from "@hooks/UserManager";
 
 interface IProps {
     user: UserProperty
 }
 
-export default class UserInfo extends React.Component<IProps> {
-    render() {
-        const { user } = this.props;
+export default function UserInfo({ user }: IProps) {
+    const { isSignedIn, signIn, signOut } = useGoogleAuth();
+    const { user: u } = useContext(UserContext)
+
         return (
             <div className="ml-10">
                 <div>
@@ -20,9 +23,14 @@ export default class UserInfo extends React.Component<IProps> {
                         <IconButton>
                             <Icons iconName={IconName.Setting} stroke="#6b7280" strokeWidth="1.5px" size="35px" />
                         </IconButton>
-                        <IconButton>
+                        <IconButton href="/nametag">
                             <Icons iconName={IconName.QRCode} stroke="#6b7280" strokeWidth="1.5px" size="35px" />
                         </IconButton>
+                        {user.id === u.id && (
+                            <IconButton onClick={() => signOut()}>
+                                <Icons iconName={IconName.Logout} stroke="#6b7280" strokeWidth="1.5px" size="35px" />
+                            </IconButton>
+                        )}
                     </div>
                     <p className="text-gray-500 font-semibold">{user.username}</p>
                 </div>
@@ -42,4 +50,3 @@ export default class UserInfo extends React.Component<IProps> {
             </div>
         );
     }
-}

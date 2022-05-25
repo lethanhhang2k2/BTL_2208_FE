@@ -13,11 +13,7 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
 
     useEffect(() => {
         if (isInitialized) {
-            const cookie = document.cookie
-            const token = cookie.split("session-token=")
-            console.log(token);
-            
-            getUserData(token[1])
+            getUserData()
                 .then(user => {
                     console.log(user);
                     setUser(parseUser(user.data.user_data));
@@ -46,6 +42,7 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
         }
         return isSignedIn ? element : <Navigate to="/login" />;
     };
+<<<<<<< HEAD
 
     // if (!isInitialized) {
     //     return element;
@@ -60,6 +57,8 @@ const PrivateRoute = ({ element }: { element: React.ReactElement }) => {
     //     return isSignedIn ? element : element;
     // };
 
+=======
+>>>>>>> hahacontribute
 }
 
 export default PrivateRoute;
