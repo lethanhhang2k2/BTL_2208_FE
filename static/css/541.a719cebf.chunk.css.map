@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/541.a719cebf.chunk.css","mappings":"AAAA,YACI","sources":["routes/login/index.scss"],"sourcesContent":[".login-page{\r\n    background-image: url(\"../../assets/images/login-bg.png\");\r\n}"],"names":[],"sourceRoot":""}
